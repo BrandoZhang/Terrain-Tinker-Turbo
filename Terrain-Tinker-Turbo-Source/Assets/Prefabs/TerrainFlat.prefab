@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4646230418307207199}
   - component: {fileID: 4646230418307207196}
   - component: {fileID: 4646230418307207197}
+  - component: {fileID: -8757953906078008570}
   m_Layer: 0
   m_Name: TerrainFlat
   m_TagString: Untagged
@@ -97,3 +98,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8757953906078008570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646230418307207194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

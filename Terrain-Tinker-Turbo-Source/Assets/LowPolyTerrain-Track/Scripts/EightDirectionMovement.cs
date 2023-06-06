@@ -17,7 +17,7 @@ public class EightDirectionMovement : MonoBehaviour {
 
     void Start()
     {
-        //cam = Camera.main.transform;
+        cam = Camera.main.transform;
         if (cam.GetComponent<FollowTarget>())
         {
             ft = cam.GetComponent<FollowTarget>();
