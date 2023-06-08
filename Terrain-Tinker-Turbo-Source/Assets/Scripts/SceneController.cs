@@ -5,10 +5,48 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public TrackData trackData;
+    public GameObject track;  // Reference to the Track GameObject
+    private Collider trackCollider;  // Reference to the Collider on the Track GameObject
+
     // Start is called before the first frame update
     void Start()
     {
+        // Find the Track GameObject
+        track = GameObject.Find("Track");
         
+        // Get the Collider from the Track GameObject
+        trackCollider = track.GetComponent<Collider>();
+
+        // Check which scene is currently loaded
+        if (SceneManager.GetActiveScene().name == "PlayScene")
+        {
+            // Load the track data
+            TrackData.Instance.LoadTrackData();
+            
+            // Disable the collider on the Track GameObject
+            trackCollider.enabled = false;
+        }
+        else if (SceneManager.GetActiveScene().name == "TrackEditingScene" && TrackData.Instance.trackPieces.Count > 0)
+        {
+            // Clear all children of Track
+            ClearTrack();
+
+            // Load the track data
+            TrackData.Instance.LoadTrackData();
+            
+            // Enable the collider on the Track GameObject
+            trackCollider.enabled = true;
+        }
+    }
+
+    // Clear all children of Track
+    private void ClearTrack()
+    {
+        foreach(Transform child in track.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -19,15 +57,18 @@ public class SceneController : MonoBehaviour
             // Check which scene is currently loaded
             if (SceneManager.GetActiveScene().name == "TrackEditingScene")
             {
-                // TODO: Save the track data
-                
-                // If it's the track editing scene, load the play scene
-                SceneManager.LoadScene("PlayScene");
+                // Save the track data
+                TrackData.Instance.SaveTrackData();
             }
-            else
+
+            // Switch scenes
+            if (SceneManager.GetActiveScene().name == "PlayScene")
             {
-                // If it's the play scene, load the track editing scene
                 SceneManager.LoadScene("TrackEditingScene");
+            }
+            else if (SceneManager.GetActiveScene().name == "TrackEditingScene")
+            {
+                SceneManager.LoadScene("PlayScene");
             }
         }
     }
