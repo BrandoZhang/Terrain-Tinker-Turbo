@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vehicle2 : MonoBehaviour
 {
-    private float speed  = 15.0f;
+    private float speed  = 10.0f;
     private float turnSpeed = 45.0f;
     
     public Rigidbody rb;
@@ -43,7 +43,16 @@ public class Vehicle2 : MonoBehaviour
         { 
             transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime);
         }
-
+        newVelocity = new Vector3(transform.forward.x, 0.0f, transform.forward.z);
+        rb.AddForce(newVelocity * speed * moveVertical);
+        //rb.velocity = newVelocity * moveVertical * speed;
+        
+        //check if the car is airborne when driving
+        /*if (!Physics.Raycast(transform.position, -Vector3.up, 0.5f))
+        {
+            //apply a downward force to the car
+            rb.AddForce(-Vector3.up * 10);
+        }*/
 
 
     }
@@ -52,7 +61,9 @@ public class Vehicle2 : MonoBehaviour
         newVelocity = new Vector3(transform.forward.x, 0.0f, transform.forward.z);
         rb.velocity = newVelocity * moveVertical * speed;
         
-        //check if the car is airborne
+        
+        //check if the car is airborne when driving
+        
         if (!Physics.Raycast(transform.position, -Vector3.up, 0.5f))
         {
             //apply a downward force to the car
