@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7279690262585445801}
   - component: {fileID: 7279690262585445800}
   - component: {fileID: 5351998256582522624}
+  - component: {fileID: 4918961293959861866}
   m_Layer: 0
   m_Name: TerrainPlaceholder
   m_TagString: Untagged
@@ -96,4 +97,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124ad57a02c8a6847a0b1f4b6f96b5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+--- !u!114 &4918961293959861866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279690262585445806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830bff4fdd5420641bb15be9ff78d8f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: TerrainPlaceholder
+  accelerationDirection: {x: 0, y: 0, z: 0}
+  accelerationStrength: 0
