@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,19 @@ public class VehicleController : MonoBehaviour
     public float turnSpeed;
     private float _horizontalInput;
     private float _forwardInput;
-    
+
+    private string objectName;
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        objectName = other.gameObject.name;
+        Debug.Log(objectName);
+        //throw new NotImplementedException();
     }
 
     // Update is called once per frame
@@ -21,10 +30,10 @@ public class VehicleController : MonoBehaviour
         // Get player inputs
         _horizontalInput = Input.GetAxis("Horizontal");
         _forwardInput = Input.GetAxis("Vertical");
-        
         // Move the vehicle forward
         transform.Translate(Vector3.forward * (Time.deltaTime * speed * _forwardInput));
         // Turn the vehicle
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * _horizontalInput);
+        
     }
 }
