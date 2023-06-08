@@ -56,7 +56,7 @@ public class Vehicle2 : MonoBehaviour
         if (!Physics.Raycast(transform.position, -Vector3.up, 0.5f))
         {
             //apply a downward force to the car
-            rb.AddForce(-Vector3.up * 10);
+            rb.AddForce(-Vector3.up * 100);
         }
     }
 }
