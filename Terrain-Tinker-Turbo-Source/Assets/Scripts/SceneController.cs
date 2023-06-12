@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour
     public TrackData trackData;
     public GameObject track;  // Reference to the Track GameObject
     private Collider trackCollider;  // Reference to the Collider on the Track GameObject
+    private Rigidbody trackRigidbody;  // Reference to the Rigidbody on the Track GameObject
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,9 @@ public class SceneController : MonoBehaviour
         
         // Get the Collider from the Track GameObject
         trackCollider = track.GetComponent<Collider>();
+        
+        // Get the Rigidbody from the Track GameObject
+        trackRigidbody = track.GetComponent<Rigidbody>();
 
         // Check which scene is currently loaded
         if (SceneManager.GetActiveScene().name == "PlayScene")
@@ -26,6 +30,12 @@ public class SceneController : MonoBehaviour
             
             // Disable the collider on the Track GameObject
             trackCollider.enabled = false;
+
+            // Disable the Rigidbody on the Track GameObject
+            trackRigidbody.isKinematic = true;
+
+            // Disable gravity for the Track GameObject
+            trackRigidbody.useGravity = false;
         }
         else if (SceneManager.GetActiveScene().name == "TrackEditingScene" && TrackData.Instance.trackPieces.Count > 0)
         {
@@ -37,6 +47,12 @@ public class SceneController : MonoBehaviour
             
             // Enable the collider on the Track GameObject
             trackCollider.enabled = true;
+
+            // Enable the Rigidbody on the Track GameObject
+            trackRigidbody.isKinematic = true;
+
+            // Disable gravity for the Track GameObject
+            trackRigidbody.useGravity = false;
         }
     }
 

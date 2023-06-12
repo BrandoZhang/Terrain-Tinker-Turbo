@@ -38,21 +38,21 @@ public class Vehicle1 : MonoBehaviour
         float moveHorizontal = 0;
         //float moveVertical = 0;
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.I))
         {
             //Debug.Log("Moving Player");
             moveVertical = 1;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.K))
         {
             moveVertical = -1;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.J))
         { 
             transform.Rotate(Vector3.down * turnSpeed * Time.deltaTime);
             //moveHorizontal = -1; 
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.L))
         { 
             transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime);
             //moveHorizontal = 1; 

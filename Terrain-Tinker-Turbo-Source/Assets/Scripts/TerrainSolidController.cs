@@ -13,7 +13,10 @@ public class TerrainSolidController : MonoBehaviour
     Vector3 offset;
 
     Camera myMainCamera;
-
+    
+    // Flag to check if the terrain piece is on the Track
+    private bool isOnTrack = false;
+    
     void Start() 
     {
         myMainCamera = Camera.main;
@@ -64,22 +67,56 @@ public class TerrainSolidController : MonoBehaviour
         }
     }
 
+    // void OnMouseUp() 
+    // {
+    //     // Cast a ray from the camera to the mouse position
+    //     Ray ray = myMainCamera.ScreenPointToRay(Input.mousePosition);
+    //     RaycastHit hit;
+    //
+    //     // If the ray hits the Track GameObject
+    //     if (Physics.Raycast(ray, out hit) && hit.transform.name == "Track")
+    //     {
+    //         // Make the terrain piece a child of Track
+    //         transform.parent = hit.transform;
+    //     }
+    //     else
+    //     {
+    //         // If the terrain piece is dropped somewhere else, make it a child of TrackLibrary
+    //         transform.parent = GameObject.Find("TrackLibrary").transform;
+    //     }
+    // }
+    
     void OnMouseUp() 
     {
-        // Cast a ray from the camera to the mouse position
-        Ray ray = myMainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-    
-        // If the ray hits the Track GameObject
-        if (Physics.Raycast(ray, out hit) && hit.transform.name == "Track")
+        if (isOnTrack)
         {
             // Make the terrain piece a child of Track
-            transform.parent = hit.transform;
+            transform.parent = GameObject.Find("Track").transform;
         }
-        else
+        // else
+        // {
+        //     // If the terrain piece is dropped somewhere else, make it a child of TrackLibrary
+        //     transform.parent = GameObject.Find("TrackLibrary").transform;
+        // }
+    }
+    
+    
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("TerrainSolidController: OnTriggerEnter()");
+        // Check if the terrain piece has entered the Track
+        if (other.gameObject.name == "Track")
         {
-            // If the terrain piece is dropped somewhere else, make it a child of TrackLibrary
-            transform.parent = GameObject.Find("TrackLibrary").transform;
+            isOnTrack = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        // Check if the terrain piece has left the Track
+        if (other.gameObject.name == "Track")
+        {
+            isOnTrack = false;
         }
     }
 }

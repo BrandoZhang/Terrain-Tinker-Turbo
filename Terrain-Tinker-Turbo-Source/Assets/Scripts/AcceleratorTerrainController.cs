@@ -8,25 +8,13 @@ public class AcceleratorTerrainController : MonoBehaviour
     public Vector3 accelerationDirection;
     public float accelerationStrength;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     // This function is called when an vehicle enters the terrain's collider.
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Accelerator Triggered");
-        // Check if the other object is a racer (player or other competitors).
-        // Remember to add a "Racer" tag to player and other competitors.
-        if (other.gameObject.CompareTag("Racer"))
+        // Check if the other object is a racer (player1 or player2).
+        // Remember to add a "Player1" and "Player2" tag to respective players.
+        if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
         {
             // Get the Rigidbody component of the racer.
             Rigidbody racerRigidbody = other.gameObject.GetComponent<Rigidbody>();
