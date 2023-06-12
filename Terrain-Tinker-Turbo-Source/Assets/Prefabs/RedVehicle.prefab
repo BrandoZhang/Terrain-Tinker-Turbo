@@ -111,7 +111,6 @@ GameObject:
   - component: {fileID: 270434846946764194}
   - component: {fileID: 3331380827707597382}
   - component: {fileID: 270434845749018679}
-  - component: {fileID: 270434845749018632}
   m_Layer: 0
   m_Name: RedVehicle
   m_TagString: Racer
@@ -219,19 +218,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 2
---- !u!114 &270434845749018632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270434846944750896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d24a6589b2e8d54696e181ab45cf2cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 270434845749018679}
 --- !u!1 &270434846944761002
 GameObject:
   m_ObjectHideFlags: 0

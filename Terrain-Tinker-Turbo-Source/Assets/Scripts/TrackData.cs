@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// This code was used for keeping track data during scene transition. However, as we deprecate the multi-scenes game
+/// logic, this code is not used any more. This code is kept in case the game may have "save to archive" function in
+/// the future.
 /// This is a data structure used to store the state of a track piece. It includes the position, rotation, and type of
 /// the track piece, but it could also include other properties like `accelerationDirection` and `accelerationStrength`
 /// if you need to save and load this data as well.
@@ -16,22 +19,6 @@ public class TrackData : MonoBehaviour
     public List<TrackPieceData> trackPieces = new List<TrackPieceData>();
     // A static instance of TrackData that other scripts can access:
     public static TrackData Instance { get; private set; }
-
-    void Awake()
-    {
-        // Ensures the GameObject is not destroyed when a new scene is loaded
-        DontDestroyOnLoad(gameObject);
-        
-        // Ensure only one `TrackData` instance exists across all scenes.
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     // This method will be called to save the current state of the track
     public void SaveTrackData()

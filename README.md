@@ -7,7 +7,6 @@
 ## Controls
 - Mouse drag and drop over a terrain: move the terrain to create the track.
 - Press `R` when holding mouse left key over a terrain: rotate this terrain 90 degree clockwise.
-- Press `P` in Track Editing State: exit editing and enter racing stage.
 
 ## File Structure
 ```bash

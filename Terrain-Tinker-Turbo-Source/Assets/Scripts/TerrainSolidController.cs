@@ -67,37 +67,15 @@ public class TerrainSolidController : MonoBehaviour
         }
     }
 
-    // void OnMouseUp() 
-    // {
-    //     // Cast a ray from the camera to the mouse position
-    //     Ray ray = myMainCamera.ScreenPointToRay(Input.mousePosition);
-    //     RaycastHit hit;
-    //
-    //     // If the ray hits the Track GameObject
-    //     if (Physics.Raycast(ray, out hit) && hit.transform.name == "Track")
-    //     {
-    //         // Make the terrain piece a child of Track
-    //         transform.parent = hit.transform;
-    //     }
-    //     else
-    //     {
-    //         // If the terrain piece is dropped somewhere else, make it a child of TrackLibrary
-    //         transform.parent = GameObject.Find("TrackLibrary").transform;
-    //     }
-    // }
-    
     void OnMouseUp() 
     {
-        if (isOnTrack)
+        if (isOnTrack && GameManager.Instance.CanPlaceBlock())
         {
             // Make the terrain piece a child of Track
             transform.parent = GameObject.Find("Track").transform;
+            // Mark current player has placed a block and switch to the other player
+            GameManager.Instance.BlockPlaced();  
         }
-        // else
-        // {
-        //     // If the terrain piece is dropped somewhere else, make it a child of TrackLibrary
-        //     transform.parent = GameObject.Find("TrackLibrary").transform;
-        // }
     }
     
     

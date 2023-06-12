@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class RacerController : MonoBehaviour
 {
-    public float accelerationForce = 100f;  // How fast the car accelerates
-    public float turningForce = 5f;  // How fast the car turns
+    public int playerIndex;  // Player index (1 or 2)
+    public float accelerationForce = 30f;  // How fast the car accelerates
+    public float turningForce = 3f;  // How fast the car turns
+    public Transform startTransform;  // The Transform component where the racer will reset to
 
     private Rigidbody rb;
 
@@ -15,15 +17,24 @@ public class RacerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    public void ResetToStart()
+    {
+        Debug.Log("ResetToStart called for player " + playerIndex);
+        rb.velocity = Vector3.zero;  // Reset velocity
+        rb.angularVelocity = Vector3.zero;  // Reset angular velocity
+        transform.position = startTransform.position;  // Reset position
+        transform.rotation = startTransform.rotation;  // Reset rotation
+    }
+    
     private void FixedUpdate()
     {
         // Get the horizontal and vertical input (up/down and left/right)
-        // Unity automatically maps these to the arrow keys and 'A' 'D' keys
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        // Use different axes based on the player index
+        float horizontalInput = Input.GetAxis("Horizontal" + (playerIndex == 1 ? "_P1" : "_P2"));
+        float verticalInput = Input.GetAxis("Vertical" + (playerIndex == 1 ? "_P1" : "_P2"));
 
-        Debug.Log("Horizontal input: " + horizontalInput);
-        Debug.Log("Vertical input: " + verticalInput);
+        Debug.Log("Player " + playerIndex + " horizontal input: " + horizontalInput);
+        Debug.Log("Player " + playerIndex + " vertical input: " + verticalInput);
 
         // Apply a force in the forward direction of the car, multiplied by our input and acceleration force
         rb.AddForce(transform.forward * verticalInput * accelerationForce);
