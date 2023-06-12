@@ -358,6 +358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueVehicle
       objectReference: {fileID: 0}
+    - target: {fileID: 867040630541435422, guid: ae6019a6c2deb10469085256579db404, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 867040630541693464, guid: ae6019a6c2deb10469085256579db404, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -515,6 +519,10 @@ PrefabInstance:
     - target: {fileID: 270434846944750896, guid: 5a8cd3ac99a4f634da8e0820a87ca2df, type: 3}
       propertyPath: m_Name
       value: RedVehicle
+      objectReference: {fileID: 0}
+    - target: {fileID: 270434846944750896, guid: 5a8cd3ac99a4f634da8e0820a87ca2df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a8cd3ac99a4f634da8e0820a87ca2df, type: 3}
