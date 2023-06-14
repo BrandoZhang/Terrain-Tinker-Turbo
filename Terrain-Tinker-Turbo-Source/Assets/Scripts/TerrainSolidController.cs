@@ -48,21 +48,9 @@ public class TerrainSolidController : MonoBehaviour
 
             // If this is an accelerator terrain, rotate the acceleration direction as well
             AcceleratorTerrainController accelerator = GetComponent<AcceleratorTerrainController>();
-            TrackPiece trackPiece = GetComponent<TrackPiece>();
             if (accelerator != null)
             {
                 accelerator.accelerationDirection = Quaternion.Euler(0, 90, 0) * accelerator.accelerationDirection;
-                trackPiece.accelerationDirection = accelerator.accelerationDirection;
-            
-                // Find the corresponding TrackPieceData and update its accelerationDirection
-                foreach (TrackPieceData piece in TrackData.Instance.trackPieces)
-                {
-                    if (piece.persistentID == trackPiece.persistentID)
-                    {
-                        piece.accelerationDirection = trackPiece.accelerationDirection;
-                        break;
-                    }
-                }
             }
         }
     }

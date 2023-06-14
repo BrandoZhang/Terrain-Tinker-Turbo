@@ -1545,7 +1545,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4918961293959861866, guid: 6f02382bdafb4b145a0963085d02fe61, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6f02382bdafb4b145a0963085d02fe61, type: 3}
 --- !u!4 &1856158082 stripped
 Transform:
@@ -1787,7 +1788,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CenterRoad
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
 --- !u!1001 &867040631462435710
 PrefabInstance:
@@ -1861,7 +1863,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 755354051}
     m_Modifications:
-    - target: {fileID: -1245060828119018696, guid: 619cf32ccb7b1be40877344c38eedd54, type: 3}
+    - target: {fileID: 0}
       propertyPath: accelerationStrength
       value: 1500
       objectReference: {fileID: 0}

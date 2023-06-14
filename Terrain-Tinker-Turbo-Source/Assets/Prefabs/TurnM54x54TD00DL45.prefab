@@ -595,7 +595,6 @@ GameObject:
   - component: {fileID: 7237148822017255351}
   - component: {fileID: 7241283594918159924}
   - component: {fileID: 7241283594918159925}
-  - component: {fileID: -1573232285458466598}
   m_Layer: 0
   m_Name: TurnM54x54TD00DL45
   m_TagString: Untagged
@@ -651,21 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1573232285458466598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7240316506445763941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 830bff4fdd5420641bb15be9ff78d8f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: TurnM54x54TD00DL45
-  accelerationDirection: {x: 0, y: 0, z: 0}
-  accelerationStrength: 0
 --- !u!1 &7240336099371082929
 GameObject:
   m_ObjectHideFlags: 0
