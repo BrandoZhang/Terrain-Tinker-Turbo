@@ -10,6 +10,7 @@ public class RacerController : MonoBehaviour
     public float accelerationForce = 30f;  // How fast the car accelerates
     public float turningForce = 3f;  // How fast the car turns
     public Transform startTransform;  // The Transform component where the racer will reset to
+    public float minHeightThreshold = 20f;  // It is considered fall out of the Track if y value is less than this
 
     private Rigidbody rb;
 
@@ -31,7 +32,11 @@ public class RacerController : MonoBehaviour
     {
         // Freeze the racer until it can move
         if (!canMove) return;
-        
+        // Check if the vehicle's height is below a certain threshold
+        if (transform.position.y < minHeightThreshold) 
+        {
+            ResetToStart();
+        }
         // Get the horizontal and vertical input (up/down and left/right)
         // Use different axes based on the player index
         float horizontalInput = Input.GetAxis("Horizontal" + (playerIndex == 1 ? "_P1" : "_P2"));
@@ -48,6 +53,5 @@ public class RacerController : MonoBehaviour
 
         // Apply the turning. This is done by creating a new rotation and then applying it
         rb.rotation *= Quaternion.Euler(newRotation);
-
     }
 }
