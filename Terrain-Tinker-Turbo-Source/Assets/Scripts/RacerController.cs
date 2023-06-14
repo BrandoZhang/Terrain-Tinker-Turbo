@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class RacerController : MonoBehaviour
 {
+    public bool canMove = true;
     public int playerIndex;  // Player index (1 or 2)
     public float accelerationForce = 30f;  // How fast the car accelerates
     public float turningForce = 3f;  // How fast the car turns
@@ -28,21 +29,26 @@ public class RacerController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        // Get the horizontal and vertical input (up/down and left/right)
-        // Use different axes based on the player index
-        float horizontalInput = Input.GetAxis("Horizontal" + (playerIndex == 1 ? "_P1" : "_P2"));
-        float verticalInput = Input.GetAxis("Vertical" + (playerIndex == 1 ? "_P1" : "_P2"));
+        if (canMove)
+        {
 
-        Debug.Log("Player " + playerIndex + " horizontal input: " + horizontalInput);
-        Debug.Log("Player " + playerIndex + " vertical input: " + verticalInput);
 
-        // Apply a force in the forward direction of the car, multiplied by our input and acceleration force
-        rb.AddForce(transform.forward * verticalInput * accelerationForce);
+            // Get the horizontal and vertical input (up/down and left/right)
+            // Use different axes based on the player index
+            float horizontalInput = Input.GetAxis("Horizontal" + (playerIndex == 1 ? "_P1" : "_P2"));
+            float verticalInput = Input.GetAxis("Vertical" + (playerIndex == 1 ? "_P1" : "_P2"));
 
-        // Create a new vector3 for turning, and turn it based on our input and turning force
-        Vector3 newRotation = new Vector3(0f, horizontalInput * turningForce, 0f);
+            Debug.Log("Player " + playerIndex + " horizontal input: " + horizontalInput);
+            Debug.Log("Player " + playerIndex + " vertical input: " + verticalInput);
 
-        // Apply the turning. This is done by creating a new rotation and then applying it
-        rb.rotation *= Quaternion.Euler(newRotation);
+            // Apply a force in the forward direction of the car, multiplied by our input and acceleration force
+            rb.AddForce(transform.forward * verticalInput * accelerationForce);
+
+            // Create a new vector3 for turning, and turn it based on our input and turning force
+            Vector3 newRotation = new Vector3(0f, horizontalInput * turningForce, 0f);
+
+            // Apply the turning. This is done by creating a new rotation and then applying it
+            rb.rotation *= Quaternion.Euler(newRotation);
+        }
     }
 }
