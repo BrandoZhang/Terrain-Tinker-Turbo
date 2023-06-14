@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI phaseText;  // UI that indicates in which phase the game is
     public TextMeshProUGUI turnText;  // UI that indicates who's turn (only valid in editing phase)
     public TextMeshProUGUI winText;  // UI that will display when game ends
+    public TextMeshProUGUI countdownText;
     private int currentPlayer = 1;  // Start with player 1
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
     private int player2BlockCount = 0;  // Number of track blocks placed by player 2
@@ -26,6 +28,9 @@ public class GameManager : MonoBehaviour
     public RacerController racer1;  // Reference to the first racer's controller
     public RacerController racer2;  // Reference to the second racer's controller
 
+    public Camera mainCamera;
+    public Camera player1Camera;
+    public Camera player2Camera;
     void Awake()
     {
         if (Instance == null)
@@ -37,6 +42,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Initially deactivate player cameras and activate main camera
+        mainCamera.enabled = true;
+        player1Camera.enabled = false;
+        player2Camera.enabled = false;
+        
+        // Adjust player camera viewports for split screen
+        player1Camera.rect = new Rect(0, 0, 0.5f, 1);
+        player2Camera.rect = new Rect(0.5f, 0, 0.5f, 1);
+        
         // Find the Track GameObject
         track = GameObject.Find("Track");
         
@@ -97,7 +111,9 @@ public class GameManager : MonoBehaviour
         // If all blocks have been placed, transition to racing phase
         if (player1BlockCount >= limit && player2BlockCount >= limit)
         {
-            TransitionToRacingPhase();
+            //TransitionToRacingPhase();
+            StartCoroutine(Countdown());
+            
         }
     }
 
@@ -107,6 +123,11 @@ public class GameManager : MonoBehaviour
         isRacing = true;
         phaseText.text = "Racing Phase";
         turnText.text = "";  // Clear for Racing Phase
+        
+        // Deactivate main camera and activate player cameras
+        mainCamera.enabled = false;
+        player1Camera.enabled = true;
+        player2Camera.enabled = true;
         
         // Transition to racing phase, configure the collider and rigidbody
         trackCollider.enabled = false;  // Otherwise the racers can drive through placeholders
@@ -136,5 +157,25 @@ public class GameManager : MonoBehaviour
             winText.text = "Player 2 Wins!";
             gameOver = true;
         }
+    }
+
+    IEnumerator Countdown()
+    {
+        // Disable player controls
+        racer1.canMove = false;
+        racer2.canMove = false;
+        
+        // Countdown from 5 to 0
+        for (int i = 5; i >= 0; i--)
+        {
+            countdownText.text = i.ToString();
+            yield return new WaitForSeconds(1);
+        }
+        // Enable player controls
+        racer1.canMove = true;
+        racer2.canMove = true;
+        
+        // Start the racing Phase
+        TransitionToRacingPhase();
     }
 }
