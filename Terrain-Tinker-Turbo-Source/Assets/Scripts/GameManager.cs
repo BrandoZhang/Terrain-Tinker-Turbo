@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -93,6 +94,16 @@ public class GameManager : MonoBehaviour
 
     public void BlockPlaced()
     {
+        var currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Tutorial2")
+        {
+            limit = 1;
+        }
+        else
+        {
+            limit = 3;
+        }
+        
         if (currentPlayer == 1)
         {
             player1BlockCount++;
@@ -107,7 +118,7 @@ public class GameManager : MonoBehaviour
         // Update the turnText field with the remaining blocks
         int remainingBlocks = currentPlayer == 1 ? limit - player1BlockCount : limit - player2BlockCount;
         turnText.text = "Player " + currentPlayer + "'s Turn - " + remainingBlocks + " blocks left";
-
+        
         // If all blocks have been placed, transition to racing phase
         if (player1BlockCount >= limit && player2BlockCount >= limit)
         {
