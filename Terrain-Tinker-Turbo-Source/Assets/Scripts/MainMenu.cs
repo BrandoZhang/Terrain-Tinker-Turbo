@@ -24,4 +24,16 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial3");
     }
+
+    public void headBack()
+    {
+        int currIdx = SceneManager.GetActiveScene().buildIndex;
+        int nextIdx = (currIdx <= 2) ? 0 : currIdx-1; 
+        SceneManager.LoadScene(nextIdx);
+    }
+
+    public void headNext()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
