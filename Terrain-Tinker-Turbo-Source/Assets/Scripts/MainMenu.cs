@@ -34,6 +34,8 @@ public class MainMenu : MonoBehaviour
 
     public void headNext()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int currIdx = SceneManager.GetActiveScene().buildIndex;
+        int nextIdx = (currIdx >= 4) ? 0 : currIdx + 1;
+        SceneManager.LoadScene(nextIdx);
     }
 }
