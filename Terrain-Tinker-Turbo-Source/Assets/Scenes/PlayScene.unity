@@ -1225,6 +1225,7 @@ MonoBehaviour:
   accelerationForce: 30
   turningForce: 3
   startTransform: {fileID: 61785452}
+  minHeightThreshold: 20
 --- !u!4 &1183502235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270434846944489574, guid: 5a8cd3ac99a4f634da8e0820a87ca2df, type: 3}
@@ -1317,8 +1318,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1356559380}
-  - component: {fileID: 1356559381}
-  - component: {fileID: 1356559382}
   - component: {fileID: 1356559383}
   m_Layer: 0
   m_Name: Track
@@ -1352,31 +1351,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1356559381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356559379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5504ad5ace7e3b409764773d27d0043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &1356559382
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356559379}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 165, y: 20, z: 165}
-  m_Center: {x: -15, y: 0, z: 18}
 --- !u!54 &1356559383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1748,6 +1722,7 @@ MonoBehaviour:
   accelerationForce: 30
   turningForce: 3
   startTransform: {fileID: 1166499073}
+  minHeightThreshold: 20
 --- !u!4 &1668033021 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 867040630541693464, guid: ae6019a6c2deb10469085256579db404, type: 3}
