@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private int currentPlayer = 1;  // Start with player 1
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
     private int player2BlockCount = 0;  // Number of track blocks placed by player 2
-    private int limit = 3;  // Maximum number of track blocks each player can place
+    public int limit;  // Maximum number of track blocks each player can place
 
     [Header("Game Object")]
     public GameObject track;  // Reference to the Track GameObject
@@ -98,10 +98,6 @@ public class GameManager : MonoBehaviour
         if (currentScene.name == "Tutorial2")
         {
             limit = 1;
-        }
-        else
-        {
-            limit = 3;
         }
         
         if (currentPlayer == 1)
