@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI turnText;  // UI that indicates who's turn (only valid in editing phase)
     public TextMeshProUGUI winText;  // UI that will display when game ends
     public TextMeshProUGUI countdownText;
+    public TextMeshProUGUI instructions;
+    public TextMeshProUGUI finishLine;
     private int currentPlayer = 1;  // Start with player 1
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
     private int player2BlockCount = 0;  // Number of track blocks placed by player 2
@@ -133,7 +135,9 @@ public class GameManager : MonoBehaviour
         // TODO: Add racing phase transition code here
         isRacing = true;
         phaseText.text = "Racing Phase";
-        turnText.text = "";  // Clear for Racing Phase
+        turnText.gameObject.SetActive(false);  // Clear for Racing Phase
+        instructions.gameObject.SetActive(false);
+        finishLine.gameObject.SetActive(false);
         
         // Deactivate main camera and activate player cameras
         mainCamera.enabled = false;
