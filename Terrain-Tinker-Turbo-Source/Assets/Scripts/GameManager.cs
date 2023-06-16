@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -73,6 +74,9 @@ public class GameManager : MonoBehaviour
         trackCollider.enabled = true;  // For drag-and-drop function
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
+        
+        //Check Tutorial
+        CheckTutorial();
     }
 
     public bool CanPlaceBlock()
@@ -178,4 +182,14 @@ public class GameManager : MonoBehaviour
         // Start the racing Phase
         TransitionToRacingPhase();
     }
+
+    private void CheckTutorial()
+    {
+        int currIdx = SceneManager.GetActiveScene().buildIndex;
+        if (currIdx == 2)
+        {
+            StartCoroutine(Countdown());
+        }
+    }
+
 }
