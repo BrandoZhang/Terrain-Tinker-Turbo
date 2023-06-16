@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     public void BlockPlaced()
     {
         var currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "Tutorial2")
+        if (currentScene.name == "Tutorial2" || currentScene.name == "Tutorial3")
         {
             limit = 1;
         }
