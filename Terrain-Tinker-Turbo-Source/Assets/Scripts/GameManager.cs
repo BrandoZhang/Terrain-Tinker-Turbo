@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     private Rigidbody trackRigidbody;  // Reference to the Rigidbody on the Track GameObject
     public RacerController racer1;  // Reference to the first racer's controller
     public RacerController racer2;  // Reference to the second racer's controller
+    public GameObject player1TrackLibrary;  // Reference to the player 1's TrackLibrary
+    public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
 
     public Camera mainCamera;
     public Camera player1Camera;
@@ -73,8 +75,24 @@ public class GameManager : MonoBehaviour
         trackCollider.enabled = true;  // For drag-and-drop function
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
+        
+        player2TrackLibrary.SetActive(false);  // Start editing with player 1
     }
 
+    public void SwitchTrackLibrary()
+    {
+        if (currentPlayer == 1)
+        {
+            player1TrackLibrary.SetActive(true);
+            player2TrackLibrary.SetActive(false);
+        }
+        else
+        {
+            player1TrackLibrary.SetActive(false);
+            player2TrackLibrary.SetActive(true);
+        }
+    }
+    
     public bool CanPlaceBlock()
     {
         if (currentPlayer == 1 && player1BlockCount < limit)
@@ -104,6 +122,7 @@ public class GameManager : MonoBehaviour
 
         // Switch the current player
         currentPlayer = 3 - currentPlayer;  // If currentPlayer was 1, it becomes 2 and vice versa
+        SwitchTrackLibrary();
         // Update the turnText field with the remaining blocks
         int remainingBlocks = currentPlayer == 1 ? limit - player1BlockCount : limit - player2BlockCount;
         turnText.text = "Player " + currentPlayer + "'s Turn - " + remainingBlocks + " blocks left";
@@ -111,9 +130,9 @@ public class GameManager : MonoBehaviour
         // If all blocks have been placed, transition to racing phase
         if (player1BlockCount >= limit && player2BlockCount >= limit)
         {
+            player1TrackLibrary.SetActive(false);  // Hide the TrackLibrary when finish editing
             //TransitionToRacingPhase();
             StartCoroutine(Countdown());
-            
         }
     }
 
