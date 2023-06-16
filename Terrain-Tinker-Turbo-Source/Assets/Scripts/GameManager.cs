@@ -95,18 +95,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void BlockPlaced()
-    {
-        var currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "Tutorial2" || currentScene.name == "Tutorial3")
-        {
-            limit = 1;
-        }
-        else
-        {
-            limit = 3;
-        }
-        
-        if (currentPlayer == 1)
+    { if (currentPlayer == 1)
         {
             player1BlockCount++;
         }
@@ -138,6 +127,9 @@ public class GameManager : MonoBehaviour
         turnText.gameObject.SetActive(false);  // Clear for Racing Phase
         instructions.gameObject.SetActive(false);
         finishLine.gameObject.SetActive(false);
+        countdownText.gameObject.SetActive(false);
+        countdownText.enabled = false;
+        finishLine.enabled = false;
         
         // Deactivate main camera and activate player cameras
         mainCamera.enabled = false;
