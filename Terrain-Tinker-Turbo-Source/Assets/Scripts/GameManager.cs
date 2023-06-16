@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private int currentPlayer = 1;  // Start with player 1
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
     private int player2BlockCount = 0;  // Number of track blocks placed by player 2
-    private int limit = 3;  // Maximum number of track blocks each player can place
+    public int limit = 3;  // Maximum number of track blocks each player can place
 
     [Header("Game Object")]
     public GameObject track;  // Reference to the Track GameObject
@@ -125,11 +125,17 @@ public class GameManager : MonoBehaviour
         isRacing = true;
         phaseText.text = "Racing Phase";
         turnText.gameObject.SetActive(false);  // Clear for Racing Phase
-        instructions.gameObject.SetActive(false);
-        finishLine.gameObject.SetActive(false);
         countdownText.gameObject.SetActive(false);
         countdownText.enabled = false;
-        finishLine.enabled = false;
+        
+        if(instructions != null)
+            instructions.gameObject.SetActive(false);
+        
+        if(finishLine != null)
+        {
+            //finishLine.gameObject.SetActive(false);
+            //finishLine.enabled = false;
+        }
         
         // Deactivate main camera and activate player cameras
         mainCamera.enabled = false;
