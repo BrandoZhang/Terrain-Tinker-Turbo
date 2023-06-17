@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     public Camera mainCamera;
     public Camera player1Camera;
     public Camera player2Camera;
+
+    [Header("Tutorial")] 
+    public TextMeshProUGUI tutorial1Text;
     void Awake()
     {
         if (Instance == null)
@@ -138,6 +141,13 @@ public class GameManager : MonoBehaviour
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
         
+        //Kenny: Disable text only for Tutorial 1
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            tutorial1Text.text = "";
+            countdownText.text = "";
+        }
+
         // Reset racers to starting points
         racer1.ResetToStart();
         racer2.ResetToStart();

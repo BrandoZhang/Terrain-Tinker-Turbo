@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 63241032}
   m_Layer: 5
   m_Name: DummyTurnText
-  m_TagString: Untagged
+  m_TagString: Tutorial1Info
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,8 +390,8 @@ GameObject:
   - component: {fileID: 387622934}
   - component: {fileID: 387622933}
   m_Layer: 5
-  m_Name: TurnText
-  m_TagString: Untagged
+  m_Name: Tutorial1Text
+  m_TagString: Tutorial1Info
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,8 +585,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -614,7 +614,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -160.1803, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -645,7 +645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 318, y: 90}
+  m_AnchoredPosition: {x: -76, y: -174}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &560285409
@@ -1377,6 +1377,7 @@ MonoBehaviour:
   accelerationForce: 30
   turningForce: 3
   startTransform: {fileID: 61785452}
+  minHeightThreshold: 20
 --- !u!4 &1183502235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 270434846944489574, guid: 5a8cd3ac99a4f634da8e0820a87ca2df, type: 3}
@@ -1770,6 +1771,7 @@ MonoBehaviour:
   accelerationForce: 30
   turningForce: 3
   startTransform: {fileID: 1166499073}
+  minHeightThreshold: 20
 --- !u!4 &1668033021 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 867040630541693464, guid: ae6019a6c2deb10469085256579db404, type: 3}
@@ -1815,6 +1817,7 @@ MonoBehaviour:
   mainCamera: {fileID: 963194227}
   player1Camera: {fileID: 316440734}
   player2Camera: {fileID: 1522415547}
+  tutorial1Text: {fileID: 387622933}
 --- !u!4 &1776224350
 Transform:
   m_ObjectHideFlags: 0
