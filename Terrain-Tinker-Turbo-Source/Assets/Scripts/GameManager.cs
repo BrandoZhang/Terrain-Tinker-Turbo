@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -17,8 +18,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI turnText;  // UI that indicates who's turn (only valid in editing phase)
     public TextMeshProUGUI winText;  // UI that will display when game ends
     public TextMeshProUGUI countdownText;
-    public TextMeshProUGUI instructions;
-    public TextMeshProUGUI finishLine;
     private int currentPlayer = 1;  // Start with player 1
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
     private int player2BlockCount = 0;  // Number of track blocks placed by player 2
@@ -128,14 +127,27 @@ public class GameManager : MonoBehaviour
         countdownText.gameObject.SetActive(false);
         countdownText.enabled = false;
         
-        if(instructions != null)
-            instructions.gameObject.SetActive(false);
-        
-        if(finishLine != null)
+        if (SceneManager.GetActiveScene().name == "Tutorial2")
         {
-            //finishLine.gameObject.SetActive(false);
-            //finishLine.enabled = false;
+            TextMeshProUGUI[] text = FindObjectsOfType<TextMeshProUGUI>();
+            text.FirstOrDefault(t => t.name == "Instruction").enabled = false;
+            text.FirstOrDefault(t => t.name == "FinishLine").enabled = false;
+            
+            RawImage dragImg = FindObjectsOfType<RawImage>().FirstOrDefault(t => t.name == "DragnDrop");
+            dragImg.enabled = false;
         }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial3")
+        {
+            TextMeshProUGUI[] text = FindObjectsOfType<TextMeshProUGUI>();
+            text.FirstOrDefault(t => t.name == "RotateInstruction").enabled = false;
+            text.FirstOrDefault(t => t.name == "FinishLine").enabled = false;
+            
+            RawImage rotateImg = FindObjectsOfType<RawImage>().FirstOrDefault(t => t.name == "RotateImg");
+            rotateImg.enabled = false;
+        }
+        
+        
         
         // Deactivate main camera and activate player cameras
         mainCamera.enabled = false;
