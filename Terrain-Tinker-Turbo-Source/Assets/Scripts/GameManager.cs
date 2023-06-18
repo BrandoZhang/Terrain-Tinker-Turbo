@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private bool gameOver;
-
+    
     [Header("Game State")]
     public bool isRacing = false;  // State variable to indicate in which phase the game is
     public TextMeshProUGUI phaseText;  // UI that indicates in which phase the game is
@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     public Camera mainCamera;
     public Camera player1Camera;
     public Camera player2Camera;
+
+    private TextMeshProUGUI[] text;
+    
     void Awake()
     {
         if (Instance == null)
@@ -75,6 +78,15 @@ public class GameManager : MonoBehaviour
         trackCollider.enabled = true;  // For drag-and-drop function
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
+        
+        //Check Tutorial
+        text = FindObjectsOfType<TextMeshProUGUI>();
+        if (SceneManager.GetActiveScene().name == "Tutorial1")
+        {
+             //Hide keyboard controls for now
+             setT1KeyboardControls(false);
+             StartCoroutine(Countdown());
+        }
     }
 
     public bool CanPlaceBlock()
@@ -114,12 +126,12 @@ public class GameManager : MonoBehaviour
         {
             //TransitionToRacingPhase();
             StartCoroutine(Countdown());
-            
         }
     }
 
     void TransitionToRacingPhase()
     {
+        
         // TODO: Add racing phase transition code here
         isRacing = true;
         phaseText.text = "Racing Phase";
@@ -159,6 +171,19 @@ public class GameManager : MonoBehaviour
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
         
+        //Tutorial 1
+        if (SceneManager.GetActiveScene().name == "Tutorial1")
+        {
+            //Remove "Driver Watch Your Front"
+            text.FirstOrDefault(t => t.name == "Tutorial1Text").enabled = false;
+
+            //Remove Counter Text
+            countdownText.text = "";
+            
+            //Display Keyboard Control and Removes when either player hit keys
+            setT1KeyboardControls(true);
+        }
+
         // Reset racers to starting points
         racer1.ResetToStart();
         racer2.ResetToStart();
@@ -203,4 +228,19 @@ public class GameManager : MonoBehaviour
         // Start the racing Phase
         TransitionToRacingPhase();
     }
+
+    public void mainCameraView()
+    {
+        mainCamera.enabled = true;
+        player1Camera.enabled = false;
+        player2Camera.enabled = false;
+    }
+
+    public void setT1KeyboardControls(bool status)
+    {
+        text.FirstOrDefault(t => t.name == "P1P2Instruction").enabled = status;
+        text.FirstOrDefault(t => t.name == "P1Instruction").enabled = status;
+        text.FirstOrDefault(t => t.name == "P2Instruction").enabled = status;
+    }
+
 }

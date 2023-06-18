@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinishBlock : MonoBehaviour
 {
@@ -14,5 +15,12 @@ public class FinishBlock : MonoBehaviour
         {
             GameManager.Instance.Player2Finished();
         }
+        
+        //Tutorial1: Once racing ends, return back to original view
+        if (SceneManager.GetActiveScene().name == "Tutorial1")
+        {
+            GameManager.Instance.mainCameraView();
+        }
     }
+    
 }
