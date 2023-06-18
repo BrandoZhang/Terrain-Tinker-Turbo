@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public Camera player2Camera;
 
     private TextMeshProUGUI[] text;
-    
+    private RawImage img;
     void Awake()
     {
         if (Instance == null)
@@ -238,9 +238,16 @@ public class GameManager : MonoBehaviour
 
     public void setT1KeyboardControls(bool status)
     {
-        text.FirstOrDefault(t => t.name == "P1P2Instruction").enabled = status;
-        text.FirstOrDefault(t => t.name == "P1Instruction").enabled = status;
-        text.FirstOrDefault(t => t.name == "P2Instruction").enabled = status;
+        //Keyboard Control text
+         text.FirstOrDefault(t => t.name == "P1P2Instruction").enabled = status;
+         
+         //Player-1 Control
+         img = FindObjectsOfType<RawImage>().FirstOrDefault(t => t.name == "P1Control");
+         img.enabled = status;
+         
+         //Player-2 Control
+         img = FindObjectsOfType<RawImage>().FirstOrDefault(t => t.name == "P2Control");
+         img.enabled = status;
     }
 
 }
