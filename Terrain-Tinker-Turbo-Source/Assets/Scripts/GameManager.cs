@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private bool gameOver;
-
+    
     [Header("Game State")]
     public bool isRacing = false;  // State variable to indicate in which phase the game is
     public TextMeshProUGUI phaseText;  // UI that indicates in which phase the game is
@@ -33,8 +34,8 @@ public class GameManager : MonoBehaviour
     public Camera player1Camera;
     public Camera player2Camera;
 
-    [Header("Tutorial")] 
-    public TextMeshProUGUI tutorial1Text;
+    private TextMeshProUGUI[] text;
+    
     void Awake()
     {
         if (Instance == null)
@@ -79,7 +80,13 @@ public class GameManager : MonoBehaviour
         trackRigidbody.useGravity = false;  // Insane :)
         
         //Check Tutorial
-        CheckTutorial();
+        text = FindObjectsOfType<TextMeshProUGUI>();
+        if (SceneManager.GetActiveScene().name == "Tutorial1")
+        {
+             //Hide keyboard controls for now
+             setT1KeyboardControls(false);
+             StartCoroutine(Countdown());
+        }
     }
 
     public bool CanPlaceBlock()
@@ -120,12 +127,12 @@ public class GameManager : MonoBehaviour
         {
             //TransitionToRacingPhase();
             StartCoroutine(Countdown());
-            
         }
     }
 
     void TransitionToRacingPhase()
     {
+        
         // TODO: Add racing phase transition code here
         isRacing = true;
         phaseText.text = "Racing Phase";
@@ -141,11 +148,17 @@ public class GameManager : MonoBehaviour
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
         
-        //Kenny: Disable text only for Tutorial 1
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        //Tutorial 1
+        if (SceneManager.GetActiveScene().name == "Tutorial1")
         {
-            tutorial1Text.text = "";
+            //Remove "Driver Watch Your Front"
+            text.FirstOrDefault(t => t.name == "Tutorial1Text").enabled = false;
+
+            //Remove Counter Text
             countdownText.text = "";
+            
+            //Display Keyboard Control and Removes when either player hit keys
+            setT1KeyboardControls(true);
         }
 
         // Reset racers to starting points
@@ -193,13 +206,18 @@ public class GameManager : MonoBehaviour
         TransitionToRacingPhase();
     }
 
-    private void CheckTutorial()
+    public void mainCameraView()
     {
-        int currIdx = SceneManager.GetActiveScene().buildIndex;
-        if (currIdx == 2)
-        {
-            StartCoroutine(Countdown());
-        }
+        mainCamera.enabled = true;
+        player1Camera.enabled = false;
+        player2Camera.enabled = false;
+    }
+
+    public void setT1KeyboardControls(bool status)
+    {
+        text.FirstOrDefault(t => t.name == "P1P2Instruction").enabled = status;
+        text.FirstOrDefault(t => t.name == "P1Instruction").enabled = status;
+        text.FirstOrDefault(t => t.name == "P2Instruction").enabled = status;
     }
 
 }
