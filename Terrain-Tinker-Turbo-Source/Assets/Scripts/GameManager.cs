@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI phaseText;  // UI that indicates in which phase the game is
     public TextMeshProUGUI turnText;  // UI that indicates who's turn (only valid in editing phase)
     public TextMeshProUGUI winText;  // UI that will display when game ends
+    public TextMeshProUGUI tracklibraryText;  // UI that indicates the ownership of current track library
     public TextMeshProUGUI countdownText;
     private int currentPlayer = 1;  // Start with player 1
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
@@ -70,17 +71,20 @@ public class GameManager : MonoBehaviour
         int remainingBlocks = currentPlayer == 1 ? limit - player1BlockCount : limit - player2BlockCount;
         turnText.text = "Player " + currentPlayer + "'s Turn - " + remainingBlocks + " blocks left";
         gameOver = false;
+        tracklibraryText.text = "Player " + currentPlayer + "'s Track Library";
         
         // Start in editing phase, configure the collider and rigidbody
         trackCollider.enabled = true;  // For drag-and-drop function
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
         
+        // TODO: Duplicate TrackLibrary in script instead of Unity Editor
         player2TrackLibrary.SetActive(false);  // Start editing with player 1
     }
 
     public void SwitchTrackLibrary()
     {
+        tracklibraryText.text = "Player " + currentPlayer + "'s Track Library";
         if (currentPlayer == 1)
         {
             player1TrackLibrary.SetActive(true);
@@ -131,6 +135,7 @@ public class GameManager : MonoBehaviour
         if (player1BlockCount >= limit && player2BlockCount >= limit)
         {
             player1TrackLibrary.SetActive(false);  // Hide the TrackLibrary when finish editing
+            tracklibraryText.text = "";
             //TransitionToRacingPhase();
             StartCoroutine(Countdown());
         }
