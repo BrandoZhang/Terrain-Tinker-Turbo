@@ -17,7 +17,9 @@ public class FinishBlock : MonoBehaviour
         }
         
         //Tutorial1: Once racing ends, return back to original view
-        if (SceneManager.GetActiveScene().name == "Tutorial1")
+        if (SceneManager.GetActiveScene().name == "Tutorial1" ||
+            SceneManager.GetActiveScene().name == "Tutorial2" ||
+            SceneManager.GetActiveScene().name == "Tutorial3")
         {
             GameManager.Instance.mainCameraView();
         }
