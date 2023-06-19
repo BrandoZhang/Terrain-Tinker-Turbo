@@ -192,6 +192,9 @@ public class GameManager : MonoBehaviour
         // Enable player controls
         racer1.canMove = true;
         racer2.canMove = true;
+
+        // Clear countdown text
+        countdownText.text = "";
         
         // Start the racing Phase
         TransitionToRacingPhase();
