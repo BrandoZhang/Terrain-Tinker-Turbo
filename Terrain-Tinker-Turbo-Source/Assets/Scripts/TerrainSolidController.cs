@@ -27,12 +27,26 @@ public class TerrainSolidController : MonoBehaviour
 
     void OnMouseDown() 
     {
-        dragPlane = new Plane(myMainCamera.transform.forward, transform.position);
         Ray camRay = myMainCamera.ScreenPointToRay(Input.mousePosition);
-    
-        float planeDist;
-        dragPlane.Raycast(camRay, out planeDist);
-        offset = transform.position - camRay.GetPoint(planeDist);
+        RaycastHit hit;
+
+        if (Physics.Raycast(camRay, out hit))
+        {
+            // Check if the GameObject hit by the ray or its parent has the "TerrainSolid" tag
+            GameObject hitObject = hit.transform.gameObject;
+            bool validTag = hitObject.CompareTag("TerrainSolid") || 
+                          (hitObject.transform.parent != null && hitObject.transform.parent.CompareTag("TerrainSolid"));
+
+            if (validTag)
+            {
+                GameObject objectToDrag = hitObject.CompareTag("TerrainSolid") ? hitObject : hitObject.transform.parent.gameObject;
+                dragPlane = new Plane(myMainCamera.transform.forward, objectToDrag.transform.position);
+        
+                float planeDist;
+                dragPlane.Raycast(camRay, out planeDist);
+                offset = objectToDrag.transform.position - camRay.GetPoint(planeDist);
+            }
+        }
     }
 
     void OnMouseDrag() 
@@ -40,8 +54,11 @@ public class TerrainSolidController : MonoBehaviour
         Ray camRay = myMainCamera.ScreenPointToRay(Input.mousePosition);
 
         float planeDist;
-        dragPlane.Raycast(camRay, out planeDist);
-        transform.position = camRay.GetPoint(planeDist) + offset;
+        if (dragPlane.Raycast(camRay, out planeDist))
+        {
+            GameObject objectToMove = transform.CompareTag("TerrainSolid") ? gameObject : transform.parent.gameObject;
+            objectToMove.transform.position = camRay.GetPoint(planeDist) + offset;
+        }
 
         // Check if the R key is being pressed
         if (Input.GetKeyDown(KeyCode.R))
@@ -79,12 +96,14 @@ public class TerrainSolidController : MonoBehaviour
             if (closestPlaceholderController != null)
             {
                 // Align with the closest TerrainPlaceholder
-                transform.position = closestPlaceholderController.gameObject.transform.position;
+                GameObject objectToMove = transform.CompareTag("TerrainSolid") ? gameObject : transform.parent.gameObject;
+                objectToMove.transform.position = closestPlaceholderController.gameObject.transform.position;
+
                 // Set the closest TerrainPlaceholder to occupied
                 closestPlaceholderController.setToOccupied();
 
                 // Make the terrain piece a child of Track
-                transform.parent = GameObject.Find("Track").transform;
+                objectToMove.transform.parent = GameObject.Find("Track").transform;
                 // Mark current player has placed a block and switch to the other player
                 GameManager.Instance.BlockPlaced();  
             }
@@ -102,8 +121,7 @@ public class TerrainSolidController : MonoBehaviour
             placeholderControllers.Clear();
         }
     }
-    
-    
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("TerrainPlaceholder"))
