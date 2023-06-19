@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Object")]
     public GameObject track;  // Reference to the Track GameObject
-    private Collider trackCollider;  // Reference to the Collider on the Track GameObject
     private Rigidbody trackRigidbody;  // Reference to the Rigidbody on the Track GameObject
     public RacerController racer1;  // Reference to the first racer's controller
     public RacerController racer2;  // Reference to the second racer's controller
@@ -56,10 +55,7 @@ public class GameManager : MonoBehaviour
         
         // Find the Track GameObject
         track = GameObject.Find("Track");
-        
-        // Get the Collider from the Track GameObject
-        trackCollider = track.GetComponent<Collider>();
-        
+
         // Get the Rigidbody from the Track GameObject
         trackRigidbody = track.GetComponent<Rigidbody>();
         
@@ -74,7 +70,6 @@ public class GameManager : MonoBehaviour
         tracklibraryText.text = "Player " + currentPlayer + "'s Track Library";
         
         // Start in editing phase, configure the collider and rigidbody
-        trackCollider.enabled = true;  // For drag-and-drop function
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
         
@@ -154,7 +149,6 @@ public class GameManager : MonoBehaviour
         player2Camera.enabled = true;
         
         // Transition to racing phase, configure the collider and rigidbody
-        trackCollider.enabled = false;  // Otherwise the racers can drive through placeholders
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
         

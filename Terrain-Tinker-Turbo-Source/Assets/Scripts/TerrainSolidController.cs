@@ -16,7 +16,10 @@ public class TerrainSolidController : MonoBehaviour
     
     // Flag to check if the terrain piece is on the Track
     private bool isOnTrack = false;
-    
+
+    // Add a private reference to store a list of currently hovered TerrainPlaceholders
+    private List<TerrainPlaceholderController> placeholderControllers = new List<TerrainPlaceholderController>();
+
     void Start() 
     {
         myMainCamera = Camera.main;
@@ -24,12 +27,26 @@ public class TerrainSolidController : MonoBehaviour
 
     void OnMouseDown() 
     {
-        dragPlane = new Plane(myMainCamera.transform.forward, transform.position);
         Ray camRay = myMainCamera.ScreenPointToRay(Input.mousePosition);
-    
-        float planeDist;
-        dragPlane.Raycast(camRay, out planeDist);
-        offset = transform.position - camRay.GetPoint(planeDist);
+        RaycastHit hit;
+
+        if (Physics.Raycast(camRay, out hit))
+        {
+            // Check if the GameObject hit by the ray or its parent has the "TerrainSolid" tag
+            GameObject hitObject = hit.transform.gameObject;
+            bool validTag = hitObject.CompareTag("TerrainSolid") || 
+                          (hitObject.transform.parent != null && hitObject.transform.parent.CompareTag("TerrainSolid"));
+
+            if (validTag)
+            {
+                GameObject objectToDrag = hitObject.CompareTag("TerrainSolid") ? hitObject : hitObject.transform.parent.gameObject;
+                dragPlane = new Plane(myMainCamera.transform.forward, objectToDrag.transform.position);
+        
+                float planeDist;
+                dragPlane.Raycast(camRay, out planeDist);
+                offset = objectToDrag.transform.position - camRay.GetPoint(planeDist);
+            }
+        }
     }
 
     void OnMouseDrag() 
@@ -37,8 +54,11 @@ public class TerrainSolidController : MonoBehaviour
         Ray camRay = myMainCamera.ScreenPointToRay(Input.mousePosition);
 
         float planeDist;
-        dragPlane.Raycast(camRay, out planeDist);
-        transform.position = camRay.GetPoint(planeDist) + offset;
+        if (dragPlane.Raycast(camRay, out planeDist))
+        {
+            GameObject objectToMove = transform.CompareTag("TerrainSolid") ? gameObject : transform.parent.gameObject;
+            objectToMove.transform.position = camRay.GetPoint(planeDist) + offset;
+        }
 
         // Check if the R key is being pressed
         if (Input.GetKeyDown(KeyCode.R))
@@ -57,32 +77,85 @@ public class TerrainSolidController : MonoBehaviour
 
     void OnMouseUp() 
     {
-        if (isOnTrack && GameManager.Instance.CanPlaceBlock())
+        if (isOnTrack && GameManager.Instance.CanPlaceBlock() && placeholderControllers.Count > 0)
         {
-            // Make the terrain piece a child of Track
-            transform.parent = GameObject.Find("Track").transform;
-            // Mark current player has placed a block and switch to the other player
-            GameManager.Instance.BlockPlaced();  
+            // Find the closest TerrainPlaceholder
+            TerrainPlaceholderController closestPlaceholderController = null;
+            float minDistance = float.MaxValue;
+
+            foreach (TerrainPlaceholderController placeholderController in placeholderControllers)
+            {
+                float distance = Vector3.Distance(transform.position, placeholderController.gameObject.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestPlaceholderController = placeholderController;
+                }
+            }
+
+            if (closestPlaceholderController != null)
+            {
+                // Align with the closest TerrainPlaceholder
+                GameObject objectToMove = transform.CompareTag("TerrainSolid") ? gameObject : transform.parent.gameObject;
+                objectToMove.transform.position = closestPlaceholderController.gameObject.transform.position;
+
+                // Set the closest TerrainPlaceholder to occupied
+                closestPlaceholderController.setToOccupied();
+
+                // Make the terrain piece a child of Track
+                objectToMove.transform.parent = GameObject.Find("Track").transform;
+                // Mark current player has placed a block and switch to the other player
+                GameManager.Instance.BlockPlaced();  
+            }
+
+            // Reset other TerrainPlaceholders
+            foreach (TerrainPlaceholderController placeholderController in placeholderControllers)
+            {
+                if (placeholderController != closestPlaceholderController && !placeholderController.isOccupied)
+                {
+                    placeholderController.setToEmpty();
+                }
+            }
+
+            // Clear the list of TerrainPlaceholders
+            placeholderControllers.Clear();
         }
     }
-    
-    
+
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TerrainSolidController: OnTriggerEnter()");
-        // Check if the terrain piece has entered the Track
-        if (other.gameObject.name == "Track")
+        if (other.gameObject.CompareTag("TerrainPlaceholder"))
         {
             isOnTrack = true;
+            TerrainPlaceholderController placeholderController = other.gameObject.GetComponent<TerrainPlaceholderController>();
+            // Check if the TerrainPlaceholder is already occupied
+            if (!placeholderController.isOccupied)
+            {
+                placeholderControllers.Add(placeholderController);
+                placeholderController.setToSelected();
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        // Check if the terrain piece has left the Track
-        if (other.gameObject.name == "Track")
+        if (other.gameObject.CompareTag("TerrainPlaceholder"))
         {
-            isOnTrack = false;
+            TerrainPlaceholderController placeholderController = other.gameObject.GetComponent<TerrainPlaceholderController>();
+            if (placeholderControllers.Contains(placeholderController))
+            {
+                placeholderControllers.Remove(placeholderController);
+                if (!placeholderController.isOccupied)
+                {
+                    placeholderController.setToEmpty();
+                }
+            }
+
+            // If there are no more placeholders in the list, set isOnTrack to false
+            if (placeholderControllers.Count == 0)
+            {
+                isOnTrack = false;
+            }
         }
     }
 }
