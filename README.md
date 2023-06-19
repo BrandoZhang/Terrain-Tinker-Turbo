@@ -1,12 +1,19 @@
 # Terrain-Tinker-Turbo
 
-| Game Play                                                       | Descriptive Doc                                                                                    | Video Demo |
-|-----------------------------------------------------------------|----------------------------------------------------------------------------------------------------|------------|
-| [WebGL Game Play](https://www.brando.dev/Terrain-Tinker-Turbo/) | [Google Doc](https://docs.google.com/document/d/1Vv43XOBFkLTBURJkr4-mtASEsxzbv6IdImxQkb_WFcw/edit) |            |
+| Game Play                                                       | Descriptive Doc                                                                                    | Game Design Document                                                                                   | Video Demo           |
+|-----------------------------------------------------------------|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|----------------------|
+| [WebGL Game Play](https://www.brando.dev/Terrain-Tinker-Turbo/) | [Google Doc](https://docs.google.com/document/d/1Vv43XOBFkLTBURJkr4-mtASEsxzbv6IdImxQkb_WFcw/edit) | [GDD Google Doc](https://docs.google.com/document/d/1muZIKU-rg9XkjcEP2YsbQW13vPxFwVih8k33z1c64DY/edit) |                      |
 
-## Controls
-- Mouse drag and drop over a terrain: move the terrain to create the track.
-- Press `R` when holding mouse left key over a terrain: rotate this terrain 90 degree clockwise.
+## Game Mechanics (How to Play)
+
+- Track construction mechanic:
+  - Use the mouse to drag-and-drop track blocks
+  - Use `R` to rotate a selected track block.
+- Movement mechanic:
+  - Uses the keyboard `W`, `A`, `S`, `D` to control Player 1’s vehicle.
+  - Uses the keyboard `I`, `J`, `K`, `L` to control Player 2’s vehicle.
+- Game end mechanic:
+  - Whoever arrives at the destination wins the game.
 
 ## File Structure
 ```bash
