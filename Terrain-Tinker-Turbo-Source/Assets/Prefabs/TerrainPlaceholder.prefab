@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 7279690262585445802}
   - component: {fileID: 7279690262585445801}
   - component: {fileID: 7279690262585445800}
+  - component: {fileID: -1437259995698433110}
+  - component: {fileID: -6844280369939677588}
   m_Layer: 0
   m_Name: TerrainPlaceholder
-  m_TagString: Untagged
+  m_TagString: TerrainPlaceholder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,3 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-1437259995698433110
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279690262585445806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6844280369939677588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279690262585445806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124ad57a02c8a6847a0b1f4b6f96b5f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOccupied: 0

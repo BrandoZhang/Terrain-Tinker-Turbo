@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8305197328151715208}
   m_Layer: 0
   m_Name: TerrainWithRocks
-  m_TagString: Untagged
+  m_TagString: TerrainSolid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,6 +185,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60b7675e702e2947add528ab033de32, type: 3}
+--- !u!1 &8444428912387278712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1162183719208990, guid: c60b7675e702e2947add528ab033de32, type: 3}
+  m_PrefabInstance: {fileID: 8445519946160443238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &714686259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444428912387278712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8447449203457869286 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4466140132526720, guid: c60b7675e702e2947add528ab033de32, type: 3}
@@ -268,3 +285,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4738641296049438, guid: 87e4e3e8835cd6540b6c2646d38f109a, type: 3}
   m_PrefabInstance: {fileID: 8445519947725773438}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8444441928813048974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1174918351515376, guid: 87e4e3e8835cd6540b6c2646d38f109a, type: 3}
+  m_PrefabInstance: {fileID: 8445519947725773438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &886292305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444441928813048974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

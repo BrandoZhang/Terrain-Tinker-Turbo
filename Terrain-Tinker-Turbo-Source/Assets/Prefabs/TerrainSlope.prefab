@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6267365380910283339}
   m_Layer: 0
   m_Name: TerrainSlope
-  m_TagString: Untagged
+  m_TagString: TerrainSolid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621470041212019476}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 71.53126, y: 0, z: -78.899994}
   m_LocalScale: {x: 54, y: 20, z: 54}
   m_ConstrainProportionsScale: 0
@@ -204,3 +204,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4237483251375348, guid: 2fc01eca1a90e77488d91941ec9b0c7d, type: 3}
   m_PrefabInstance: {fileID: 6267365382153000951}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6268666567575850805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1372861456881858, guid: 2fc01eca1a90e77488d91941ec9b0c7d, type: 3}
+  m_PrefabInstance: {fileID: 6267365382153000951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1650595068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6268666567575850805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
