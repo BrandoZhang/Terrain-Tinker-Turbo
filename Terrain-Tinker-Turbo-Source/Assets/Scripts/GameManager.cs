@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     private TextMeshProUGUI[] text;
     private RawImage img;
+    private RawImage[] raceImg;
     void Awake()
     {
         if (Instance == null)
@@ -69,6 +70,20 @@ public class GameManager : MonoBehaviour
         int remainingBlocks = currentPlayer == 1 ? limit - player1BlockCount : limit - player2BlockCount;
         turnText.text = "Player " + currentPlayer + "'s Turn - " + remainingBlocks + " blocks left";
         gameOver = false;
+        
+        //Aarti: Disable turn text 
+        turnText.gameObject.SetActive(false);
+
+        if (!SceneManager.GetActiveScene().name.Contains("Tutorial"))
+        {
+            raceImg = FindObjectsOfType<RawImage>();
+            raceImg.FirstOrDefault(t => t.name == "Player1Turn").enabled = true;
+            raceImg.FirstOrDefault(t => t.name == "Player2Turn").enabled = false;
+            raceImg.FirstOrDefault(t => t.name == "RaceStart").enabled = false;
+            
+        }
+        
+        
         
         // Start in editing phase, configure the collider and rigidbody
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
@@ -116,10 +131,26 @@ public class GameManager : MonoBehaviour
         int remainingBlocks = currentPlayer == 1 ? limit - player1BlockCount : limit - player2BlockCount;
         turnText.text = "Player " + currentPlayer + "'s Turn - " + remainingBlocks + " blocks left";
         
+        //Aarti: Update turn image
+        if(currentPlayer == 1)
+        {
+            SetImgEnabled("Player1Turn", true);
+            SetImgEnabled("Player2Turn", false);
+        }
+        else
+        {
+            SetImgEnabled("Player1Turn", false);
+            SetImgEnabled("Player2Turn", true);
+        }
+        
         // If all blocks have been placed, transition to racing phase
         if (player1BlockCount >= limit && player2BlockCount >= limit)
         {
             //TransitionToRacingPhase();
+            SetImgEnabled("Player1Turn", false);
+            SetImgEnabled("Player2Turn", false);
+            SetImgEnabled("RaceStart", true);
+
             StartCoroutine(Countdown());
         }
     }
@@ -140,8 +171,7 @@ public class GameManager : MonoBehaviour
             text.FirstOrDefault(t => t.name == "Instruction").enabled = false;
             text.FirstOrDefault(t => t.name == "FinishLine").enabled = false;
             
-            RawImage dragImg = FindObjectsOfType<RawImage>().FirstOrDefault(t => t.name == "DragnDrop");
-            dragImg.enabled = false;
+            SetImgEnabled("DragnDrop", false);
         }
         
         if (SceneManager.GetActiveScene().name == "Tutorial3")
@@ -150,12 +180,10 @@ public class GameManager : MonoBehaviour
             text.FirstOrDefault(t => t.name == "RotateInstruction").enabled = false;
             text.FirstOrDefault(t => t.name == "FinishLine").enabled = false;
             
-            RawImage rotateImg = FindObjectsOfType<RawImage>().FirstOrDefault(t => t.name == "RotateImg");
-            rotateImg.enabled = false;
+            SetImgEnabled("RotateImg", false);
         }
-        
-        
-        
+
+
         // Deactivate main camera and activate player cameras
         mainCamera.enabled = false;
         player1Camera.enabled = true;
@@ -177,10 +205,20 @@ public class GameManager : MonoBehaviour
             //Display Keyboard Control and Removes when either player hit keys
             setT1KeyboardControls(true);
         }
+        
+        SetImgEnabled("RaceStart", false);
 
         // Reset racers to starting points
         racer1.ResetToStart();
         racer2.ResetToStart();
+    }
+
+    public void SetImgEnabled(string imgName, bool val)
+    {
+        if (raceImg.FirstOrDefault(t => t.name == imgName) != null)
+        {
+            raceImg.FirstOrDefault(t => t.name == imgName).enabled = val;
+        }
     }
     
     public void Player1Finished()
