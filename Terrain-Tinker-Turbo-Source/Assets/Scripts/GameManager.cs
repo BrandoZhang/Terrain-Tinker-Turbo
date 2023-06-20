@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         // Clear the win text at the start
         winText.text = "";  
         // Start with editing phase
-        phaseText.text = "Track Editing Phase";  
+        phaseText.text = "Put Block in Grid";  
         // Initialize the turnText field with the remaining blocks
         int remainingBlocks = currentPlayer == 1 ? limit - player1BlockCount : limit - player2BlockCount;
         turnText.text = "Player " + currentPlayer + "'s Turn - " + remainingBlocks + " blocks left";
@@ -73,17 +73,6 @@ public class GameManager : MonoBehaviour
         
         //Aarti: Disable turn text 
         turnText.gameObject.SetActive(false);
-
-        if (!SceneManager.GetActiveScene().name.Contains("Tutorial"))
-        {
-            raceImg = FindObjectsOfType<RawImage>();
-            raceImg.FirstOrDefault(t => t.name == "Player1Turn").enabled = true;
-            raceImg.FirstOrDefault(t => t.name == "Player2Turn").enabled = false;
-            raceImg.FirstOrDefault(t => t.name == "RaceStart").enabled = false;
-            
-        }
-        
-        
         
         // Start in editing phase, configure the collider and rigidbody
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
@@ -91,12 +80,21 @@ public class GameManager : MonoBehaviour
         
         //Check Tutorial
         text = FindObjectsOfType<TextMeshProUGUI>();
+        raceImg = FindObjectsOfType<RawImage>();
         if (SceneManager.GetActiveScene().name == "Tutorial1")
         {
              //Hide keyboard controls for now
              setT1KeyboardControls(false);
              StartCoroutine(Countdown());
         }
+        else
+        {
+            SetImgEnabled("Player1Turn", true);
+            SetImgEnabled("Player2Turn", false);
+            SetImgEnabled("RaceStart", false);
+        }
+        
+        SetTextEnabled("Tutorial1Text", false); // Disable instruction in tutorial 1
     }
 
     public bool CanPlaceBlock()
@@ -137,7 +135,7 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("Player1Turn", true);
             SetImgEnabled("Player2Turn", false);
         }
-        else
+        else if(currentPlayer == 2)
         {
             SetImgEnabled("Player1Turn", false);
             SetImgEnabled("Player2Turn", true);
@@ -149,8 +147,7 @@ public class GameManager : MonoBehaviour
             //TransitionToRacingPhase();
             SetImgEnabled("Player1Turn", false);
             SetImgEnabled("Player2Turn", false);
-            SetImgEnabled("RaceStart", true);
-
+            
             StartCoroutine(Countdown());
         }
     }
@@ -167,18 +164,16 @@ public class GameManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name == "Tutorial2")
         {
-            TextMeshProUGUI[] text = FindObjectsOfType<TextMeshProUGUI>();
-            text.FirstOrDefault(t => t.name == "Instruction").enabled = false;
-            text.FirstOrDefault(t => t.name == "FinishLine").enabled = false;
+            SetTextEnabled("Instruction", false);
+            SetTextEnabled("FinishLine", false);
             
             SetImgEnabled("DragnDrop", false);
         }
         
         if (SceneManager.GetActiveScene().name == "Tutorial3")
         {
-            TextMeshProUGUI[] text = FindObjectsOfType<TextMeshProUGUI>();
-            text.FirstOrDefault(t => t.name == "RotateInstruction").enabled = false;
-            text.FirstOrDefault(t => t.name == "FinishLine").enabled = false;
+            SetTextEnabled("RotateInstruction", false);
+            SetTextEnabled("FinishLine", false);
             
             SetImgEnabled("RotateImg", false);
         }
@@ -197,7 +192,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Tutorial1")
         {
             //Remove "Driver Watch Your Front"
-            text.FirstOrDefault(t => t.name == "Tutorial1Text").enabled = false;
+            SetTextEnabled("Tutorial1Text", false);
 
             //Remove Counter Text
             countdownText.text = "";
@@ -218,6 +213,14 @@ public class GameManager : MonoBehaviour
         if (raceImg.FirstOrDefault(t => t.name == imgName) != null)
         {
             raceImg.FirstOrDefault(t => t.name == imgName).enabled = val;
+        }
+    }
+    
+    public void SetTextEnabled(string textName, bool val)
+    {
+        if (text.FirstOrDefault(t => t.name == textName) != null)
+        {
+            text.FirstOrDefault(t => t.name == textName).enabled = val;
         }
     }
     
@@ -247,6 +250,8 @@ public class GameManager : MonoBehaviour
         racer1.canMove = false;
         racer2.canMove = false;
         
+        SetImgEnabled("RaceStart", true);
+        
         // Countdown from 5 to 0
         for (int i = 5; i >= 0; i--)
         {
@@ -271,15 +276,13 @@ public class GameManager : MonoBehaviour
     public void setT1KeyboardControls(bool status)
     {
         //Keyboard Control text
-         text.FirstOrDefault(t => t.name == "P1P2Instruction").enabled = status;
-         
-         //Player-1 Control
-         img = FindObjectsOfType<RawImage>().FirstOrDefault(t => t.name == "P1Control");
-         img.enabled = status;
-         
-         //Player-2 Control
-         img = FindObjectsOfType<RawImage>().FirstOrDefault(t => t.name == "P2Control");
-         img.enabled = status;
+        SetTextEnabled("P1P2Instruction", status);
+
+        //Player-1 Control
+        SetImgEnabled("P1Control", status);
+
+        //Player-2 Control
+         SetImgEnabled("P2Control", status);
     }
 
 }
