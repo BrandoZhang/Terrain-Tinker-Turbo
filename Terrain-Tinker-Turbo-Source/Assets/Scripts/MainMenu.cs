@@ -38,4 +38,9 @@ public class MainMenu : MonoBehaviour
         int nextIdx = (currIdx >= 4) ? 0 : currIdx + 1;
         SceneManager.LoadScene(nextIdx);
     }
+
+    public void launchMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }

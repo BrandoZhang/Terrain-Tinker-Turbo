@@ -95,6 +95,12 @@ public class GameManager : MonoBehaviour
         }
         
         SetTextEnabled("Tutorial1Text", false); // Disable instruction in tutorial 1
+
+        if (SceneManager.GetActiveScene().name == "PlayScene2")
+        {
+            SetTextEnabled("RestartButton", false);
+            SetTextEnabled("MenuButton", false);
+        }
     }
 
     public bool CanPlaceBlock()
@@ -157,7 +163,7 @@ public class GameManager : MonoBehaviour
         
         // TODO: Add racing phase transition code here
         isRacing = true;
-        phaseText.text = "Racing Phase";
+        phaseText.text = ""; //Kenny - Decluttering scene, player should know it is race phase
         turnText.gameObject.SetActive(false);  // Clear for Racing Phase
         countdownText.gameObject.SetActive(false);
         countdownText.enabled = false;
@@ -283,6 +289,12 @@ public class GameManager : MonoBehaviour
 
         //Player-2 Control
          SetImgEnabled("P2Control", status);
+    }
+
+    public void showEndGameOptions()
+    {
+        SetTextEnabled("RestartButton", true);
+        SetTextEnabled("MenuButton", true);        
     }
 
 }
