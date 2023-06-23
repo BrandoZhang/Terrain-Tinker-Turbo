@@ -7,9 +7,10 @@ public class AcceleratorTerrainController : MonoBehaviour
     // The direction of acceleration. This should be set in the Unity editor.
     public Vector3 accelerationDirection;
     public float accelerationStrength;
+    public float translationOffset = 5;
     
     // This function is called when an vehicle enters the terrain's collider.
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         Debug.Log("Accelerator Triggered");
         // Check if the other object is a racer (player1 or player2).
@@ -20,7 +21,14 @@ public class AcceleratorTerrainController : MonoBehaviour
             Rigidbody racerRigidbody = other.gameObject.GetComponent<Rigidbody>();
 
             // Apply a force to the racer in the direction of acceleration.
-            racerRigidbody.AddForce(accelerationDirection * accelerationStrength, ForceMode.Force);
+            if (racerRigidbody.GetComponent<RacerController>().isActiveAndEnabled)
+            {
+                racerRigidbody.AddForce(accelerationDirection * accelerationStrength, ForceMode.Force);
+            }
+            else  // Hack for WheelController
+            {
+                racerRigidbody.MovePosition(racerRigidbody.position + accelerationDirection * translationOffset);
+            }
         }
     }
 }
