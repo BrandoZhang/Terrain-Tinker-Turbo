@@ -3457,7 +3457,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 867040630883410019, guid: ae6019a6c2deb10469085256579db404, type: 3}
+      propertyPath: m_Drag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 867040630883410019, guid: ae6019a6c2deb10469085256579db404, type: 3}
       propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 867040630883410019, guid: ae6019a6c2deb10469085256579db404, type: 3}
+      propertyPath: m_AngularDrag
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 867040630883410019, guid: ae6019a6c2deb10469085256579db404, type: 3}
+      propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
