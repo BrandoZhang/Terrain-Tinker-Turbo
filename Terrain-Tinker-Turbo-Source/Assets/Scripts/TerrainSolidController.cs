@@ -64,7 +64,8 @@ public class TerrainSolidController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             // If it is, rotate the object 90 degrees on the Y axis
-            transform.Rotate(0, 90, 0);
+            GameObject objectToMove = transform.CompareTag("TerrainSolid") ? gameObject : transform.parent.gameObject;
+            objectToMove.transform.Rotate(0, 90, 0);
 
             // If this is an accelerator terrain, rotate the acceleration direction as well
             AcceleratorTerrainController accelerator = GetComponent<AcceleratorTerrainController>();
