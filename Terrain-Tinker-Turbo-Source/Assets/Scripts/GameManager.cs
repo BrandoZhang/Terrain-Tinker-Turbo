@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
         {
              //Hide keyboard controls for now
              setT1KeyboardControls(false);
+             SetTextEnabled("TrackLibraryText", false);
              StartCoroutine(Countdown());
         }
         else
