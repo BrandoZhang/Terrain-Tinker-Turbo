@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     public GameObject track;  // Reference to the Track GameObject
     private Rigidbody trackRigidbody;  // Reference to the Rigidbody on the Track GameObject
     public RacerController racer1;  // Reference to the first racer's controller
-    public RacerController racer2;  // Reference to the second racer's controller
+    // public RacerController racer2;  // Reference to the second racer's controller
+    public WheelController racer2;  // Reference to the second racer's controller
     public GameObject player1TrackLibrary;  // Reference to the player 1's TrackLibrary
     public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
 
