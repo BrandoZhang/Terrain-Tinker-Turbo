@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -263,6 +264,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
+            StartCoroutine(UpdateFirebaseData("WinRoundCount/Player1"));
         }
         
         //Freeze position after reaching finish line
@@ -276,6 +278,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
+            StartCoroutine(UpdateFirebaseData("WinRoundCount/Player2"));
         }
         
         //Freeze position after reaching finish line
@@ -331,5 +334,35 @@ public class GameManager : MonoBehaviour
         SetTextEnabled("RestartButton", true);
         SetTextEnabled("MenuButton", true);        
     }
+    private IEnumerator UpdateFirebaseData(string player)
+    {
+        string url = "https://cs526-acf9d-default-rtdb.firebaseio.com/" + player + ".json";
+        UnityWebRequest www = UnityWebRequest.Get(url);
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.ConnectionError || 
+            www.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            int finishCount = int.Parse(www.downloadHandler.text) + 1;
+
+            UnityWebRequest wwwPut = UnityWebRequest.Put(url, finishCount.ToString());
+            yield return wwwPut.SendWebRequest();
+
+            if (wwwPut.result == UnityWebRequest.Result.ConnectionError || 
+                wwwPut.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.Log(wwwPut.error);
+            }
+            else
+            {
+                Debug.Log("Successfully updated Firebase data");
+            }
+        }
+    }
+
 
 }
