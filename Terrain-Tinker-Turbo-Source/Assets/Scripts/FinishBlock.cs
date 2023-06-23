@@ -20,12 +20,12 @@ public class FinishBlock : MonoBehaviour
         }
         
         //Tutorial1: Once racing ends, return back to original view
-        if (SceneManager.GetActiveScene().name == "Tutorial1" ||
+        /*if (SceneManager.GetActiveScene().name == "Tutorial1" ||
             SceneManager.GetActiveScene().name == "Tutorial2" ||
             SceneManager.GetActiveScene().name == "Tutorial3")
         {
             GameManager.Instance.mainCameraView();
-        }
+        }*/
         
         //PlayScene2: Once racing ends, show menu to restart or return to menu
         if (SceneManager.GetActiveScene().name == "PlayScene2" && isRaceOver)

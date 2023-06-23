@@ -238,6 +238,9 @@ public class GameManager : MonoBehaviour
             winText.text = "Player 1 Wins!";
             gameOver = true;
         }
+        
+        //Freeze position after reaching finish line
+        racer1.canMove = false;
     }
 
     public void Player2Finished()
@@ -248,6 +251,9 @@ public class GameManager : MonoBehaviour
             winText.text = "Player 2 Wins!";
             gameOver = true;
         }
+        
+        //Freeze position after reaching finish line
+        racer2.canMove = false;
     }
 
     IEnumerator Countdown()
