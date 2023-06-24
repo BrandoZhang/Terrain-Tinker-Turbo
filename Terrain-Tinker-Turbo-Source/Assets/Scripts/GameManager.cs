@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
              //Hide keyboard controls for now
              setT1KeyboardControls(false);
              SetTextEnabled("TrackLibraryText", false);
-             StartCoroutine(Countdown());
+             //StartCoroutine(Countdown());
         }
         else
         {
@@ -103,11 +103,11 @@ public class GameManager : MonoBehaviour
         SetTextEnabled("TrackLibraryText", false);
         SetTextEnabled("Tutorial1Text", false); // Disable instruction in tutorial 1
 
-        if (SceneManager.GetActiveScene().name == "PlayScene2")
-        {
+        //if (SceneManager.GetActiveScene().name == "PlayScene2")
+        //{
             SetTextEnabled("RestartButton", false);
             SetTextEnabled("MenuButton", false);
-        }
+        //}
         // TODO: Duplicate TrackLibrary in script instead of Unity Editor
         player2TrackLibrary.SetActive(false);
     }
@@ -336,6 +336,17 @@ public class GameManager : MonoBehaviour
     {
         SetTextEnabled("RestartButton", true);
         SetTextEnabled("MenuButton", true);        
+    }
+
+    public void StartRaceNow()
+    {
+        player1TrackLibrary.SetActive(false);
+        tracklibraryText.text = "";
+ 
+        SetImgEnabled("Player1Turn", false);
+        SetImgEnabled("Player2Turn", false);
+            
+        StartCoroutine(Countdown());     
     }
 
 }
