@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61785451}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.6, y: 31, z: 14}
+  m_LocalPosition: {x: -36, y: 31, z: 14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -329,7 +329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -268, y: 104}
+  m_AnchoredPosition: {x: -174, y: 104}
   m_SizeDelta: {x: 167.4467, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109638263
@@ -840,7 +840,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drag terrains to build your path!
+  m_text: 'Drag terrains to build your path!
+
+
+    Each Player has it''s own set
+    of terrains'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1092,7 +1096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755354050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.56874, y: 20, z: -285.7}
+  m_LocalPosition: {x: 81.56874, y: 20, z: -85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1586,7 +1590,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 80, y: 400, z: -140}
+  m_LocalPosition: {x: 80, y: 490, z: -140}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1763,7 +1767,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -268, y: 104}
+  m_AnchoredPosition: {x: 91, y: 105}
   m_SizeDelta: {x: 167.4467, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097749937
@@ -1825,7 +1829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166499072}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 19, y: 31, z: 14}
+  m_LocalPosition: {x: -14, y: 31, z: 14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1938,7 +1942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356559379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 77.65607, y: 20, z: -72.337166}
+  m_LocalPosition: {x: 40, y: 20, z: -72.337166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2014,7 +2018,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398786266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.56874, y: 20, z: -285.7}
+  m_LocalPosition: {x: 81.56874, y: 20, z: -390}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2375,7 +2379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1929029132904305119, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6
+      value: -36
       objectReference: {fileID: 0}
     - target: {fileID: 1929029132904305119, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2896,7 +2900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3183894869295045217, guid: 818fcc07e53e25748ae5632c46863ace, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 3183894869295045217, guid: 818fcc07e53e25748ae5632c46863ace, type: 3}
       propertyPath: m_LocalPosition.y

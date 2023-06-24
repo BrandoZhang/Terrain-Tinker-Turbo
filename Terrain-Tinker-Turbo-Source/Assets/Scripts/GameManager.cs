@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("RaceStart", false);
         }
         
+        SetTextEnabled("TrackLibraryText", false);
         SetTextEnabled("Tutorial1Text", false); // Disable instruction in tutorial 1
 
         if (SceneManager.GetActiveScene().name == "PlayScene2")
@@ -208,6 +209,11 @@ public class GameManager : MonoBehaviour
             SetTextEnabled("FinishLine", false);
             
             SetImgEnabled("RotateImg", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "PlayScene2")
+        {
+            SetTextEnabled("MessInstruction", false);
         }
 
 
