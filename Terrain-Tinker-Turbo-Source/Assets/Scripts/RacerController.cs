@@ -56,8 +56,8 @@ public class RacerController : MonoBehaviour
             }
         }
 
-        Debug.Log("Player " + playerIndex + " horizontal input: " + horizontalInput);
-        Debug.Log("Player " + playerIndex + " vertical input: " + verticalInput);
+        // Debug.Log("Player " + playerIndex + " horizontal input: " + horizontalInput);
+        // Debug.Log("Player " + playerIndex + " vertical input: " + verticalInput);
 
         // Apply a force in the forward direction of the car, multiplied by our input and acceleration force
         rb.AddForce(transform.forward * verticalInput * accelerationForce);
