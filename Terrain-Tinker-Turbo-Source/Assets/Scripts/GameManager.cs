@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Proyecto26;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -263,6 +264,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
+            StatManager winner = new StatManager("Player1");
+            PostToDatabase(winner);
         }
         
         //Freeze position after reaching finish line
@@ -276,6 +279,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
+            StatManager winner = new StatManager("Player2");
+            PostToDatabase(winner);
         }
         
         //Freeze position after reaching finish line
@@ -330,6 +335,11 @@ public class GameManager : MonoBehaviour
     {
         SetTextEnabled("RestartButton", true);
         SetTextEnabled("MenuButton", true);        
+    }
+
+    private void PostToDatabase(StatManager stats)
+    {
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/winner.json", stats);
     }
 
 }
