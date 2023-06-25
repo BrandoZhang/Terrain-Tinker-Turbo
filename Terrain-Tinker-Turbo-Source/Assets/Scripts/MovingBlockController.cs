@@ -22,6 +22,18 @@ public class MovingBlockController : MonoBehaviour
         StartCoroutine(MoveBlock());
     }
 
+    // This method is called every time the GameObject is set to active again
+    // Used to fix the issue of blocks not move during turn switching
+    void OnEnable()
+    {   
+        // Update the start and end positions
+        startRelPos = transform.parent.InverseTransformPoint(startPos.position);
+        endRelPos = transform.parent.InverseTransformPoint(endPos.position);
+
+        // Start the MoveObject coroutine
+        StartCoroutine(MoveBlock());
+    }
+
     IEnumerator MoveBlock()
     {
         while (true)
