@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI[] text;
     private RawImage img;
     private RawImage[] raceImg;
+    
     void Awake()
     {
         if (Instance == null)
@@ -264,7 +265,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player1");
+            StatManager winner = new StatManager("Player1", getCurrScene());
             PostToDatabase(winner);
         }
         
@@ -279,7 +280,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player2");
+            StatManager winner = new StatManager("Player2", getCurrScene());
             PostToDatabase(winner);
         }
         
@@ -339,7 +340,14 @@ public class GameManager : MonoBehaviour
 
     private void PostToDatabase(StatManager stats)
     {
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/winner.json", stats);
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version6_25.json", stats);
+    }
+
+    public string getCurrScene()
+    {
+        Scene currScene = SceneManager.GetActiveScene();
+        string currSceneName = currScene.name;
+        return currSceneName;
     }
 
 }
