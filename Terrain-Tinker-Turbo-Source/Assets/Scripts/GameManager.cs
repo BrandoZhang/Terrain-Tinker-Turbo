@@ -91,6 +91,8 @@ public class GameManager : MonoBehaviour
              //Hide keyboard controls for now
              setT1KeyboardControls(false);
              SetTextEnabled("TrackLibraryText", false);
+             SetImgEnabled("RaceStart", false);
+             SetTextEnabled("Tutorial1Text", true); // Disable instruction in tutorial 1
              //StartCoroutine(Countdown());
         }
         else
@@ -101,7 +103,10 @@ public class GameManager : MonoBehaviour
         }
         
         SetTextEnabled("TrackLibraryText", false);
-        SetTextEnabled("Tutorial1Text", false); // Disable instruction in tutorial 1
+        
+        //Disable movement of both Player
+        racer1.canMove = false;
+        racer2.canMove = false;
 
         //if (SceneManager.GetActiveScene().name == "PlayScene2")
         //{
@@ -211,6 +216,11 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("RotateImg", false);
         }
         
+        if (SceneManager.GetActiveScene().name == "Tutorial4")
+        {
+            SetTextEnabled("MessInstruction", false);
+        }
+        
         if (SceneManager.GetActiveScene().name == "PlayScene2")
         {
             SetTextEnabled("MessInstruction", false);
@@ -250,7 +260,8 @@ public class GameManager : MonoBehaviour
     {
         if (raceImg.FirstOrDefault(t => t.name == imgName) != null)
         {
-            raceImg.FirstOrDefault(t => t.name == imgName).enabled = val;
+            raceImg.FirstOrDefault(t => t.name == imgName).gameObject.SetActive(val);
+            //raceImg.FirstOrDefault(t => t.name == imgName).enabled = val;
         }
     }
     
@@ -258,7 +269,8 @@ public class GameManager : MonoBehaviour
     {
         if (text.FirstOrDefault(t => t.name == textName) != null)
         {
-            text.FirstOrDefault(t => t.name == textName).enabled = val;
+            text.FirstOrDefault(t => t.name == textName).gameObject.SetActive(val);
+            //text.FirstOrDefault(t => t.name == textName).enabled = val;
         }
     }
     
@@ -295,6 +307,18 @@ public class GameManager : MonoBehaviour
         racer2.canMove = false;
         
         SetImgEnabled("RaceStart", true);
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial4")
+        {
+            SetTextEnabled("Player2Path", false);
+            SetTextEnabled("Player1Path", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial1")
+        {
+            SetTextEnabled("Tutorial1Text", false);
+            SetImgEnabled("PlayerInfoImg", false);
+        }
         
         // Countdown from 5 to 0
         for (int i = 5; i >= 0; i--)
@@ -345,7 +369,7 @@ public class GameManager : MonoBehaviour
  
         SetImgEnabled("Player1Turn", false);
         SetImgEnabled("Player2Turn", false);
-            
+
         StartCoroutine(Countdown());     
     }
 
