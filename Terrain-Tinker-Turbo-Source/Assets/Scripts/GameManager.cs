@@ -343,7 +343,7 @@ public class GameManager : MonoBehaviour
         RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version6_25.json", stats);
     }
 
-    public string getCurrScene()
+    private string getCurrScene()
     {
         Scene currScene = SceneManager.GetActiveScene();
         string currSceneName = currScene.name;
