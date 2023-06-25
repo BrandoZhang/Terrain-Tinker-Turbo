@@ -46,12 +46,18 @@ public class MainMenu : MonoBehaviour
 
     public void launchMenu()
     {
-        SceneManager.LoadScene("Menu");
+        if (GameManager.Instance.getGameOverStatus())
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 
     public void Restart()
     {
-        int currIdx = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currIdx);
+        if (GameManager.Instance.getGameOverStatus())
+        {
+            int currIdx = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currIdx);
+        }
     }
 }

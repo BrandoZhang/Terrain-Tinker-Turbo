@@ -373,4 +373,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Countdown());     
     }
 
+    public bool getGameOverStatus()
+    {
+        return gameOver;
+    }
 }
