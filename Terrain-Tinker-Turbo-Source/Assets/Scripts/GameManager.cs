@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI[] text;
     private RawImage img;
     private RawImage[] raceImg;
-    
     void Awake()
     {
         if (Instance == null)
@@ -93,7 +92,9 @@ public class GameManager : MonoBehaviour
              //Hide keyboard controls for now
              setT1KeyboardControls(false);
              SetTextEnabled("TrackLibraryText", false);
-             StartCoroutine(Countdown());
+             SetImgEnabled("RaceStart", false);
+             SetTextEnabled("Tutorial1Text", true); // Disable instruction in tutorial 1
+             //StartCoroutine(Countdown());
         }
         else
         {
@@ -102,13 +103,17 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("RaceStart", false);
         }
         
-        SetTextEnabled("Tutorial1Text", false); // Disable instruction in tutorial 1
+        SetTextEnabled("TrackLibraryText", false);
+        
+        //Disable movement of both Player
+        racer1.canMove = false;
+        racer2.canMove = false;
 
-        if (SceneManager.GetActiveScene().name == "PlayScene2")
-        {
+        //if (SceneManager.GetActiveScene().name == "PlayScene2")
+        //{
             SetTextEnabled("RestartButton", false);
             SetTextEnabled("MenuButton", false);
-        }
+        //}
         // TODO: Duplicate TrackLibrary in script instead of Unity Editor
         player2TrackLibrary.SetActive(false);
     }
@@ -211,6 +216,16 @@ public class GameManager : MonoBehaviour
             
             SetImgEnabled("RotateImg", false);
         }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial4")
+        {
+            SetTextEnabled("MessInstruction", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "PlayScene2")
+        {
+            SetTextEnabled("MessInstruction", false);
+        }
 
 
         // Deactivate main camera and activate player cameras
@@ -246,7 +261,8 @@ public class GameManager : MonoBehaviour
     {
         if (raceImg.FirstOrDefault(t => t.name == imgName) != null)
         {
-            raceImg.FirstOrDefault(t => t.name == imgName).enabled = val;
+            raceImg.FirstOrDefault(t => t.name == imgName).gameObject.SetActive(val);
+            //raceImg.FirstOrDefault(t => t.name == imgName).enabled = val;
         }
     }
     
@@ -254,7 +270,8 @@ public class GameManager : MonoBehaviour
     {
         if (text.FirstOrDefault(t => t.name == textName) != null)
         {
-            text.FirstOrDefault(t => t.name == textName).enabled = val;
+            text.FirstOrDefault(t => t.name == textName).gameObject.SetActive(val);
+            //text.FirstOrDefault(t => t.name == textName).enabled = val;
         }
     }
     
@@ -295,6 +312,18 @@ public class GameManager : MonoBehaviour
         racer2.canMove = false;
         
         SetImgEnabled("RaceStart", true);
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial4")
+        {
+            SetTextEnabled("Player2Path", false);
+            SetTextEnabled("Player1Path", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial1")
+        {
+            SetTextEnabled("Tutorial1Text", false);
+            SetImgEnabled("PlayerInfoImg", false);
+        }
         
         // Countdown from 5 to 0
         for (int i = 5; i >= 0; i--)
@@ -338,9 +367,25 @@ public class GameManager : MonoBehaviour
         SetTextEnabled("MenuButton", true);        
     }
 
+    public void StartRaceNow()
+    {
+        player1TrackLibrary.SetActive(false);
+        tracklibraryText.text = "";
+ 
+        SetImgEnabled("Player1Turn", false);
+        SetImgEnabled("Player2Turn", false);
+
+        StartCoroutine(Countdown());     
+    }
+
+    public bool getGameOverStatus()
+    {
+        return gameOver;
+    }
+    
     private void PostToDatabase(StatManager stats)
     {
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version6_25.json", stats);
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/winner.json", stats);
     }
 
     private string getCurrScene()
@@ -349,5 +394,4 @@ public class GameManager : MonoBehaviour
         string currSceneName = currScene.name;
         return currSceneName;
     }
-
 }
