@@ -21,7 +21,8 @@ public class AcceleratorTerrainController : MonoBehaviour
             Rigidbody racerRigidbody = other.gameObject.GetComponent<Rigidbody>();
 
             // Apply a force to the racer in the direction of acceleration.
-            if (racerRigidbody.GetComponent<RacerController>() != null)
+            if (racerRigidbody.GetComponent<RacerController>() != null 
+                && racerRigidbody.GetComponent<RacerController>().isActiveAndEnabled)
             {
                 racerRigidbody.AddForce(accelerationDirection * accelerationStrength, ForceMode.Force);
             }

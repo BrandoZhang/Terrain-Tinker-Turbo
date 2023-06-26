@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -367,17 +367,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109638261}
   m_CullTransparentMesh: 1
---- !u!114 &143193211 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1803004223515222432, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
-  m_PrefabInstance: {fileID: 1597861602}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 751140568742ed345b299ec9e7179a85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &387622931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,6 +2758,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1803004222682309492, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803004223515222432, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1803004223515222432, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
       propertyPath: startTransform
       value: 
@@ -2821,8 +2818,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1929029134124933518, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
+--- !u!1 &1597861603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1929029132904041609, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
+  m_PrefabInstance: {fileID: 1597861602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1597861604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597861603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45cdabda9e656ce45b00c9ea6902ff1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
+  playerIndex: 2
+  accelerationForce: 30
+  turningForce: 3
+  startTransform: {fileID: 61785452}
+  minHeightThreshold: 20
 --- !u!20 &1670027316 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1803004222742345617, guid: f17bee8dbc29c62499972bde13f7186a, type: 3}
@@ -3000,7 +3024,7 @@ MonoBehaviour:
   limit: 1
   track: {fileID: 1356559379}
   racer1: {fileID: 1319690025}
-  racer2: {fileID: 143193211}
+  racer2: {fileID: 1597861604}
   player1TrackLibrary: {fileID: 755354050}
   player2TrackLibrary: {fileID: 1398786266}
   mainCamera: {fileID: 963194227}
