@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class WheelController : MonoBehaviour
 {
     [SerializeField] private WheelCollider frontRight;
@@ -22,6 +23,7 @@ public class WheelController : MonoBehaviour
     public Transform startTransform;  // The Transform component where the racer will reset to
     public float minHeightThreshold = 20f;  // It is considered fall out of the Track if y value is less than this
     private Rigidbody rb;
+    private bool tutorial1Check = false;
 
     private float currentAcceleration = 0f;
     private float currentBreakingForce = 0f;
@@ -46,6 +48,16 @@ public class WheelController : MonoBehaviour
         // Use different axes based on the player index
         float horizontalInput = Input.GetAxis("Horizontal" + (playerIndex == 1 ? "_P1" : "_P2"));
         float verticalInput = Input.GetAxis("Vertical" + (playerIndex == 1 ? "_P1" : "_P2"));
+        
+        //Only for Tutorial1 and only when tutorial1Check is false
+        if (!tutorial1Check && SceneManager.GetActiveScene().name == "Tutorial1")
+        {
+            if (Math.Abs(horizontalInput) > 0 || Math.Abs(verticalInput) > 0)
+            {
+                tutorial1Check = true; //so that we can stop checking this logic again
+                GameManager.Instance.setT1KeyboardControls(false); //remove keyboard controls instructions
+            }
+        }
         
         // Get forward and back acceleration
         currentAcceleration = acceleration * verticalInput;
