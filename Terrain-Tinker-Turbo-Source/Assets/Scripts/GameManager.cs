@@ -284,6 +284,7 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             StatManager winner = new StatManager("Player1", getCurrScene());
             PostToDatabase(winner);
+            Debug.Log("Player1 wins RECORDED");
         }
         
         //Freeze position after reaching finish line
@@ -299,6 +300,7 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             StatManager winner = new StatManager("Player2", getCurrScene());
             PostToDatabase(winner);
+            Debug.Log("Player2 wins RECORDED");
         }
         
         //Freeze position after reaching finish line
@@ -385,7 +387,7 @@ public class GameManager : MonoBehaviour
     
     private void PostToDatabase(StatManager stats)
     {
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/winner.json", stats);
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version6_25.json", stats);
     }
 
     private string getCurrScene()
