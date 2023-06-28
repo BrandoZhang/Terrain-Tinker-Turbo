@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
     private int player2BlockCount = 0;  // Number of track blocks placed by player 2
     public int limit = 3;  // Maximum number of track blocks each player can place
-
+    public List<string> terrainRecord;
     [Header("Game Object")]
     public GameObject track;  // Reference to the Track GameObject
     private Rigidbody trackRigidbody;  // Reference to the Rigidbody on the Track GameObject
@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
         turnText.gameObject.SetActive(false);  // Clear for Racing Phase
         countdownText.gameObject.SetActive(false);
         countdownText.enabled = false;
-        
+
         if (SceneManager.GetActiveScene().name == "Tutorial2")
         {
             SetTextEnabled("Instruction", false);
@@ -282,7 +282,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player1", getCurrScene());
+            StatManager winner = new StatManager("Player1", getCurrScene(), terrainRecord);
             PostToDatabase(winner);
             Debug.Log("Player1 wins RECORDED");
         }
@@ -298,7 +298,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player2", getCurrScene());
+            StatManager winner = new StatManager("Player2", getCurrScene(), terrainRecord);
             PostToDatabase(winner);
             Debug.Log("Player2 wins RECORDED");
         }
@@ -395,5 +395,10 @@ public class GameManager : MonoBehaviour
         Scene currScene = SceneManager.GetActiveScene();
         string currSceneName = currScene.name;
         return currSceneName;
+    }
+
+    public void AddTerrainData(string terrain)
+    {
+        terrainRecord.Add(terrain);
     }
 }
