@@ -24,6 +24,11 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial3");
     }
+    
+    public void launchTutorial4()
+    {
+        SceneManager.LoadScene("Tutorial4");
+    }
 
     public void headBack()
     {
@@ -35,12 +40,24 @@ public class MainMenu : MonoBehaviour
     public void headNext()
     {
         int currIdx = SceneManager.GetActiveScene().buildIndex;
-        int nextIdx = (currIdx >= 4) ? 0 : currIdx + 1;
+        int nextIdx = (currIdx >= 5) ? 0 : currIdx + 1;
         SceneManager.LoadScene(nextIdx);
     }
 
     public void launchMenu()
     {
-        SceneManager.LoadScene("Menu");
+        if (GameManager.Instance.getGameOverStatus())
+        {
+            SceneManager.LoadScene("Menu");
+        }
+    }
+
+    public void Restart()
+    {
+        if (GameManager.Instance.getGameOverStatus())
+        {
+            int currIdx = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currIdx);
+        }
     }
 }

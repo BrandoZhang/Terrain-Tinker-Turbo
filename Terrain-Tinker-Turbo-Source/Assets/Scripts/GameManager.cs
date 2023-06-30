@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Proyecto26;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
     private int player2BlockCount = 0;  // Number of track blocks placed by player 2
     public int limit = 3;  // Maximum number of track blocks each player can place
-
+    public List<string> terrainRecord;
     [Header("Game Object")]
     public GameObject track;  // Reference to the Track GameObject
     private Rigidbody trackRigidbody;  // Reference to the Rigidbody on the Track GameObject
@@ -91,7 +92,9 @@ public class GameManager : MonoBehaviour
              //Hide keyboard controls for now
              setT1KeyboardControls(false);
              SetTextEnabled("TrackLibraryText", false);
-             StartCoroutine(Countdown());
+             SetImgEnabled("RaceStart", false);
+             SetTextEnabled("Tutorial1Text", true); // Disable instruction in tutorial 1
+             //StartCoroutine(Countdown());
         }
         else
         {
@@ -100,13 +103,17 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("RaceStart", false);
         }
         
-        SetTextEnabled("Tutorial1Text", false); // Disable instruction in tutorial 1
+        SetTextEnabled("TrackLibraryText", false);
+        
+        //Disable movement of both Player
+        racer1.canMove = false;
+        racer2.canMove = false;
 
-        if (SceneManager.GetActiveScene().name == "PlayScene2")
-        {
+        //if (SceneManager.GetActiveScene().name == "PlayScene2")
+        //{
             SetTextEnabled("RestartButton", false);
             SetTextEnabled("MenuButton", false);
-        }
+        //}
         // TODO: Duplicate TrackLibrary in script instead of Unity Editor
         player2TrackLibrary.SetActive(false);
     }
@@ -193,7 +200,7 @@ public class GameManager : MonoBehaviour
         turnText.gameObject.SetActive(false);  // Clear for Racing Phase
         countdownText.gameObject.SetActive(false);
         countdownText.enabled = false;
-        
+
         if (SceneManager.GetActiveScene().name == "Tutorial2")
         {
             SetTextEnabled("Instruction", false);
@@ -208,6 +215,16 @@ public class GameManager : MonoBehaviour
             SetTextEnabled("FinishLine", false);
             
             SetImgEnabled("RotateImg", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial4")
+        {
+            SetTextEnabled("MessInstruction", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "PlayScene2")
+        {
+            SetTextEnabled("MessInstruction", false);
         }
 
 
@@ -244,7 +261,8 @@ public class GameManager : MonoBehaviour
     {
         if (raceImg.FirstOrDefault(t => t.name == imgName) != null)
         {
-            raceImg.FirstOrDefault(t => t.name == imgName).enabled = val;
+            raceImg.FirstOrDefault(t => t.name == imgName).gameObject.SetActive(val);
+            //raceImg.FirstOrDefault(t => t.name == imgName).enabled = val;
         }
     }
     
@@ -252,7 +270,8 @@ public class GameManager : MonoBehaviour
     {
         if (text.FirstOrDefault(t => t.name == textName) != null)
         {
-            text.FirstOrDefault(t => t.name == textName).enabled = val;
+            text.FirstOrDefault(t => t.name == textName).gameObject.SetActive(val);
+            //text.FirstOrDefault(t => t.name == textName).enabled = val;
         }
     }
     
@@ -263,6 +282,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
+            StatManager winner = new StatManager("Player1", getCurrScene(), terrainRecord);
+            PostToDatabase(winner);
+            Debug.Log("Player1 wins RECORDED");
         }
         
         //Freeze position after reaching finish line
@@ -276,6 +298,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
+            StatManager winner = new StatManager("Player2", getCurrScene(), terrainRecord);
+            PostToDatabase(winner);
+            Debug.Log("Player2 wins RECORDED");
         }
         
         //Freeze position after reaching finish line
@@ -289,6 +314,18 @@ public class GameManager : MonoBehaviour
         racer2.canMove = false;
         
         SetImgEnabled("RaceStart", true);
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial4")
+        {
+            SetTextEnabled("Player2Path", false);
+            SetTextEnabled("Player1Path", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial1")
+        {
+            SetTextEnabled("Tutorial1Text", false);
+            SetImgEnabled("PlayerInfoImg", false);
+        }
         
         // Countdown from 5 to 0
         for (int i = 5; i >= 0; i--)
@@ -332,4 +369,36 @@ public class GameManager : MonoBehaviour
         SetTextEnabled("MenuButton", true);        
     }
 
+    public void StartRaceNow()
+    {
+        player1TrackLibrary.SetActive(false);
+        tracklibraryText.text = "";
+ 
+        SetImgEnabled("Player1Turn", false);
+        SetImgEnabled("Player2Turn", false);
+
+        StartCoroutine(Countdown());     
+    }
+
+    public bool getGameOverStatus()
+    {
+        return gameOver;
+    }
+    
+    private void PostToDatabase(StatManager stats)
+    {
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version6_25.json", stats);
+    }
+
+    private string getCurrScene()
+    {
+        Scene currScene = SceneManager.GetActiveScene();
+        string currSceneName = currScene.name;
+        return currSceneName;
+    }
+
+    public void AddTerrainData(string terrain)
+    {
+        terrainRecord.Add(terrain);
+    }
 }

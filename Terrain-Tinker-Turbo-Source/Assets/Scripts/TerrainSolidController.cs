@@ -20,6 +20,8 @@ public class TerrainSolidController : MonoBehaviour
     // Add a private reference to store a list of currently hovered TerrainPlaceholders
     private List<TerrainPlaceholderController> placeholderControllers = new List<TerrainPlaceholderController>();
 
+    private List<string> terrainData;
+
     void Start() 
     {
         myMainCamera = Camera.main;
@@ -106,7 +108,8 @@ public class TerrainSolidController : MonoBehaviour
                 // Make the terrain piece a child of Track
                 objectToMove.transform.parent = GameObject.Find("Track").transform;
                 // Mark current player has placed a block and switch to the other player
-                GameManager.Instance.BlockPlaced();  
+                GameManager.Instance.BlockPlaced();
+                GameManager.Instance.AddTerrainData(gameObject.name);
             }
 
             // Reset other TerrainPlaceholders

@@ -28,7 +28,7 @@ public class FinishBlock : MonoBehaviour
         }*/
         
         //PlayScene2: Once racing ends, show menu to restart or return to menu
-        if (SceneManager.GetActiveScene().name == "PlayScene2" && isRaceOver)
+        if (/*SceneManager.GetActiveScene().name == "PlayScene2" &&*/ isRaceOver)
         {
             GameManager.Instance.showEndGameOptions();
             

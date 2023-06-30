@@ -33,6 +33,7 @@ public class MovingBlockController : MonoBehaviour
         // Start the MoveObject coroutine
         StartCoroutine(MoveBlock());
     }
+
     IEnumerator MoveBlock()
     {
         while (true)
