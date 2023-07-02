@@ -34,9 +34,11 @@ public class GameManager : MonoBehaviour
     public GameObject player1TrackLibrary;  // Reference to the player 1's TrackLibrary
     public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
 
+    [Header("UI Settings")]
     public Camera mainCamera;
     public Camera player1Camera;
     public Camera player2Camera;
+    public TrafficUIController trafficUIController;  // Reference to the TrafficUIController
 
     private TextMeshProUGUI[] text;
     private RawImage img;
