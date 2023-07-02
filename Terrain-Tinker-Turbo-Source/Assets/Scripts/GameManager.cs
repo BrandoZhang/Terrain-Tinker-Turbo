@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     public GameObject player1TrackLibrary;  // Reference to the player 1's TrackLibrary
     public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
 
+    private bool startEarly = false;
+
     public Camera mainCamera;
     public Camera player1Camera;
     public Camera player2Camera;
@@ -282,13 +284,14 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player1", getCurrScene(), terrainRecord);
+            StatManager winner = new StatManager("Player1", getCurrScene(), terrainRecord, startEarly);
             PostToDatabase(winner);
             Debug.Log("Player1 wins RECORDED");
         }
         
         //Freeze position after reaching finish line
         racer1.canMove = false;
+        ResetAnalytics();
     }
 
     public void Player2Finished()
@@ -298,9 +301,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player2", getCurrScene(), terrainRecord);
+            StatManager winner = new StatManager("Player2", getCurrScene(), terrainRecord, startEarly);
             PostToDatabase(winner);
             Debug.Log("Player2 wins RECORDED");
+            ResetAnalytics();
         }
         
         //Freeze position after reaching finish line
@@ -401,4 +405,17 @@ public class GameManager : MonoBehaviour
     {
         terrainRecord.Add(terrain);
     }
+
+    public void StartEarly()
+    {
+        if (SceneManager.GetActiveScene().name != "Tutorial1")
+        {
+            startEarly = !startEarly;
+        }
+    }
+    private void ResetAnalytics()
+    {
+        startEarly = false;
+    }
+    
 }
