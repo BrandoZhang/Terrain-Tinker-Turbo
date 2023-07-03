@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI[] text;
     private RawImage img;
     private RawImage[] raceImg;
+
+    public GameObject MenuCanvas;
+    private bool isCountDown;
     void Awake()
     {
         if (Instance == null)
@@ -109,13 +113,17 @@ public class GameManager : MonoBehaviour
         racer1.canMove = false;
         racer2.canMove = false;
 
-        //if (SceneManager.GetActiveScene().name == "PlayScene2")
-        //{
-            SetTextEnabled("RestartButton", false);
-            SetTextEnabled("MenuButton", false);
-        //}
+        /*if (SceneManager.GetActiveScene().name == "PlayScene2")
+        {
+            //For end race options
+            SetTextEnabled("RestartButtonGO", false);
+            SetTextEnabled("MenuButtonGO", false);
+        }*/
+        
         // TODO: Duplicate TrackLibrary in script instead of Unity Editor
         player2TrackLibrary.SetActive(false);
+
+        HideMenu();
     }
 
     public void SwitchTrackLibrary()
@@ -195,6 +203,7 @@ public class GameManager : MonoBehaviour
     void TransitionToRacingPhase()
     {
         // TODO: Add racing phase transition code here
+        isCountDown = false;
         isRacing = true;
         phaseText.text = ""; //Kenny - Decluttering scene, player should know it is race phase
         turnText.gameObject.SetActive(false);  // Clear for Racing Phase
@@ -310,8 +319,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Countdown()
     {
         // Disable player controls
-        racer1.canMove = false;
-        racer2.canMove = false;
+        FreezeVehicles();
         
         SetImgEnabled("RaceStart", true);
         
@@ -326,6 +334,8 @@ public class GameManager : MonoBehaviour
             SetTextEnabled("Tutorial1Text", false);
             SetImgEnabled("PlayerInfoImg", false);
         }
+
+        isCountDown = true;
         
         // Countdown from 5 to 0
         for (int i = 5; i >= 0; i--)
@@ -333,9 +343,9 @@ public class GameManager : MonoBehaviour
             countdownText.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
+        
         // Enable player controls
-        racer1.canMove = true;
-        racer2.canMove = true;
+        FreeVehicles();
 
         // Clear countdown text
         countdownText.text = "";
@@ -363,11 +373,11 @@ public class GameManager : MonoBehaviour
          SetImgEnabled("P2Control", status);
     }
 
-    public void showEndGameOptions()
+    /*public void showEndGameOptions()
     {
-        SetTextEnabled("RestartButton", true);
-        SetTextEnabled("MenuButton", true);        
-    }
+        SetTextEnabled("RestartButtonGO", true);
+        SetTextEnabled("MenuButtonGO", true);        
+    }*/
 
     public void StartRaceNow()
     {
@@ -400,5 +410,32 @@ public class GameManager : MonoBehaviour
     public void AddTerrainData(string terrain)
     {
         terrainRecord.Add(terrain);
+    }
+
+    public void HideMenu()
+    {
+        MenuCanvas.GetComponent<Canvas>().enabled = false;
+    }
+
+    public void DisplayMenu()
+    {
+        MenuCanvas.GetComponent<Canvas>().enabled = true;
+    }
+
+    public bool getCountDownStatus()
+    {
+        return isCountDown;
+    }
+
+    public void FreeVehicles()
+    {
+        racer1.canMove = true;
+        racer2.canMove = true;
+    }
+
+    public void FreezeVehicles()
+    {
+        racer1.canMove = false;
+        racer2.canMove = false;
     }
 }
