@@ -16,7 +16,7 @@ public class StatManager
     public StatManager(string winner, string sceneName, List<string> terrains, bool startEarly)
     {
         currentTime = System.DateTime.Now.ToString("HH:mm dd MMMM, yyyy");
-        gameVersion = "June 25th";
+        gameVersion = "July 6th";
         currentScene = sceneName;
         this.winner = winner;
         this.terrains = terrains;
