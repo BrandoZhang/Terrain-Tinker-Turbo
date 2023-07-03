@@ -44,7 +44,10 @@ public class GameManager : MonoBehaviour
     private RawImage[] raceImg;
 
     public GameObject MenuCanvas;
+    public GameObject GameOverCanvas;
     private bool isCountDown;
+    private bool isBackToGameClicked;
+    
     void Awake()
     {
         if (Instance == null)
@@ -123,7 +126,8 @@ public class GameManager : MonoBehaviour
         // TODO: Duplicate TrackLibrary in script instead of Unity Editor
         player2TrackLibrary.SetActive(false);
 
-        HideMenu();
+        HideMenu(MenuCanvas);
+        HideMenu(GameOverCanvas);
     }
 
     public void SwitchTrackLibrary()
@@ -412,14 +416,14 @@ public class GameManager : MonoBehaviour
         terrainRecord.Add(terrain);
     }
 
-    public void HideMenu()
+    public void HideMenu(GameObject obj)
     {
-        MenuCanvas.GetComponent<Canvas>().enabled = false;
+        obj.GetComponent<Canvas>().enabled = false;
     }
 
-    public void DisplayMenu()
+    public void DisplayMenu(GameObject obj)
     {
-        MenuCanvas.GetComponent<Canvas>().enabled = true;
+        obj.GetComponent<Canvas>().enabled = true;
     }
 
     public bool getCountDownStatus()
@@ -438,4 +442,30 @@ public class GameManager : MonoBehaviour
         racer1.canMove = false;
         racer2.canMove = false;
     }
+
+    public GameObject getMenuCanvas()
+    {
+        return MenuCanvas;
+    }
+
+    public GameObject getGameOverCanvas()
+    {
+        return GameOverCanvas;
+    }
+
+    public void setBackToGameStatus()
+    {
+        isBackToGameClicked = true;
+    }
+
+    public void clearBackToGameStatus()
+    {
+        isBackToGameClicked = false;
+    }
+
+    public bool getBackToGameStatus()
+    {
+        return isBackToGameClicked;
+    }
+    
 }

@@ -7,17 +7,26 @@ public class RaceKeyListener : MonoBehaviour
     private bool isActivated;
 
     private bool isMenuShown;
-    
+
+    private GameObject MenuCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        MenuCanvas = GameManager.Instance.getMenuCanvas();
     }
 
     // Update is called once per frame
     void Update()
     {
         bool isGameCountingDown = GameManager.Instance.getCountDownStatus();
+        
+        //Check if Player clicked BackToGame in menu before
+        if (GameManager.Instance.getBackToGameStatus())
+        {
+            isMenuShown = false;
+            GameManager.Instance.clearBackToGameStatus();
+        }
         
         //Pressing 'X' to start race without completing tiles on grid
         if (!isActivated && Input.GetKeyDown(KeyCode.X))
@@ -31,7 +40,7 @@ public class RaceKeyListener : MonoBehaviour
         if (!isMenuShown && !isGameCountingDown && Input.GetKeyDown(KeyCode.M))
         {
             isMenuShown = true;
-            GameManager.Instance.DisplayMenu();
+            GameManager.Instance.DisplayMenu(MenuCanvas);
             
             //Freeze vehicles
             GameManager.Instance.FreezeVehicles();
@@ -39,7 +48,7 @@ public class RaceKeyListener : MonoBehaviour
         else if (isMenuShown && Input.GetKeyDown(KeyCode.M))
         {
             isMenuShown = false;
-            GameManager.Instance.HideMenu();
+            GameManager.Instance.HideMenu(MenuCanvas);
             
             //Unfreeze vehicles
             GameManager.Instance.FreeVehicles();

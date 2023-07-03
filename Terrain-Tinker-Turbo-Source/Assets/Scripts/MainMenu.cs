@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
+    private GameObject MenuCanvas;
+
+    void Start()
+    {
+        MenuCanvas = GameManager.Instance.getMenuCanvas();
+    }
+    
     // Start is called before the first frame update
     public void PlayGame()
     {
@@ -53,5 +60,16 @@ public class MainMenu : MonoBehaviour
     {
         int currIdx = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currIdx);
+    }
+    
+    public void BackToGame()
+    {
+        GameManager.Instance.HideMenu(MenuCanvas);
+        
+        //To inform KeyListener.cs for Menu interaction
+        GameManager.Instance.setBackToGameStatus();
+        
+        //Unfreeze vehicles
+        GameManager.Instance.FreeVehicles();
     }
 }
