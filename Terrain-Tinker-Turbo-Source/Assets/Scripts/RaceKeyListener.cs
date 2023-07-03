@@ -20,6 +20,7 @@ public class RaceKeyListener : MonoBehaviour
     void Update()
     {
         bool isGameCountingDown = GameManager.Instance.getCountDownStatus();
+        bool isRacing = GameManager.Instance.getRacingStatus();
         
         //Check if Player clicked BackToGame in menu before
         if (GameManager.Instance.getBackToGameStatus())
@@ -29,7 +30,7 @@ public class RaceKeyListener : MonoBehaviour
         }
         
         //Pressing 'X' to start race without completing tiles on grid
-        if (!isActivated && Input.GetKeyDown(KeyCode.X))
+        if (!isActivated && !isGameCountingDown && !isRacing && Input.GetKeyDown(KeyCode.X))
         {
             isActivated = true;
             GameManager.Instance.StartRaceNow();

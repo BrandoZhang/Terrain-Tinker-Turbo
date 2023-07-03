@@ -467,5 +467,10 @@ public class GameManager : MonoBehaviour
     {
         return isBackToGameClicked;
     }
+
+    public bool getRacingStatus()
+    {
+        return isRacing;
+    }
     
 }
