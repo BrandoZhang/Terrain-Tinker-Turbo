@@ -3567,11 +3567,14 @@ MonoBehaviour:
   racer2: {fileID: 2074529394}
   player1TrackLibrary: {fileID: 755354050}
   player2TrackLibrary: {fileID: 378656081}
-  player1TrafficSignLibrary: {fileID: 1052641650}
-  player2TrafficSignLibrary: {fileID: 1920450082}
+  player1TrafficSignLibrary: {fileID: 0}
+  player2TrafficSignLibrary: {fileID: 0}
   mainCamera: {fileID: 963194227}
   player1Camera: {fileID: 316440734}
   player2Camera: {fileID: 362256451}
+  MenuCanvas: {fileID: 0}
+  GameOverCanvas: {fileID: 0}
+  HelpCanvas: {fileID: 0}
 --- !u!4 &1776224350
 Transform:
   m_ObjectHideFlags: 0
