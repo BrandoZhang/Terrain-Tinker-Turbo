@@ -1,21 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using TouchScript.Gestures;
+using TouchScript.Gestures.TransformGestures;
 
 public class TerrainSolidController : MonoBehaviour
 {
-    // The plane the object is currently being dragged on
-    Plane dragPlane;
-
-    // The difference between where the mouse is on the drag plane and 
-    // where the origin of the object is on the drag plane
-    Vector3 offset;
-
-    Camera myMainCamera;
+    private Vector3 originalPosition;
+    private List<TerrainPlaceholderController> collidedPlaceholders = new List<TerrainPlaceholderController>();
     
     // Flag to check if the terrain piece is on the Track
     private bool isOnTrack = false;
+    // Flag to indicate whether the object is currently being clicked on
+    private bool isClicked = false;
 
     // Add a private reference to store a list of currently hovered TerrainPlaceholders
     private List<TerrainPlaceholderController> placeholderControllers = new List<TerrainPlaceholderController>();
@@ -24,46 +22,39 @@ public class TerrainSolidController : MonoBehaviour
 
     void Start() 
     {
-        myMainCamera = Camera.main;
+        originalPosition = transform.position;
     }
 
-    void OnMouseDown() 
+    private void OnEnable()
     {
-        Ray camRay = myMainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(camRay, out hit))
-        {
-            // Check if the GameObject hit by the ray or its parent has the "TerrainSolid" tag
-            GameObject hitObject = hit.transform.gameObject;
-            bool validTag = hitObject.CompareTag("TerrainSolid") || 
-                          (hitObject.transform.parent != null && hitObject.transform.parent.CompareTag("TerrainSolid"));
-
-            if (validTag)
-            {
-                GameObject objectToDrag = hitObject.CompareTag("TerrainSolid") ? hitObject : hitObject.transform.parent.gameObject;
-                dragPlane = new Plane(myMainCamera.transform.forward, objectToDrag.transform.position);
-        
-                float planeDist;
-                dragPlane.Raycast(camRay, out planeDist);
-                offset = objectToDrag.transform.position - camRay.GetPoint(planeDist);
-            }
-        }
+        GetComponent<PressGesture>().Pressed += PressedHandler;
+        GetComponent<ReleaseGesture>().Released += ReleasedHandler;
+        GetComponent<TransformGesture>().TransformCompleted += TransformCompletedHandler;
     }
 
-    void OnMouseDrag() 
+    private void OnDisable()
     {
-        Ray camRay = myMainCamera.ScreenPointToRay(Input.mousePosition);
+        GetComponent<PressGesture>().Pressed -= PressedHandler;
+        GetComponent<ReleaseGesture>().Released -= ReleasedHandler;
+        GetComponent<TransformGesture>().TransformCompleted -= TransformCompletedHandler;
+    }
 
-        float planeDist;
-        if (dragPlane.Raycast(camRay, out planeDist))
-        {
-            GameObject objectToMove = transform.CompareTag("TerrainSolid") ? gameObject : transform.parent.gameObject;
-            objectToMove.transform.position = camRay.GetPoint(planeDist) + offset;
-        }
+    private void PressedHandler(object sender, EventArgs e)
+    {
+        // Set the flag to true when the object is clicked on
+        isClicked = true;
+    }
 
-        // Check if the R key is being pressed
-        if (Input.GetKeyDown(KeyCode.R))
+    private void ReleasedHandler(object sender, EventArgs e)
+    {
+        // Set the flag to false when the object is released
+        isClicked = false;
+    }
+
+    void Update()
+    {
+        // Check if the R key is being pressed, but only if the object is currently being clicked on
+        if (isClicked && Input.GetKeyDown(KeyCode.R))
         {
             // If it is, rotate the object 90 degrees on the Y axis
             GameObject objectToMove = transform.CompareTag("TerrainSolid") ? gameObject : transform.parent.gameObject;
@@ -78,9 +69,9 @@ public class TerrainSolidController : MonoBehaviour
         }
     }
 
-    void OnMouseUp() 
+    private void TransformCompletedHandler(object sender, EventArgs e)
     {
-        if (isOnTrack && GameManager.Instance.CanPlaceBlock() && placeholderControllers.Count > 0)
+                if (isOnTrack && GameManager.Instance.CanPlaceBlock() && placeholderControllers.Count > 0)
         {
             // Find the closest TerrainPlaceholder
             TerrainPlaceholderController closestPlaceholderController = null;
@@ -125,7 +116,7 @@ public class TerrainSolidController : MonoBehaviour
             placeholderControllers.Clear();
         }
     }
-    
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("TerrainPlaceholder"))
