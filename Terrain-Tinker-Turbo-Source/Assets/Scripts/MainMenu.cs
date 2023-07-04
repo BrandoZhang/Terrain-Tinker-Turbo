@@ -72,4 +72,23 @@ public class MainMenu : MonoBehaviour
         //Unfreeze vehicles
         GameManager.Instance.FreeVehicles();
     }
+    
+    public void ShowGameControl()
+    {
+        GameManager.Instance.DisplayMenu(GameManager.Instance.getHelpCanvas());
+        
+        //freeze vehicles
+        GameManager.Instance.FreezeVehicles();
+    }
+    
+    public void HideGameControl()
+    {
+        GameManager.Instance.HideMenu(GameManager.Instance.getHelpCanvas());
+        
+        //To inform KeyListener.cs for Menu interaction
+        GameManager.Instance.setBackToGameStatus();
+        
+        //Unfreeze vehicles
+        GameManager.Instance.FreeVehicles();
+    }
 }

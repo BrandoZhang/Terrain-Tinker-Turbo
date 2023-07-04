@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject MenuCanvas;
     public GameObject GameOverCanvas;
+    public GameObject HelpCanvas;
     private bool isCountDown;
     private bool isBackToGameClicked;
     
@@ -130,6 +131,7 @@ public class GameManager : MonoBehaviour
 
         HideMenu(MenuCanvas);
         HideMenu(GameOverCanvas);
+        HideMenu(HelpCanvas);
     }
 
     public void SwitchTrackLibrary()
@@ -468,7 +470,11 @@ public class GameManager : MonoBehaviour
     {
         return GameOverCanvas;
     }
-
+    
+    public GameObject getHelpCanvas()
+    {
+        return HelpCanvas;
+    }
     public void setBackToGameStatus()
     {
         isBackToGameClicked = true;
