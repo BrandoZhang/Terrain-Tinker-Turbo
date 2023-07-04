@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class FinishBlock : MonoBehaviour
 {
     private bool isRaceOver = false;
+    private GameObject GameOverCanvas;
+
+    void Start()
+    {
+        GameOverCanvas = GameManager.Instance.getGameOverCanvas();
+    }
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player1"))
@@ -30,7 +37,7 @@ public class FinishBlock : MonoBehaviour
         //PlayScene2: Once racing ends, show menu to restart or return to menu
         if (/*SceneManager.GetActiveScene().name == "PlayScene2" &&*/ isRaceOver)
         {
-            GameManager.Instance.showEndGameOptions();
+            GameManager.Instance.DisplayMenu(GameOverCanvas);
             
             //Reset
             isRaceOver = false;
