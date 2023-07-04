@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     private int currentPlayer = 1;  // Start with player 1
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
     private int player2BlockCount = 0;  // Number of track blocks placed by player 2
+    // TODO: Does not separate the counting of traffic signs yet. Need to revise the logic of counting, limiting, and UI.
+    private int player1TrafficSignCount = 0;  // Number of traffic signs placed by player 1
+    private int player2TrafficSignCount = 0;  // Number of traffic signs placed by player 2
     public int limit = 3;  // Maximum number of track blocks each player can place
     public List<string> terrainRecord;
     [Header("Game Object")]
@@ -33,12 +36,13 @@ public class GameManager : MonoBehaviour
     public WheelController racer2;  // Reference to the second racer's controller
     public GameObject player1TrackLibrary;  // Reference to the player 1's TrackLibrary
     public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
+    public GameObject player1TrafficSignLibrary;  // Reference to the player 1's TrafficSignLibrary
+    public GameObject player2TrafficSignLibrary;  // Reference to the player 2's TrafficSignLibrary
 
     [Header("UI Settings")]
     public Camera mainCamera;
     public Camera player1Camera;
     public Camera player2Camera;
-    public TrafficUIController trafficUIController;  // Reference to the TrafficUIController
 
     private TextMeshProUGUI[] text;
     private RawImage img;
@@ -118,6 +122,7 @@ public class GameManager : MonoBehaviour
         //}
         // TODO: Duplicate TrackLibrary in script instead of Unity Editor
         player2TrackLibrary.SetActive(false);
+        player2TrafficSignLibrary.SetActive(false);
     }
 
     public void SwitchTrackLibrary()
@@ -126,12 +131,16 @@ public class GameManager : MonoBehaviour
         if (currentPlayer == 1)
         {
             player1TrackLibrary.SetActive(true);
+            player1TrafficSignLibrary.SetActive(true);
             player2TrackLibrary.SetActive(false);
+            player2TrafficSignLibrary.SetActive(false);
         }
         else
         {
             player1TrackLibrary.SetActive(false);
+            player1TrafficSignLibrary.SetActive(false);
             player2TrackLibrary.SetActive(true);
+            player2TrafficSignLibrary.SetActive(true);
         }
     }
 
@@ -185,6 +194,7 @@ public class GameManager : MonoBehaviour
         if (player1BlockCount >= limit && player2BlockCount >= limit)
         {
             player1TrackLibrary.SetActive(false);  // Hide the TrackLibrary when finish editing
+            player1TrafficSignLibrary.SetActive(false);  // Hide the TrafficSignLibrary when finish editing
             tracklibraryText.text = "";
             //TransitionToRacingPhase();
             SetImgEnabled("Player1Turn", false);
@@ -374,6 +384,9 @@ public class GameManager : MonoBehaviour
     public void StartRaceNow()
     {
         player1TrackLibrary.SetActive(false);
+        player1TrafficSignLibrary.SetActive(false);
+        player2TrackLibrary.SetActive(false);
+        player2TrafficSignLibrary.SetActive(false);
         tracklibraryText.text = "";
  
         SetImgEnabled("Player1Turn", false);
