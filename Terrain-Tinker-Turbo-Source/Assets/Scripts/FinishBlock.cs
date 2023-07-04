@@ -7,10 +7,11 @@ public class FinishBlock : MonoBehaviour
 {
     private bool isRaceOver = false;
     private GameObject GameOverCanvas;
-
+    private GameObject MenuCanvas;
     void Start()
     {
         GameOverCanvas = GameManager.Instance.getGameOverCanvas();
+        MenuCanvas = GameManager.Instance.getMenuCanvas();
     }
     
     void OnTriggerEnter(Collider other)
@@ -38,6 +39,7 @@ public class FinishBlock : MonoBehaviour
         if (/*SceneManager.GetActiveScene().name == "PlayScene2" &&*/ isRaceOver)
         {
             GameManager.Instance.DisplayMenu(GameOverCanvas);
+            GameManager.Instance.HideMenu(MenuCanvas);
             
             //Reset
             isRaceOver = false;
