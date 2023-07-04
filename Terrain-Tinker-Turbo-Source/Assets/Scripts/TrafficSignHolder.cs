@@ -14,12 +14,6 @@ public class TrafficSignHolder : MonoBehaviour
         trafficUIController = GameObject.Find("TrafficUIController").GetComponent<TrafficUIController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     public bool CanHoldSign()
     {
         // this block can hold a sign if it doesn't have one
@@ -69,6 +63,8 @@ public class TrafficSignHolder : MonoBehaviour
         Debug.Log("TrafficSignHolder: OnTriggerStay");
         // Return if there's no traffic sign on this block
         if (sign == null) return;
+        // Temp fix, if `Stop` really work, the following line is not needed.
+        if (sign.trafficSignType == TrafficSignType.Stop) return;
         // Hide traffic sign for players
         if (other.gameObject.CompareTag("Player1"))
         {

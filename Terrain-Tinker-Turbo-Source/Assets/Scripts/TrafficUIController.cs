@@ -113,9 +113,9 @@ public class TrafficUIController : MonoBehaviour
             duration -= Time.deltaTime;
             yield return null;
         }
-        timerText.text = "";
 
         // Hide the sign after the countdown is finished
+        timerText.text = "";
         switch (playerNumber)
         {
             case 1:
