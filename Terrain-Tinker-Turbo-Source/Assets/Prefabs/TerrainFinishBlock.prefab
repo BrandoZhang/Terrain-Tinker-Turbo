@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 4780913695775505739}
   - component: {fileID: 4780913695775505736}
   - component: {fileID: 4780913695775505737}
-  - component: {fileID: 312702262912144978}
   - component: {fileID: -573705103912785241}
   - component: {fileID: 8654174032827200911}
   m_Layer: 0
-  m_Name: Destination
+  m_Name: TerrainFinishBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cadfe843797ad4176bbfa9161caeba16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,18 +99,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &312702262912144978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4780913695775505742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-573705103912785241
 MonoBehaviour:
   m_ObjectHideFlags: 0
