@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4646230418307207196}
   - component: {fileID: 4646230418307207197}
   - component: {fileID: -8757953906078008570}
+  - component: {fileID: 6959030289878873058}
+  - component: {fileID: 5097938035060144025}
   m_Layer: 0
   m_Name: TerrainFlat
   m_TagString: TerrainSolid
@@ -110,3 +112,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6959030289878873058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646230418307207194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a74c5975a7efbb429593219c70359cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sign: {fileID: 0}
+  trafficUIController: {fileID: 0}
+--- !u!65 &5097938035060144025
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646230418307207194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
