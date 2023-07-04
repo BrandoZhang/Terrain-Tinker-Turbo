@@ -24,82 +24,82 @@ public class TrafficUIController : MonoBehaviour
 
     private void Start()
     {
-        HideSignPlayer1("Stop");
-        HideSignPlayer2("Stop");
-        HideSignPlayer1("NoLeftTurn");
-        HideSignPlayer2("NoLeftTurn");
-        HideSignPlayer1("NoRightTurn");
-        HideSignPlayer2("NoRightTurn");
+        HideSignPlayer1(TrafficSignType.Stop);
+        HideSignPlayer2(TrafficSignType.Stop);
+        HideSignPlayer1(TrafficSignType.NoLeftTurn);
+        HideSignPlayer2(TrafficSignType.NoLeftTurn);
+        HideSignPlayer1(TrafficSignType.NoRightTurn);
+        HideSignPlayer2(TrafficSignType.NoRightTurn);
     }
 
-    public void HideSignPlayer1(string signType)
+    public void HideSignPlayer1(TrafficSignType signType)
     {
         player1EffectText.text = "";
         switch (signType)
         {
-            case "Stop":
+            case TrafficSignType.Stop:
                 player1StopSignImage.enabled = false;
                 break;
-            case "NoLeftTurn":
+            case TrafficSignType.NoLeftTurn:
                 player1NoLeftTurnImage.enabled = false;
                 break;
-            case "NoRightTurn":
+            case TrafficSignType.NoRightTurn:
                 player1NoRightTurnImage.enabled = false;
                 break;
         }
     }
     
-    public void HideSignPlayer2(string signType)
+    public void HideSignPlayer2(TrafficSignType signType)
     {
         player2EffectText.text = "";
         switch (signType)
         {
-            case "Stop":
+            case TrafficSignType.Stop:
                 player2StopSignImage.enabled = false;
                 break;
-            case "NoLeftTurn":
+            case TrafficSignType.NoLeftTurn:
                 player2NoLeftTurnImage.enabled = false;
                 break;
-            case "NoRightTurn":
+            case TrafficSignType.NoRightTurn:
                 player2NoRightTurnImage.enabled = false;
                 break;
         }
     }
     
-    public void ShowSignPlayer1(string signType)
+    public void ShowSignPlayer1(TrafficSignType signType)
     {
         switch (signType)
         {
-            case "Stop":
+            case TrafficSignType.Stop:
                 player1StopSignImage.enabled = true;
                 StartCoroutine(
                     CountdownAndHideStopSign(stopSignDuration, player1EffectText, 1)
                     );
                 break;
-            case "NoLeftTurn":
+            case TrafficSignType.NoLeftTurn:
                 player1NoLeftTurnImage.enabled = true;
                 break;
-            case "NoRightTurn":
+            case TrafficSignType.NoRightTurn:
                 player1NoRightTurnImage.enabled = true;
                 break;
         }
 
     }
     
-    public void ShowSignPlayer2(string signType)
+    public void ShowSignPlayer2(TrafficSignType signType)
     {
         switch (signType)
         {
-            case "Stop":
+            case TrafficSignType.Stop:
                 player2StopSignImage.enabled = true;
                 StartCoroutine(
                     CountdownAndHideStopSign(stopSignDuration, player2EffectText, 2)
                     );
                 break;
-            case "NoLeftTurn":
+            case TrafficSignType.NoLeftTurn:
                 player2NoLeftTurnImage.enabled = true;
                 break;
-            case "NoRightTurn":
+            case TrafficSignType.NoRightTurn:
                 player2NoRightTurnImage.enabled = true;
                 break;
         }
@@ -119,10 +119,10 @@ public class TrafficUIController : MonoBehaviour
         switch (playerNumber)
         {
             case 1:
-                HideSignPlayer1("Stop");
+                HideSignPlayer1(TrafficSignType.Stop);
                 break;
             case 2:
-                HideSignPlayer2("Stop");
+                HideSignPlayer2(TrafficSignType.Stop);
                 break;
         }
     }
