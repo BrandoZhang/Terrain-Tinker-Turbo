@@ -231,10 +231,10 @@ public class VehicleCamera : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.G))
+        /*if (Input.GetKeyDown(KeyCode.G))
         {
             RestCar();
-        }
+        }*/
 
 
         /*if (Input.GetKeyDown(KeyCode.R))
@@ -243,10 +243,10 @@ public class VehicleCamera : MonoBehaviour
         }*/
 
 
-        if (Input.GetKeyDown(KeyCode.E))
+        /*if (Input.GetKeyDown(KeyCode.E))
         {
             PoliceLightSwitch();
-        }
+        }*/
 
 
         if (restTime!=0.0f)
@@ -261,11 +261,11 @@ public class VehicleCamera : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.C))
+        /*if (Input.GetKeyDown(KeyCode.C))
         {
             Switch++;
             if (Switch > cameraSwitchView.Count) { Switch = 0; }
-        }
+        }*/
 
 
 

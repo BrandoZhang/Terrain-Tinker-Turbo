@@ -20,6 +20,7 @@ public class VehicleControl : MonoBehaviour
     public int playerIndex;  // Player index (1 or 2)
     public Transform startTransform;  // The Transform component where the racer will reset to
     public float minHeightThreshold = 20f;  // It is considered fall out of the Track if y value is less than this
+    public bool controlFlipped = false;  // Flip Control Initially False
     private bool tutorial1Check = false;
     
     // Wheels Setting /////////////////////////////////
@@ -416,6 +417,10 @@ public class VehicleControl : MonoBehaviour
         transform.rotation = startTransform.rotation;  // Reset rotation
     }
 
+    public void FlipControls()
+    {
+        controlFlipped = !controlFlipped;
+    }
 
 
 
@@ -481,14 +486,24 @@ public class VehicleControl : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        float horizontalInput = Input.GetAxis("Horizontal" + (playerIndex == 1 ? "_P1" : "_P2"));
+        float verticalInput = Input.GetAxis("Vertical" + (playerIndex == 1 ? "_P1" : "_P2"));
+        
         // Freeze the racer until it can move
         if (!canMove) return;
+        
         // Check if the vehicle's height is below a certain threshold
         if (transform.position.y < minHeightThreshold) 
         {
             ResetToStart();
         }
+        
+        // If controls are flipped, negate the horizontal input
+        if (controlFlipped)
+        {
+            horizontalInput = -horizontalInput;
+        }
+        
         //Only for Tutorial1 and only when tutorial1Check is false
         if (!tutorial1Check && SceneManager.GetActiveScene().name == "Tutorial1")
         {
@@ -536,8 +551,8 @@ public class VehicleControl : MonoBehaviour
 
                 if (carWheels.wheels.frontWheelDrive || carWheels.wheels.backWheelDrive)
                 {
-                    steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal" + (playerIndex == 1 ? "_P1" : "_P2")), 0.2f);
-                    accel = Input.GetAxis("Vertical" + (playerIndex == 1 ? "_P1" : "_P2"));
+                    steer = Mathf.MoveTowards(steer, horizontalInput, 0.2f);
+                    accel = verticalInput;
                     brake = Input.GetButton("Jump");
                     shift = Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift);
 
@@ -826,7 +841,7 @@ public class VehicleControl : MonoBehaviour
             Vector3 lp = w.wheel.localPosition;
 
 
-            if (col.GetGroundHit(out hit))
+            /*if (col.GetGroundHit(out hit))
             {
 
 
@@ -932,7 +947,7 @@ public class VehicleControl : MonoBehaviour
 
                 myRigidbody.AddForce(Vector3.down * 5000);
 
-            }
+            }*/
 
             currentWheel++;
             w.wheel.localPosition = lp;
