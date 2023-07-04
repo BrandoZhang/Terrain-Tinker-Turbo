@@ -21,6 +21,7 @@ public class RaceKeyListener : MonoBehaviour
     {
         bool isGameCountingDown = GameManager.Instance.getCountDownStatus();
         bool isRacing = GameManager.Instance.getRacingStatus();
+        bool isGameOver = GameManager.Instance.getGameOverStatus();
         
         //Check if Player clicked BackToGame in menu before
         if (GameManager.Instance.getBackToGameStatus())
@@ -38,7 +39,7 @@ public class RaceKeyListener : MonoBehaviour
         }
         
         //Pressing 'M' to display menu
-        if (!isMenuShown && !isGameCountingDown && Input.GetKeyDown(KeyCode.M))
+        if (!isMenuShown && !isGameCountingDown && !isGameOver && Input.GetKeyDown(KeyCode.M))
         {
             isMenuShown = true;
             GameManager.Instance.DisplayMenu(MenuCanvas);
