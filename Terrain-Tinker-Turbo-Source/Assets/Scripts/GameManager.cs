@@ -422,7 +422,7 @@ public class GameManager : MonoBehaviour
     
     private void PostToDatabase(StatManager stats)
     {
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version6_25.json", stats);
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version7_6.json", stats);
     }
 
     private string getCurrScene()
