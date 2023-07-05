@@ -70,7 +70,10 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.setBackToGameStatus();
         
         //Unfreeze vehicles
-        GameManager.Instance.FreeVehicles();
+        if (GameManager.Instance.getRacingStatus())
+        {
+            GameManager.Instance.FreeVehicles();
+        }
     }
     
     public void ShowGameControl()
@@ -89,6 +92,9 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.setBackToGameStatus();
         
         //Unfreeze vehicles
-        GameManager.Instance.FreeVehicles();
+        if (GameManager.Instance.getRacingStatus())
+        {
+            GameManager.Instance.FreeVehicles();
+        }
     }
 }
