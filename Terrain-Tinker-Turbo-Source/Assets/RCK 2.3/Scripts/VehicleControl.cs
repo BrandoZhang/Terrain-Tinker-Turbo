@@ -490,7 +490,11 @@ public class VehicleControl : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical" + (playerIndex == 1 ? "_P1" : "_P2"));
         
         // Freeze the racer until it can move
-        if (!canMove) return;
+        if (!canMove)
+        {
+            myRigidbody.velocity = Vector3.zero;
+            return;
+        }
         
         // Check if the vehicle's height is below a certain threshold
         if (transform.position.y < minHeightThreshold) 
