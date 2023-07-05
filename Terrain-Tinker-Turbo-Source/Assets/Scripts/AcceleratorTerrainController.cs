@@ -10,7 +10,7 @@ public class AcceleratorTerrainController : MonoBehaviour
     public float translationOffset = 5;
     
     // This function is called when an vehicle enters the terrain's collider.
-    void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         Debug.Log("Accelerator Triggered");
         // Check if the other object is a racer (player1 or player2).
@@ -18,10 +18,10 @@ public class AcceleratorTerrainController : MonoBehaviour
         if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
         {
             // Get the Rigidbody component of the racer.
-            Rigidbody racerRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            Rigidbody racerRigidbody = other.GetComponentInParent<Rigidbody>();
 
             // Apply a force to the racer in the direction of acceleration.
-            if (racerRigidbody.GetComponent<RacerController>() != null)
+            if (racerRigidbody.GetComponent<VehicleControl>() != null)
             {
                 racerRigidbody.AddForce(accelerationDirection * accelerationStrength, ForceMode.Force);
             }
