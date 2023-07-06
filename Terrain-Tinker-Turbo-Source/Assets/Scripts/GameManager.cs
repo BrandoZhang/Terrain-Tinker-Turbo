@@ -317,7 +317,7 @@ public class GameManager : MonoBehaviour
         }
         
         //Freeze position after reaching finish line
-        racer1.canMove = false;
+        // racer1.canMove = false;
         ResetAnalytics();
     }
 
@@ -335,7 +335,7 @@ public class GameManager : MonoBehaviour
         }
         
         //Freeze position after reaching finish line
-        racer2.canMove = false;
+        // racer2.canMove = false;
     }
 
     IEnumerator Countdown()
