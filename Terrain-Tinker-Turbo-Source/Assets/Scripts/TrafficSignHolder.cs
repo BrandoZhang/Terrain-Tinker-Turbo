@@ -31,12 +31,14 @@ public class TrafficSignHolder : MonoBehaviour
         if (other.gameObject.CompareTag("Player1"))
         {
             trafficUIController.ShowSignPlayer1(sign.trafficSignType);
-            sign.PerformFunction();
+            VehicleControl racer = other.gameObject.GetComponentInParent<VehicleControl>();
+            sign.PerformStartFunction(racer);
         }
         else if (other.gameObject.CompareTag("Player2"))
         {
             trafficUIController.ShowSignPlayer2(sign.trafficSignType);
-            sign.PerformFunction();
+            VehicleControl racer = other.gameObject.GetComponentInParent<VehicleControl>();
+            sign.PerformStartFunction(racer);
         }
     }
 
@@ -49,12 +51,14 @@ public class TrafficSignHolder : MonoBehaviour
         if (other.gameObject.CompareTag("Player1"))
         {
             trafficUIController.ShowSignPlayer1(sign.trafficSignType);
-            sign.PerformFunction();
+            VehicleControl racer = other.GetComponentInParent<VehicleControl>();
+            sign.PerformStartFunction(racer);
         }
         else if (other.gameObject.CompareTag("Player2"))
         {
             trafficUIController.ShowSignPlayer2(sign.trafficSignType);
-            sign.PerformFunction();
+            VehicleControl racer = other.GetComponentInParent<VehicleControl>();
+            sign.PerformStartFunction(racer);
         }
     }
 
@@ -69,10 +73,14 @@ public class TrafficSignHolder : MonoBehaviour
         if (other.gameObject.CompareTag("Player1"))
         {
             trafficUIController.HideSignPlayer1(sign.trafficSignType);
+            VehicleControl racer = other.GetComponentInParent<VehicleControl>();
+            sign.PerformExitFunction(racer);
         }
         else if (other.gameObject.CompareTag("Player2"))
         {
             trafficUIController.HideSignPlayer2(sign.trafficSignType);
+            VehicleControl racer = other.GetComponentInParent<VehicleControl>();
+            sign.PerformExitFunction(racer);
         }
     }
 }

@@ -22,7 +22,7 @@ public class VehicleControl : MonoBehaviour
     public float minHeightThreshold = 20f;  // It is considered fall out of the Track if y value is less than this
     public bool controlFlipped = false;  // Flip Control Initially False
     private bool tutorial1Check = false;
-    
+
     // Wheels Setting /////////////////////////////////
 
     public CarWheels carWheels;
@@ -490,7 +490,11 @@ public class VehicleControl : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical" + (playerIndex == 1 ? "_P1" : "_P2"));
         
         // Freeze the racer until it can move
-        if (!canMove) return;
+        if (!canMove)
+        {
+            myRigidbody.velocity = Vector3.zero;
+            return;
+        }
         
         // Check if the vehicle's height is below a certain threshold
         if (transform.position.y < minHeightThreshold) 
@@ -1077,6 +1081,12 @@ public class VehicleControl : MonoBehaviour
 
     }
 
+    public IEnumerator FreezeCarForSeconds(float seconds)
+    {
+        canMove = false;
+        yield return new WaitForSeconds(seconds);
+        canMove = true;
+    }
 
 
 
