@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TouchScript.Behaviors;
 using UnityEngine;
 using TouchScript.Gestures;
 using TouchScript.Gestures.TransformGestures;
@@ -71,7 +72,7 @@ public class TerrainSolidController : MonoBehaviour
 
     private void TransformCompletedHandler(object sender, EventArgs e)
     {
-                if (isOnTrack && GameManager.Instance.CanPlaceBlock() && placeholderControllers.Count > 0)
+        if (isOnTrack && GameManager.Instance.CanPlaceBlock() && placeholderControllers.Count > 0)
         {
             // Find the closest TerrainPlaceholder
             TerrainPlaceholderController closestPlaceholderController = null;
@@ -114,7 +115,25 @@ public class TerrainSolidController : MonoBehaviour
 
             // Clear the list of TerrainPlaceholders
             placeholderControllers.Clear();
+            
+            // After aligning the block to the placeholder, disable its Transformer and TransformGesture component.
+            Transformer transformer = GetComponent<Transformer>();
+            TransformGesture transformGesture = GetComponent<TransformGesture>();
+            if (transformer != null)
+            {
+                transformer.enabled = false;
+            }
+            if (transformGesture != null)
+            {
+                transformGesture.enabled = false;
+            }
         }
+        else
+        {
+            // If the block is not on track, reset its position to the original position.
+            transform.position = originalPosition;
+        }
+
     }
 
     void OnTriggerEnter(Collider other)
