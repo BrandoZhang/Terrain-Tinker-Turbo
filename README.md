@@ -42,8 +42,10 @@
 ```
 
 ## Reference
-- [Unity Assets- Lowpoly Terrain Track](https://assetstore.unity.com/packages/3d/environments/roadways/lowpoly-terrain-track-165394)
+- [Unity Assets- Lowpoly Terrain Track](https://assetstore.unity.com/packages/3d/environments/roadways/lowpoly-terrain-track-165394): Assets to build terrain quickly.
 
-- [Unity Assets - Lowpoly Track Snow](https://assetstore.unity.com/packages/3d/environments/roadways/lowpoly-track-snow-178503)
+- [Realistic Car Kit 2](https://assetstore.unity.com/packages/tools/physics/realistic-car-kit-18421): Assets to implement vehicle control.
 
-- [Unity Assets - Lowpoly Track Lava](https://assetstore.unity.com/packages/3d/environments/roadways/lowpoly-track-lava-177759)
+- [Unity Assets - US Road Signs Free](https://assetstore.unity.com/packages/3d/props/exterior/us-road-signs-free-164941): Models of traffic signs.
+
+- [TouchScript](https://github.com/TouchScript/TouchScript): Assets to reimplement drag-and-drop function.
