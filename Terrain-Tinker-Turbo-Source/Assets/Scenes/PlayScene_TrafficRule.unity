@@ -1326,10 +1326,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerrainL-shaped
       objectReference: {fileID: 0}
-    - target: {fileID: 2169580464539840370, guid: da7d8e99ca03af44bb12f89d2b62b9a3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2169580464539840371, guid: da7d8e99ca03af44bb12f89d2b62b9a3, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4953,21 +4949,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 378656082}
     m_Modifications:
-    - target: {fileID: 1441052022, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4646230418307207194, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
       propertyPath: m_Name
       value: TerrainFlat
-      objectReference: {fileID: 0}
-    - target: {fileID: 4646230418307207197, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4646230418307207197, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4646230418307207198, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
       propertyPath: m_RootOrder
@@ -5013,8 +4997,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5097938035060144025, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
 --- !u!1 &1356559379
 GameObject:
