@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a80fc85515ec24492a9b0077132abb, type: 3}
+  m_Name: LowLevelObjects Sample Build Condition SO
+  m_EditorClassIdentifier: 
+  tooltipContent: 'Consume Metal 5
+
+    Consume Wood 5'
+  foodAmount: 0
+  consumeFoodOnBuild: 0
+  metalAmount: 5
+  consumeMetalOnBuild: 1
+  woodAmount: 5
+  consumeWoodOnBuild: 1

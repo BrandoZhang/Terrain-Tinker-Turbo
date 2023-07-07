@@ -1,0 +1,273 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b1132185751ed43b813b08cdfd3191, type: 3}
+  m_Name: Default KeyBoard  - Easy Grid Builder Pro Inputs SO
+  m_EditorClassIdentifier: 
+  gridModeResetKey:
+    m_Name: Grid Mode Reset Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1ffcd137-ef1f-4ebd-b2eb-45d7974bacab
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a70ee01a-c940-4f92-ae7a-5e6928f96980
+      m_Path: <Mouse>/rightButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Grid Mode Reset Key
+      m_Flags: 0
+    m_Flags: 0
+  gridHeightChangeKey:
+    m_Name: Grid Height Change Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e18f5d51-3b17-4574-888a-9cc34cb9fa7a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 60b82fd3-fe74-47b3-8eda-d95fbba6681b
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Grid Height Change Key
+      m_Flags: 0
+    m_Flags: 0
+  useBuildModeActivationKey: 1
+  buildModeActivationKey:
+    m_Name: Build Mode Activation Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 29f9c6e2-ab3f-483c-976a-5692a7022c3c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 114b32b9-5c98-4850-8d1c-f714200756e8
+      m_Path: <Keyboard>/r
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Build Mode Activation Key
+      m_Flags: 0
+    m_Flags: 0
+  buildablePlacementKey:
+    m_Name: Buildable Placement Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f9b9a329-ce4d-4719-ab88-21180c818217
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1bda8bcc-6977-4db2-a77c-12dee799099b
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Buildable Placement Key
+      m_Flags: 0
+    m_Flags: 0
+  buildableListScrollKey:
+    m_Name: Buildable List Scroll Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fca4994f-c81e-4005-bc09-daf7c492f28b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5e96423e-e062-4992-a7e7-ae22051d1011
+      m_Path: <Mouse>/scroll
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Buildable List Scroll Key
+      m_Flags: 0
+    m_Flags: 0
+  ghostRotateLeftKey:
+    m_Name: Ghost Rotate Left Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b892b1bf-00a1-42d8-beb6-cfcda4a7b367
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: be73c9d8-f80b-457d-b4e9-159b363d38c1
+      m_Path: <Keyboard>/z
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ghost Rotate Left Key
+      m_Flags: 0
+    m_Flags: 0
+  ghostRotateRightKey:
+    m_Name: Ghost Rotate Right Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8fab9a67-c36c-44d1-9f99-c79548ce0df3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 280f834a-3990-49ee-81e9-d4d0e55ec318
+      m_Path: <Keyboard>/x
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ghost Rotate Right Key
+      m_Flags: 0
+    m_Flags: 0
+  useDestructionModeActivationKey: 1
+  destructionModeActivationKey:
+    m_Name: Destruction Mode Activation Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7c6395bc-bd99-4dce-b76d-2775850055ec
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 98825a41-bf61-4a3b-a2fe-31076b3df981
+      m_Path: <Keyboard>/t
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Destruction Mode Activation Key
+      m_Flags: 0
+    m_Flags: 0
+  buildableDestroyKey:
+    m_Name: Buildable Destroy Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b80b0bfe-237f-493b-a247-ac21352c95ff
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ef749a24-4d13-46d1-84ef-377d00344c30
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Buildable Destroy Key
+      m_Flags: 0
+    m_Flags: 0
+  useSelectionModeActivationKey: 1
+  selectionModeActivationKey:
+    m_Name: Selection Mode Activation Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 146a082d-3410-44fc-ad41-7907eb73d193
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a3740e40-b3ee-44ba-8276-f8f4ed6a9d2b
+      m_Path: <Keyboard>/y
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Selection Mode Activation Key
+      m_Flags: 0
+    m_Flags: 0
+  buildableSelectionKey:
+    m_Name: Buildable Selection Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d661ffd6-9948-4d75-a861-b5f1741c8a2b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 9c771a21-b9c7-4957-8e15-f503614503ff
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Buildable Selection Key
+      m_Flags: 0
+    m_Flags: 0
+  useMoveModeActivationKey: 1
+  moveModeActivationKey:
+    m_Name: Move Mode Activation Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b572a271-87fb-429c-b8f7-98a1dbe55229
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b38cc68f-0c89-487c-be7b-aeea44d53e09
+      m_Path: <Keyboard>/u
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Mode Activation Key
+      m_Flags: 0
+    m_Flags: 0
+  buildableMoveKey:
+    m_Name: Buildable Move Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c7949b7a-f44f-4b53-9f2d-82deae062c13
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a4c62cd0-ef5c-425f-80fb-487b146d0967
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Buildable Move Key
+      m_Flags: 0
+    m_Flags: 0
+  gridSaveKey:
+    m_Name: Grid Save Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f39017b8-8698-4fa2-97a1-d4a069181aa3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 3c990019-09ab-42f9-98da-7a0644934640
+      m_Path: <Keyboard>/o
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Grid Save Key
+      m_Flags: 0
+    m_Flags: 0
+  gridLoadKey:
+    m_Name: Grid Load Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1d4819cc-54b1-4a28-8bbd-874aa9e9137f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 3ce424b5-59f7-4724-b3da-1e4056bdb901
+      m_Path: <Keyboard>/p
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Grid Load Key
+      m_Flags: 0
+    m_Flags: 0
