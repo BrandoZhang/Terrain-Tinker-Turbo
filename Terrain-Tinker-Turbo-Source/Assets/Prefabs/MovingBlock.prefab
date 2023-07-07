@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8617532316795681154}
   - component: {fileID: 8617532316795681155}
   - component: {fileID: 8617532316795681152}
-  - component: {fileID: 8617532316795681158}
   m_Layer: 0
   m_Name: MovingBlock
   m_TagString: Untagged
@@ -133,18 +132,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &8617532316795681158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8617532316795681278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8617532318128099949
 GameObject:
   m_ObjectHideFlags: 0
