@@ -22,6 +22,9 @@ public class TrafficSignHolder : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Functions only work in racing phase.
+        if (!GameManager.Instance.isRacing) return;
+
         Debug.Log("TrafficSignHolder: OnTriggerEnter");
         // Return if there's no traffic sign on this block
         if (sign == null) return;
@@ -42,6 +45,9 @@ public class TrafficSignHolder : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        // Functions only work in racing phase.
+        if (!GameManager.Instance.isRacing) return;
+
         Debug.Log("TrafficSignHolder: OnTriggerStay");
         // Return if there's no traffic sign on this block
         if (sign == null) return;
@@ -60,6 +66,9 @@ public class TrafficSignHolder : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        // Functions only work in racing phase.
+        if (!GameManager.Instance.isRacing) return;
+
         Debug.Log("TrafficSignHolder: OnTriggerStay");
         // Return if there's no traffic sign on this block
         if (sign == null) return;
