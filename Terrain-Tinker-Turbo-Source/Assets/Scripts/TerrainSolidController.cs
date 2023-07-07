@@ -93,7 +93,7 @@ public class TerrainSolidController : MonoBehaviour
                 // Align with the closest TerrainPlaceholder
                 GameObject objectToMove = transform.CompareTag("TerrainSolid") ? gameObject : transform.parent.gameObject;
                 objectToMove.transform.position = closestPlaceholderController.gameObject.transform.position;
-
+                
                 // Set the closest TerrainPlaceholder to occupied
                 closestPlaceholderController.setToOccupied();
 
@@ -101,7 +101,7 @@ public class TerrainSolidController : MonoBehaviour
                 objectToMove.transform.parent = GameObject.Find("Track").transform;
                 // Mark current player has placed a block and switch to the other player
                 GameManager.Instance.BlockPlaced();
-                GameManager.Instance.AddTerrainData(gameObject.name);
+                GameManager.Instance.AddTerrainData(gameObject.name, objectToMove.transform.position, objectToMove.transform.rotation);
             }
 
             // Reset other TerrainPlaceholders

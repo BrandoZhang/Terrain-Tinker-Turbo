@@ -37,7 +37,6 @@ public class RaceKeyListener : MonoBehaviour
         {
             isActivated = true;
             GameManager.Instance.StartRaceNow();
-            GameManager.Instance.StartEarly();
 
         }
         

@@ -8,6 +8,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
+using Newtonsoft.Json;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -28,7 +30,6 @@ public class GameManager : MonoBehaviour
     private int player1TrafficSignCount = 0;  // Number of traffic signs placed by player 1
     private int player2TrafficSignCount = 0;  // Number of traffic signs placed by player 2
     public int limit = 3;  // Maximum number of track blocks each player can place
-    public List<string> terrainRecord;
     [Header("Game Object")]
     public GameObject track;  // Reference to the Track GameObject
     private Rigidbody trackRigidbody;  // Reference to the Rigidbody on the Track GameObject
@@ -39,9 +40,9 @@ public class GameManager : MonoBehaviour
     public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
     public GameObject player1TrafficSignLibrary;  // Reference to the player 1's TrafficSignLibrary
     public GameObject player2TrafficSignLibrary;  // Reference to the player 2's TrafficSignLibrary
-
-    private bool startEarly = false;
-    private int sessionID;
+    
+    public List<TerrData> terrainData = new List<TerrData>();
+    private int turnIndex = 0;
 
     [Header("UI Settings")]
     public Camera mainCamera;
@@ -420,9 +421,10 @@ public class GameManager : MonoBehaviour
     
     private void PostToDatabase(string winnerPlayer)
     {
-        StatManager winner = new StatManager(winnerPlayer, getCurrScene(), terrainRecord, startEarly);
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version7_6.json", winner);
-        ResetAnalytics();
+        string convertedTerrainData = JsonConvert.SerializeObject(terrainData);
+        Debug.Log("Here is the converted data: " + convertedTerrainData);
+        StatManager winner = new StatManager(winnerPlayer, getCurrScene(), convertedTerrainData);
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/test.json", winner);
     }
 
     private string getCurrScene()
@@ -432,22 +434,14 @@ public class GameManager : MonoBehaviour
         return currSceneName;
     }
 
-    public void AddTerrainData(string terrain)
+    public void AddTerrainData(string terrainName, Vector3 position, Quaternion rotation)
     {
-        terrainRecord.Add(terrain);
+        List<float> posInfo = new List<float> { position.x, position.y, position.z };
+        List<float> rotInfo = new List<float> { rotation.x, rotation.y, rotation.z };
+        terrainData.Add(new TerrData{Terrain = terrainName, Position = posInfo, Rotation = rotInfo, PlayerNum = 3- currentPlayer});
+        turnIndex++;
     }
     
-    public void StartEarly()
-    {
-        if (SceneManager.GetActiveScene().name != "Tutorial1")
-        {
-            startEarly = !startEarly;
-        }
-    }
-    private void ResetAnalytics()
-    {
-        startEarly = false;
-    }
 
     public void HideMenu(GameObject obj)
     {
@@ -510,4 +504,11 @@ public class GameManager : MonoBehaviour
         return isRacing;
     }
     
+    public class TerrData
+    {
+        public string Terrain;
+        public List<float> Position;
+        public List<float> Rotation;
+        public int PlayerNum;
+    }
 }
