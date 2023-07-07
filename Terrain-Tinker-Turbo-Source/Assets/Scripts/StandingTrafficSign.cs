@@ -26,13 +26,18 @@ public class StandingTrafficSign : MonoBehaviour
                 racer.StartCoroutine(racer.FreezeCarForSeconds(5));
                 break;
             case TrafficSignType.NoLeftTurn:
-                Debug.Log("No left turn sign function performed!");
+                //Debug.Log("No left turn sign function performed!");
                 if (racer != null)
                 {
+                    racer.canTurnLeft = false;
                 }
                 break;
             case TrafficSignType.NoRightTurn:
-                Debug.Log("No right turn sign function performed!");
+                //Debug.Log("No right turn sign function performed!");
+                if (racer != null)
+                {
+                    racer.canTurnRight = false;
+                }
                 break;
         }
     }
@@ -46,15 +51,18 @@ public class StandingTrafficSign : MonoBehaviour
                 Debug.Log("Stop sign function performed!");
                 break;
             case TrafficSignType.NoLeftTurn:
-                Debug.Log("No left turn sign function performed!");
+                //Debug.Log("No left turn sign function performed!");
                 if (racer != null)
                 {
-                    racer.controlFlipped = false;
+                    racer.canTurnLeft = true;
                 }
                 break;
             case TrafficSignType.NoRightTurn:
-                Debug.Log("No right turn sign function performed!");
-                // TODO: Add no right turn sign function implementation here
+                //Debug.Log("No right turn sign function performed!");
+                if (racer != null)
+                {
+                    racer.canTurnRight = true;
+                }
                 break;
         }
     }

@@ -17,6 +17,8 @@ public class VehicleControl : MonoBehaviour
     public bool activeControl = false;
 
     public bool canMove = true;
+    public bool canTurnLeft = true;
+    public bool canTurnRight = true;
     public int playerIndex;  // Player index (1 or 2)
     public Transform startTransform;  // The Transform component where the racer will reset to
     public float minHeightThreshold = 20f;  // It is considered fall out of the Track if y value is less than this
@@ -555,6 +557,16 @@ public class VehicleControl : MonoBehaviour
 
                 if (carWheels.wheels.frontWheelDrive || carWheels.wheels.backWheelDrive)
                 {
+                    // Check if car can turn left
+                    if (horizontalInput < 0 && !canTurnLeft) // When received a key input of left, prevent it
+                    {
+                        horizontalInput = 0;
+                    }
+                    // Check if car can turn right
+                    if (horizontalInput > 0 && !canTurnRight) // When received a key input of right, prevent it
+                    {
+                        horizontalInput = 0;
+                    }
                     steer = Mathf.MoveTowards(steer, horizontalInput, 0.2f);
                     accel = verticalInput;
                     brake = Input.GetButton("Jump");
