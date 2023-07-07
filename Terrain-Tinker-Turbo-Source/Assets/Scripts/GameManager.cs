@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public GameObject player2TrafficSignLibrary;  // Reference to the player 2's TrafficSignLibrary
 
     private bool startEarly = false;
+    private int sessionID;
 
     [Header("UI Settings")]
     public Camera mainCamera;
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviour
         mainCamera.enabled = true;
         player1Camera.enabled = false;
         player2Camera.enabled = false;
+        
         
         // Adjust player camera viewports for split screen
         player1Camera.rect = new Rect(0, 0, 0.5f, 1);
@@ -311,14 +313,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player1", getCurrScene(), terrainRecord, startEarly);
-            PostToDatabase(winner);
+            PostToDatabase("Player1");
             Debug.Log("Player1 wins RECORDED");
         }
         
         //Freeze position after reaching finish line
         // racer1.canMove = false;
-        ResetAnalytics();
     }
 
     public void Player2Finished()
@@ -328,10 +328,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player2", getCurrScene(), terrainRecord, startEarly);
-            PostToDatabase(winner);
+            PostToDatabase("Player2");
             Debug.Log("Player2 wins RECORDED");
-            ResetAnalytics();
         }
         
         //Freeze position after reaching finish line
@@ -420,9 +418,11 @@ public class GameManager : MonoBehaviour
         return gameOver;
     }
     
-    private void PostToDatabase(StatManager stats)
+    private void PostToDatabase(string winnerPlayer)
     {
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version7_6.json", stats);
+        StatManager winner = new StatManager(winnerPlayer, getCurrScene(), terrainRecord, startEarly);
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version7_6.json", winner);
+        ResetAnalytics();
     }
 
     private string getCurrScene()
