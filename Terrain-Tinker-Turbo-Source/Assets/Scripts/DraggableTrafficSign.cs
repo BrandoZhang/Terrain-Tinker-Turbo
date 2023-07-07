@@ -31,7 +31,7 @@ public class DraggableTrafficSign : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("DraggableTrafficSign: OnTriggerEnter!");
+        // Debug.Log("DraggableTrafficSign: OnTriggerEnter!");
         TrafficSignHolder holder = other.GetComponent<TrafficSignHolder>();
         if (holder != null && holder.CanHoldSign())
         {
@@ -41,7 +41,7 @@ public class DraggableTrafficSign : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("DraggableTrafficSign: OnTriggerExit!");
+        // Debug.Log("DraggableTrafficSign: OnTriggerExit!");
         TrafficSignHolder holder = other.GetComponent<TrafficSignHolder>();
         if (holder != null)
         {
@@ -51,7 +51,7 @@ public class DraggableTrafficSign : MonoBehaviour
 
     private void TransformCompletedHandler(object sender, EventArgs e)
     {
-        Debug.Log("Transform Completed!");
+        // Debug.Log("Transform Completed!");
         if (collidedHolders.Count > 0)
         {
             // Find the closest holder
@@ -75,10 +75,12 @@ public class DraggableTrafficSign : MonoBehaviour
             trafficSign3D.transform.parent = closestHolder.transform;
             // Configures the real component that performs traffic rule functions 
             closestHolder.sign = trafficSign3D.GetComponent<StandingTrafficSign>();  
-            Debug.Log("Created traffic sign 3D prefab at location: " + trafficSign3D.transform.position);
+            // Debug.Log("Created traffic sign 3D prefab at location: " + trafficSign3D.transform.position);
             
             // Destroy current gameObject
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            transform.parent = closestHolder.transform;
+            transform.GetComponent<Collider>().enabled = false;
         }
         else
         {
@@ -88,5 +90,13 @@ public class DraggableTrafficSign : MonoBehaviour
 
         // Clear the list of collided holders
         collidedHolders.Clear();
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.isRacing)
+        {
+            Destroy(gameObject);
+        }
     }
 }
