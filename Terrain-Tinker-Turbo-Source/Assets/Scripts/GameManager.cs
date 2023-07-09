@@ -434,7 +434,7 @@ public class GameManager : MonoBehaviour
         string convertedP1 = JsonConvert.SerializeObject(p1Reset);
         string convertedP2 = JsonConvert.SerializeObject(p2Reset);
         StatManager winner = new StatManager(winnerPlayer, getCurrScene(), convertedTerrainData, convertedP1, convertedP2);
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/BetaTest.json", winner);
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Beta.json", winner);
     }
 
     private string getCurrScene()
