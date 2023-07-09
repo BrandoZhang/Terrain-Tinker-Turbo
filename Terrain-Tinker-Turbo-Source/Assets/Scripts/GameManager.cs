@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
     public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
     public GameObject player1TrafficSignLibrary;  // Reference to the player 1's TrafficSignLibrary
     public GameObject player2TrafficSignLibrary;  // Reference to the player 2's TrafficSignLibrary
+    public GameObject player1DeactivePlane;  // Reference to the player 1's Grey Plane
+    public GameObject player2DeactivePlane;  // Reference to the player 2's Grey Plane
     
     public List<TerrData> terrainData = new List<TerrData>();
     public int player1Reset = 0;
@@ -118,6 +121,7 @@ public class GameManager : MonoBehaviour
              SetTextEnabled("TrackLibraryText", false);
              SetImgEnabled("RaceStart", false);
              SetTextEnabled("Tutorial1Text", true); // Disable instruction in tutorial 1
+             player1DeactivePlane.SetActive(false);
              //StartCoroutine(Countdown());
         }
         else
@@ -125,6 +129,7 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("Player1Turn", true);
             SetImgEnabled("Player2Turn", false);
             SetImgEnabled("RaceStart", false);
+            player2DeactivePlane.SetActive(true);
         }
         
         SetTextEnabled("TrackLibraryText", false);
@@ -141,8 +146,8 @@ public class GameManager : MonoBehaviour
         }*/
         
         // TODO: Duplicate TrackLibrary in script instead of Unity Editor
-        player2TrackLibrary.SetActive(false);
-        player2TrafficSignLibrary.SetActive(false);
+        //player2TrackLibrary.SetActive(false);
+        //player2TrafficSignLibrary.SetActive(false);
 
         HideMenu(MenuCanvas);
         HideMenu(GameOverCanvas);
@@ -154,17 +159,21 @@ public class GameManager : MonoBehaviour
         tracklibraryText.text = "Player " + currentPlayer + "'s Track Library";
         if (currentPlayer == 1)
         {
-            player1TrackLibrary.SetActive(true);
-            player1TrafficSignLibrary.SetActive(true);
-            player2TrackLibrary.SetActive(false);
-            player2TrafficSignLibrary.SetActive(false);
+            //player1TrackLibrary.SetActive(true);
+            //player1TrafficSignLibrary.SetActive(true);
+            //player2TrackLibrary.SetActive(false);
+            //player2TrafficSignLibrary.SetActive(false);
+            player1DeactivePlane.SetActive(false);
+            player2DeactivePlane.SetActive(true);
         }
         else
         {
-            player1TrackLibrary.SetActive(false);
-            player1TrafficSignLibrary.SetActive(false);
-            player2TrackLibrary.SetActive(true);
-            player2TrafficSignLibrary.SetActive(true);
+            //player1TrackLibrary.SetActive(false);
+            //player1TrafficSignLibrary.SetActive(false);
+            //player2TrackLibrary.SetActive(true);
+            //player2TrafficSignLibrary.SetActive(true);
+            player1DeactivePlane.SetActive(true);
+            player2DeactivePlane.SetActive(false);
         }
     }
 
@@ -219,6 +228,10 @@ public class GameManager : MonoBehaviour
         {
             player1TrackLibrary.SetActive(false);  // Hide the TrackLibrary when finish editing
             player1TrafficSignLibrary.SetActive(false);  // Hide the TrafficSignLibrary when finish editing
+            player2TrackLibrary.SetActive(false); 
+            player2TrafficSignLibrary.SetActive(false);  
+            player1DeactivePlane.SetActive(false);  
+            player2DeactivePlane.SetActive(false);  
             tracklibraryText.text = "";
             //TransitionToRacingPhase();
             SetImgEnabled("Player1Turn", false);
@@ -238,26 +251,7 @@ public class GameManager : MonoBehaviour
         countdownText.gameObject.SetActive(false);
         countdownText.enabled = false;
 
-        if (SceneManager.GetActiveScene().name == "Tutorial2")
-        {
-            SetTextEnabled("Instruction", false);
-            SetTextEnabled("FinishLine", false);
-            
-            SetImgEnabled("DragnDrop", false);
-        }
         
-        if (SceneManager.GetActiveScene().name == "Tutorial3")
-        {
-            SetTextEnabled("RotateInstruction", false);
-            SetTextEnabled("FinishLine", false);
-            
-            SetImgEnabled("RotateImg", false);
-        }
-        
-        if (SceneManager.GetActiveScene().name == "Tutorial4")
-        {
-            SetTextEnabled("MessInstruction", false);
-        }
         
         if (SceneManager.GetActiveScene().name == "PlayScene2")
         {
@@ -360,6 +354,27 @@ public class GameManager : MonoBehaviour
             SetTextEnabled("Tutorial1Text", false);
             SetImgEnabled("PlayerInfoImg", false);
         }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial2")
+        {
+            SetTextEnabled("Instruction", false);
+            SetTextEnabled("FinishLine", false);
+            
+            SetImgEnabled("DragnDrop", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial3")
+        {
+            SetTextEnabled("RotateInstruction", false);
+            SetTextEnabled("FinishLine", false);
+            
+            SetImgEnabled("RotateImg", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial4")
+        {
+            SetTextEnabled("MessInstruction", false);
+        }
 
         isCountDown = true;
         
@@ -411,6 +426,8 @@ public class GameManager : MonoBehaviour
         player1TrafficSignLibrary.SetActive(false);
         player2TrackLibrary.SetActive(false);
         player2TrafficSignLibrary.SetActive(false);
+        player1DeactivePlane.SetActive(false);
+        player2DeactivePlane.SetActive(false);
         tracklibraryText.text = "";
  
         SetImgEnabled("Player1Turn", false);
