@@ -53,6 +53,8 @@ public class TrafficSignHolder : MonoBehaviour
         Debug.Log("TrafficSignHolder: OnTriggerStay");
         // Return if there's no traffic sign on this block
         if (sign == null) return;
+        // Note: `Stop` sign should not use this event API.
+        if (sign.trafficSignType == TrafficSignType.Stop) return;
         // Perform traffic sign function on players
         if (other.gameObject.CompareTag("Player1"))
         {
