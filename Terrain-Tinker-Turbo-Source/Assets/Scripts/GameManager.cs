@@ -42,7 +42,12 @@ public class GameManager : MonoBehaviour
     public GameObject player2TrafficSignLibrary;  // Reference to the player 2's TrafficSignLibrary
     
     public List<TerrData> terrainData = new List<TerrData>();
-    private int turnIndex = 0;
+    public int player1Reset = 0;
+    public int player2Reset = 0;
+    public List<List<float>> player1ResetPos = new List<List<float>>();
+    public List<List<float>> player2ResetPos = new List<List<float>>();
+    public List<float> player1Speed = new List<float>();
+    public List<float> player2Speed = new List<float>();
 
     [Header("UI Settings")]
     public Camera mainCamera;
@@ -422,9 +427,14 @@ public class GameManager : MonoBehaviour
     private void PostToDatabase(string winnerPlayer)
     {
         string convertedTerrainData = JsonConvert.SerializeObject(terrainData);
-        Debug.Log("Here is the converted data: " + convertedTerrainData);
-        StatManager winner = new StatManager(winnerPlayer, getCurrScene(), convertedTerrainData);
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Beta.json", winner);
+
+        Player1Stats p1Reset = new Player1Stats {ResetCount = player1Reset, ResetSpeed = player1Speed, Position = player1ResetPos};
+        Player2Stats p2Reset = new Player2Stats
+            { ResetCount = player2Reset, ResetSpeed = player2Speed, Position = player2ResetPos };
+        string convertedP1 = JsonConvert.SerializeObject(p1Reset);
+        string convertedP2 = JsonConvert.SerializeObject(p2Reset);
+        StatManager winner = new StatManager(winnerPlayer, getCurrScene(), convertedTerrainData, convertedP1, convertedP2);
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/BetaTest.json", winner);
     }
 
     private string getCurrScene()
@@ -439,7 +449,6 @@ public class GameManager : MonoBehaviour
         List<float> posInfo = new List<float> { position.x, position.y, position.z };
         List<float> rotInfo = new List<float> { rotation.x, rotation.y, rotation.z };
         terrainData.Add(new TerrData{Terrain = terrainName, Position = posInfo, Rotation = rotInfo, PlayerNum = 3- currentPlayer});
-        turnIndex++;
     }
     
 
@@ -510,5 +519,36 @@ public class GameManager : MonoBehaviour
         public List<float> Position;
         public List<float> Rotation;
         public int PlayerNum;
+    }
+
+    public class Player1Stats
+    {
+        public int ResetCount;
+        public List<float> ResetSpeed;
+        public List<List<float>> Position;
+    }
+
+    public class Player2Stats
+    {
+        public int ResetCount;
+        public List<float> ResetSpeed;
+        public List<List<float>> Position;
+    }
+
+    public void ResetStats(string playerName, Vector3 position, float speed)
+    {
+        List<float> pos = new List<float> { position.x, position.y, position.z };
+        if (playerName == "Player1-RallyCar")
+        {
+            player1Reset++;
+            player1ResetPos.Add(pos);
+            player1Speed.Add(speed);
+        }
+        else
+        {
+            player2Reset++;
+            player2ResetPos.Add(pos);
+            player2Speed.Add(speed);
+        }
     }
 }

@@ -500,6 +500,7 @@ public class VehicleControl : MonoBehaviour
         if (transform.position.y < minHeightThreshold) 
         {
             ResetToStart();
+            GameManager.Instance.ResetStats(gameObject.name, transform.position, speed);
         }
         
         // If controls are flipped, negate the horizontal input
