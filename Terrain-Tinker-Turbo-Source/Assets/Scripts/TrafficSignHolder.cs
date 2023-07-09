@@ -25,7 +25,7 @@ public class TrafficSignHolder : MonoBehaviour
         // Functions only work in racing phase.
         if (!GameManager.Instance.isRacing) return;
 
-        Debug.Log("TrafficSignHolder: OnTriggerEnter");
+        // Debug.Log("TrafficSignHolder: OnTriggerEnter");
         // Return if there's no traffic sign on this block
         if (sign == null) return;
         // Note: Only `Stop` sign uses `OnTriggerEnter`, other signs use `OnTriggerStay`.
@@ -50,7 +50,7 @@ public class TrafficSignHolder : MonoBehaviour
         // Functions only work in racing phase.
         if (!GameManager.Instance.isRacing) return;
 
-        Debug.Log("TrafficSignHolder: OnTriggerStay");
+        // Debug.Log("TrafficSignHolder: OnTriggerStay");
         // Return if there's no traffic sign on this block
         if (sign == null) return;
         // Note: `Stop` sign should not use this event API.

@@ -48,7 +48,6 @@ public class StandingTrafficSign : MonoBehaviour
         switch (trafficSignType)
         {
             case TrafficSignType.Stop:
-                Debug.Log("Stop sign function performed!");
                 break;
             case TrafficSignType.NoLeftTurn:
                 //Debug.Log("No left turn sign function performed!");

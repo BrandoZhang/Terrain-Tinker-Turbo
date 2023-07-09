@@ -23,7 +23,7 @@ public class RaceKeyListener : MonoBehaviour
         bool isRacing = GameManager.Instance.getRacingStatus();
         bool isGameOver = GameManager.Instance.getGameOverStatus();
         
-        Debug.Log("isRacing = " +isRacing);
+        // Debug.Log("isRacing = " +isRacing);
         
         //Check if Player clicked BackToGame in menu before
         if (GameManager.Instance.getBackToGameStatus())

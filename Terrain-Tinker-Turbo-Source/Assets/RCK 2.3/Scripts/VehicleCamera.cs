@@ -222,7 +222,7 @@ public class VehicleCamera : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Camera Following");
+        // Debug.Log("Camera Following");
 
         if (!target) return;
 

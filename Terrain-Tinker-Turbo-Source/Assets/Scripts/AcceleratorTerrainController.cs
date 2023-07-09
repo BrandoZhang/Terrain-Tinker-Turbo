@@ -11,7 +11,7 @@ public class AcceleratorTerrainController : MonoBehaviour
     // This function is called when an vehicle enters the terrain's collider.
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("Accelerator Triggered");
+        // Debug.Log("Accelerator Triggered");
         // Check if the other object is a racer (player1 or player2).
         // Remember to add a "Player1" and "Player2" tag to respective players.
         if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
