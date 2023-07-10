@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
     public GameObject player2TrafficSignLibrary;  // Reference to the player 2's TrafficSignLibrary
     public GameObject player1DeactivePlane;  // Reference to the player 1's Grey Plane
     public GameObject player2DeactivePlane;  // Reference to the player 2's Grey Plane
+    public GameObject player1TabSection; // Reference to the player 1's Tab Section
+    public GameObject player2TabSection;// Reference to the player 2's Tab Section
+    public GameObject player1ItemLibrary; // Reference to the player 1's Item Library
+    public GameObject player2ItemLibrary;// Reference to the player 2's Item Library
     
     public List<TerrData> terrainData = new List<TerrData>();
     public int player1Reset = 0;
@@ -232,6 +236,8 @@ public class GameManager : MonoBehaviour
             player2TrafficSignLibrary.SetActive(false);  
             player1DeactivePlane.SetActive(false);  
             player2DeactivePlane.SetActive(false);  
+            player1ItemLibrary.SetActive(false);  
+            player2ItemLibrary.SetActive(false);  
             tracklibraryText.text = "";
             //TransitionToRacingPhase();
             SetImgEnabled("Player1Turn", false);
@@ -343,6 +349,10 @@ public class GameManager : MonoBehaviour
         
         SetImgEnabled("RaceStart", true);
         
+        //Disable player Tab 
+        player1TabSection.SetActive(false);
+        player2TabSection.SetActive(false);
+        
         if (SceneManager.GetActiveScene().name == "Tutorial4")
         {
             SetTextEnabled("Player2Path", false);
@@ -372,6 +382,11 @@ public class GameManager : MonoBehaviour
         }
         
         if (SceneManager.GetActiveScene().name == "Tutorial4")
+        {
+            SetTextEnabled("MessInstruction", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial5")
         {
             SetTextEnabled("MessInstruction", false);
         }

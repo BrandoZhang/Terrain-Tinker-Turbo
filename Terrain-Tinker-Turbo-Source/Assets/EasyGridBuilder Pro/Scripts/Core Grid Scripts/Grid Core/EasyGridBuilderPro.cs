@@ -4161,7 +4161,7 @@ namespace SoulGames.EasyGridBuilderPro
 
         protected Vector3 GetMouseWorldPosition()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            /**Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask))
             {
                 return raycastHit.point;
@@ -4169,7 +4169,8 @@ namespace SoulGames.EasyGridBuilderPro
             else
             {
                 return new Vector3(-99999, -99999, -99999);
-            }
+            }**/
+            return new Vector3(-99999, -99999, -99999);
         }
 
         private Vector3 BuildableFreeObjectCollidingMousePosition()

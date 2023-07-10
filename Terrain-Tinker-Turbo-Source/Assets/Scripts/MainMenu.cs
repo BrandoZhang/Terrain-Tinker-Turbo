@@ -52,7 +52,7 @@ public class MainMenu : MonoBehaviour
     public void headNext()
     {
         int currIdx = SceneManager.GetActiveScene().buildIndex;
-        int nextIdx = (currIdx >= 5) ? 0 : currIdx + 1;
+        int nextIdx = (currIdx >= 7) ? 0 : currIdx + 1;
         SceneManager.LoadScene(nextIdx);
     }
 
