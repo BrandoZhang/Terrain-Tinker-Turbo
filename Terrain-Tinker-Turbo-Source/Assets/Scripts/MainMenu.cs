@@ -41,6 +41,16 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial5");
     }
+    
+    public void launchPlayScene3()
+    {
+        SceneManager.LoadScene("PlayScene3");
+    }
+    
+    public void launchPlayScene4()
+    {
+        SceneManager.LoadScene("PlayScene4");
+    }
 
     public void headBack()
     {
