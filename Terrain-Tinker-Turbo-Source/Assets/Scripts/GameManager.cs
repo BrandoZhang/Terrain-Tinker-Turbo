@@ -476,11 +476,11 @@ public class GameManager : MonoBehaviour
         return currSceneName;
     }
 
-    public void AddTerrainData(string terrainName, Vector3 position, Quaternion rotation)
+    public void AddTerrainData(string terrainName, Vector3 position, Quaternion rotation, string type)
     {
         List<float> posInfo = new List<float> { position.x, position.y, position.z };
         List<float> rotInfo = new List<float> { rotation.x, rotation.y, rotation.z };
-        terrainData.Add(new TerrData{Terrain = terrainName, Position = posInfo, Rotation = rotInfo, PlayerNum = 3- currentPlayer});
+        terrainData.Add(new TerrData{Terrain = terrainName, Position = posInfo, Rotation = rotInfo, PlayerNum = 3- currentPlayer, Type = type});
     }
     
 
@@ -551,6 +551,7 @@ public class GameManager : MonoBehaviour
         public List<float> Position;
         public List<float> Rotation;
         public int PlayerNum;
+        public string Type;
     }
 
     public class Player1Stats

@@ -101,7 +101,7 @@ public class TerrainSolidController : MonoBehaviour
                 objectToMove.transform.parent = GameObject.Find("Track").transform;
                 // Mark current player has placed a block and switch to the other player
                 GameManager.Instance.BlockPlaced();
-                GameManager.Instance.AddTerrainData(gameObject.name, objectToMove.transform.position, objectToMove.transform.rotation);
+                GameManager.Instance.AddTerrainData(gameObject.name, objectToMove.transform.position, objectToMove.transform.rotation, "Tiles");
             }
 
             // Reset other TerrainPlaceholders
