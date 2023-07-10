@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5895959114436649476}
   - component: {fileID: 5895959114436649474}
-  - component: {fileID: 5895959114436649475}
+  - component: {fileID: 7536975935725392248}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -287,7 +287,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 17b8f787dddbbbb47b7e8a2104626932, type: 3}
---- !u!114 &5895959114436649475
+--- !u!114 &7536975935725392248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,10 +296,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5895959114436649479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d321bca5e2c720409bfd0d1eb36c8fa, type: 3}
+  m_Script: {fileID: 11500000, guid: f356513b2ee35c74691116c17bf4d6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationDirection: {x: 0, y: 0, z: -1}
+  accelerationDirection: {x: 0, y: 0, z: 1}
   accelerationStrength: 50000
 --- !u!1001 &5895959115180315397
 PrefabInstance:

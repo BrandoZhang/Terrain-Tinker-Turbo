@@ -8132,6 +8132,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7578795806976277513, guid: 0dcd835c0efe5374c82522b057ab993b, type: 3}
   m_PrefabInstance: {fileID: 2112506529}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2015535196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5895959114436649479, guid: 71517564dd4ac374781647b2ee0c82a7, type: 3}
+  m_PrefabInstance: {fileID: 5895959115082631886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2015535200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015535196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f356513b2ee35c74691116c17bf4d6c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accelerationDirection: {x: 0, y: 0, z: 1}
+  accelerationStrength: 50000
 --- !u!1001 &2112506529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8762,6 +8781,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7695817131686447423, guid: 4b7640a6d64b99e408daca95b7bccb76, type: 3}
+      propertyPath: accelerationDirection.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695817131686447423, guid: 4b7640a6d64b99e408daca95b7bccb76, type: 3}
+      propertyPath: accelerationDirection.z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b7640a6d64b99e408daca95b7bccb76, type: 3}
 --- !u!1001 &5895959115082631886
@@ -8771,6 +8798,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 755354051}
     m_Modifications:
+    - target: {fileID: 5874594819588856315, guid: 71517564dd4ac374781647b2ee0c82a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 327ace94d52beae49bc8f39be5f4ad03, type: 2}
     - target: {fileID: 5895959114283812092, guid: 71517564dd4ac374781647b2ee0c82a7, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -8819,7 +8850,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerrainAcceleratorRamp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5895959114436649475, guid: 71517564dd4ac374781647b2ee0c82a7, type: 3}
+      propertyPath: accelerationDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898633073855280867, guid: 71517564dd4ac374781647b2ee0c82a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5895959114436649475, guid: 71517564dd4ac374781647b2ee0c82a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 71517564dd4ac374781647b2ee0c82a7, type: 3}
 --- !u!1001 &7279690261702441300
 PrefabInstance:
