@@ -75,6 +75,7 @@ public class DraggableTrafficSign : MonoBehaviour
             trafficSign3D.transform.parent = closestHolder.transform;
             // Configures the real component that performs traffic rule functions 
             closestHolder.sign = trafficSign3D.GetComponent<StandingTrafficSign>();  
+            GameManager.Instance.BlockPlaced();
             // Debug.Log("Created traffic sign 3D prefab at location: " + trafficSign3D.transform.position);
             
             // Destroy current gameObject
