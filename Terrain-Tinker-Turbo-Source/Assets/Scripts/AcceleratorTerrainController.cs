@@ -23,5 +23,6 @@ public class AcceleratorTerrainController : MonoBehaviour
             // Apply a force to the racer in the direction of acceleration.
             racerRigidbody.AddForce(accelerationDirection * accelerationStrength, ForceMode.Force);
         }
+        
     }
 }
