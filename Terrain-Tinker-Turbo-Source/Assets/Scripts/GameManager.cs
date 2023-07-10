@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     public GameObject HelpCanvas;
     private bool isCountDown;
     private bool isBackToGameClicked;
-    
+    public Text tooltipText;
     void Awake()
     {
         if (Instance == null)
@@ -161,6 +161,31 @@ public class GameManager : MonoBehaviour
         HideMenu(MenuCanvas);
         HideMenu(GameOverCanvas);
         HideMenu(HelpCanvas);
+        
+    }
+
+    private void Update()
+    {
+        RaycastHit hit;
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            TileFunctionality functionality = hit.transform.GetComponent<TileFunctionality>();
+
+            if (functionality != null)
+            {
+                tooltipText.text = functionality.GetFunctionalityDescription();
+                tooltipText.transform.position = Input.mousePosition;
+            }
+            else
+            {
+                tooltipText.text = "";
+            }
+        }
+        else
+        {
+            tooltipText.text = "";
+        }
     }
 
     public void SwitchTrackLibrary()
