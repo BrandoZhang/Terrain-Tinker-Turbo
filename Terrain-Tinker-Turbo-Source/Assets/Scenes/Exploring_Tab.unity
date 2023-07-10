@@ -1412,7 +1412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 130}
+  m_AnchoredPosition: {x: 250, y: 140}
   m_SizeDelta: {x: 54.3972, y: 50.4889}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &379203152
@@ -2568,7 +2568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 180, y: 130}
+  m_AnchoredPosition: {x: 180, y: 140}
   m_SizeDelta: {x: 54.3972, y: 50.4889}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &553374623
@@ -4516,7 +4516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 320, y: 130}
+  m_AnchoredPosition: {x: 320, y: 140}
   m_SizeDelta: {x: 54.3972, y: 50.4889}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957416046
@@ -5359,7 +5359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 235, y: 180}
+  m_AnchoredPosition: {x: 235, y: 190}
   m_SizeDelta: {x: 167.4467, y: 44.315}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097749937
@@ -7204,7 +7204,7 @@ MonoBehaviour:
   track: {fileID: 1356559379}
   racer1: {fileID: 1037303917}
   racer2: {fileID: 1880039738}
-  player1TrackLibrary: {fileID: 0}
+  player1TrackLibrary: {fileID: 750278285}
   player2TrackLibrary: {fileID: 1398786266}
   player1TrafficSignLibrary: {fileID: 2030160400}
   player2TrafficSignLibrary: {fileID: 60506868}
@@ -9395,6 +9395,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2811301091544389524, guid: 3272866668e4be64ab6923aff6692f58, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811301091554086293, guid: 3272866668e4be64ab6923aff6692f58, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2811301092955109266, guid: 3272866668e4be64ab6923aff6692f58, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -9445,10 +9453,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2811301092955109267, guid: 3272866668e4be64ab6923aff6692f58, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3272866668e4be64ab6923aff6692f58, type: 3}
+--- !u!1 &2811301091227785074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2811301091087563508, guid: 3272866668e4be64ab6923aff6692f58, type: 3}
+  m_PrefabInstance: {fileID: 2811301091227785073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2811301091227785075
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811301091227785074}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.4470402, z: 1}
+  m_Center: {x: 0, y: 2.1803713, z: -0.09415312}
 --- !u!1001 &4305124233702727164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9682,6 +9708,10 @@ PrefabInstance:
     - target: {fileID: 8657476696854251125, guid: e424912891b360a42a34781519e75667, type: 3}
       propertyPath: m_Name
       value: Player2_TrackLibrary_Tiles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657476696854251125, guid: e424912891b360a42a34781519e75667, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e424912891b360a42a34781519e75667, type: 3}

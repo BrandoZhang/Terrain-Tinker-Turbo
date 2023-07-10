@@ -568,4 +568,9 @@ public class GameManager : MonoBehaviour
             player2Speed.Add(speed);
         }
     }
+
+    public void SetGameObject(GameObject obj, bool flag)
+    {
+        obj.SetActive(flag);
+    }
 }

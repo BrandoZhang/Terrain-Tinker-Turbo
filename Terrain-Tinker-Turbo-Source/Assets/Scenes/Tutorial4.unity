@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6473,7 +6473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -249, y: 144}
+  m_AnchoredPosition: {x: -240, y: 140}
   m_SizeDelta: {x: 152.4586, y: 43.859}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417803300
@@ -8378,7 +8378,6 @@ MonoBehaviour:
   tracklibraryText: {fileID: 936685446}
   countdownText: {fileID: 1015597822}
   limit: 1
-  terrainRecord: []
   track: {fileID: 1356559379}
   racer1: {fileID: 122159581}
   racer2: {fileID: 704662242}
@@ -8388,6 +8387,10 @@ MonoBehaviour:
   player2TrafficSignLibrary: {fileID: 226206534}
   player1DeactivePlane: {fileID: 131320620}
   player2DeactivePlane: {fileID: 1962861155}
+  player1Reset: 0
+  player2Reset: 0
+  player1Speed: []
+  player2Speed: []
   mainCamera: {fileID: 963194227}
   player1Camera: {fileID: 1728760775}
   player2Camera: {fileID: 506099240}
