@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     public GameObject track;  // Reference to the Track GameObject
     private Rigidbody trackRigidbody;  // Reference to the Rigidbody on the Track GameObject
     public VehicleControl racer1;  // Reference to the first racer's controller
-    // public RacerController racer2;  // Reference to the second racer's controller
     public VehicleControl racer2;  // Reference to the second racer's controller
     public GameObject player1TrackLibrary;  // Reference to the player 1's TrackLibrary
     public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
@@ -60,6 +59,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI[] text;
     private RawImage img;
     private RawImage[] raceImg;
+    public TrafficUIController trafficUIController;  // Reference to the TrafficUIController
 
     public GameObject MenuCanvas;
     public GameObject GameOverCanvas;
@@ -226,18 +226,7 @@ public class GameManager : MonoBehaviour
         // If all blocks have been placed, transition to racing phase
         if (player1BlockCount >= limit && player2BlockCount >= limit)
         {
-            player1TrackLibrary.SetActive(false);  // Hide the TrackLibrary when finish editing
-            player1TrafficSignLibrary.SetActive(false);  // Hide the TrafficSignLibrary when finish editing
-            player2TrackLibrary.SetActive(false); 
-            player2TrafficSignLibrary.SetActive(false);  
-            player1DeactivePlane.SetActive(false);  
-            player2DeactivePlane.SetActive(false);  
-            tracklibraryText.text = "";
-            //TransitionToRacingPhase();
-            SetImgEnabled("Player1Turn", false);
-            SetImgEnabled("Player2Turn", false);
-            
-            StartCoroutine(Countdown());
+            StartRaceNow();
         }
     }
 
@@ -250,14 +239,11 @@ public class GameManager : MonoBehaviour
         turnText.gameObject.SetActive(false);  // Clear for Racing Phase
         countdownText.gameObject.SetActive(false);
         countdownText.enabled = false;
-
-        
         
         if (SceneManager.GetActiveScene().name == "PlayScene2")
         {
             SetTextEnabled("MessInstruction", false);
         }
-
 
         // Deactivate main camera and activate player cameras
         mainCamera.enabled = false;
