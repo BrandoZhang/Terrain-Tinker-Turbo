@@ -25,11 +25,7 @@ public class MovingBlockController : MonoBehaviour
     // This method is called every time the GameObject is set to active again
     // Used to fix the issue of blocks not move during turn switching
     void OnEnable()
-    {   
-        // Update the start and end positions
-        startRelPos = transform.parent.InverseTransformPoint(startPos.position);
-        endRelPos = transform.parent.InverseTransformPoint(endPos.position);
-
+    {
         // Start the MoveObject coroutine
         StartCoroutine(MoveBlock());
     }
@@ -38,8 +34,15 @@ public class MovingBlockController : MonoBehaviour
     {
         while (true)
         {
-            yield return Move(startRelPos, endRelPos, speed);
-            yield return Move(endRelPos, startRelPos, speed);
+            if (startRelPos != endRelPos)
+            {
+                yield return Move(startRelPos, endRelPos, speed);
+                yield return Move(endRelPos, startRelPos, speed);
+            }
+            else
+            {
+                yield return null;
+            }
         }
     }
 
