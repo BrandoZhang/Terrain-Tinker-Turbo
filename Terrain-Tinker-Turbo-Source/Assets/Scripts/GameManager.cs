@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
     private bool isCountDown;
     private bool isBackToGameClicked;
     public Text tooltipText;
+    public GameObject tooltipBackground;
     void Awake()
     {
         if (Instance == null)
@@ -175,16 +176,20 @@ public class GameManager : MonoBehaviour
             if (functionality != null)
             {
                 tooltipText.text = functionality.GetFunctionalityDescription();
-                tooltipText.transform.position = Input.mousePosition;
+                tooltipBackground.transform.position = Input.mousePosition;
+                tooltipBackground.SetActive(true);
             }
             else
             {
+                
                 tooltipText.text = "";
+                tooltipBackground.SetActive(false);
             }
         }
         else
         {
             tooltipText.text = "";
+            tooltipBackground.SetActive(false);
         }
     }
 
