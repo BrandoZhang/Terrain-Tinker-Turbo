@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
     public GameObject player1TrafficSignLibrary;  // Reference to the player 1's TrafficSignLibrary
     public GameObject player2TrafficSignLibrary;  // Reference to the player 2's TrafficSignLibrary
+    public GameObject player1ItemLibrary;  // Reference to the player 1's ItemLibrary
+    public GameObject player2ItemLibrary;  // Reference to the player 2's ItemLibrary
     public GameObject player1DeactivePlane;  // Reference to the player 1's Grey Plane
     public GameObject player2DeactivePlane;  // Reference to the player 2's Grey Plane
     
@@ -90,6 +92,11 @@ public class GameManager : MonoBehaviour
         
         // Find the Track GameObject
         track = GameObject.Find("Track");
+        // Find the UI Controller GameObject
+        trafficUIController = GameObject.Find("TrafficUIController").GetComponent<TrafficUIController>();
+        // Find the ItemLibrary GameObject
+        player1ItemLibrary = GameObject.Find("Player1_ItemLibrary");
+        player2ItemLibrary = GameObject.Find("Player2_ItemLibrary");
 
         // Get the Rigidbody from the Track GameObject
         trackRigidbody = track.GetComponent<Rigidbody>();
@@ -408,12 +415,23 @@ public class GameManager : MonoBehaviour
 
     public void StartRaceNow()
     {
+        // Hide the TrackLibrary/TrafficSignLibrary/ItemLibrary when finish editing
         player1TrackLibrary.SetActive(false);
         player1TrafficSignLibrary.SetActive(false);
         player2TrackLibrary.SetActive(false);
         player2TrafficSignLibrary.SetActive(false);
         player1DeactivePlane.SetActive(false);
         player2DeactivePlane.SetActive(false);
+        
+        if (player1ItemLibrary != null)
+        {
+            player1ItemLibrary.SetActive(false);
+        }
+        if (player2ItemLibrary != null)
+        {
+            player2ItemLibrary.SetActive(false);
+        }
+
         tracklibraryText.text = "";
  
         SetImgEnabled("Player1Turn", false);

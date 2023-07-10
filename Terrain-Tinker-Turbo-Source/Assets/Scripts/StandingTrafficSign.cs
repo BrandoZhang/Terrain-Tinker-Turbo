@@ -7,7 +7,8 @@ public enum TrafficSignType
 {
     Stop,
     NoLeftTurn,
-    NoRightTurn
+    NoRightTurn,
+    ReverseLeftRight
 }
 
 public class StandingTrafficSign : MonoBehaviour
