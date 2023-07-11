@@ -8,22 +8,29 @@ using TouchScript.Gestures.TransformGestures;
 
 public class DraggableItem : MonoBehaviour
 {
+    public Vector3 tabScale;
+    public Vector3 placedScale;
     private Vector3 originalPosition;
     private List<ItemHolder> collidedHolders = new List<ItemHolder>();
     
     // Start is called before the first frame update
     void Start()
     {
+        tabScale = transform.localScale;
         originalPosition = transform.position;
     }
 
     private void OnEnable()
     {
+        // GetComponent<PressGesture>().Pressed += PressedHandler;
+        GetComponent<TransformGesture>().TransformStarted += TransformStartedHandler;
         GetComponent<TransformGesture>().TransformCompleted += TransformCompletedHandler;
     }
 
     private void OnDisable()
     {
+        // GetComponent<PressGesture>().Pressed -= PressedHandler;
+        GetComponent<TransformGesture>().TransformStarted -= TransformStartedHandler;
         GetComponent<TransformGesture>().TransformCompleted -= TransformCompletedHandler;
     }
     
@@ -43,6 +50,11 @@ public class DraggableItem : MonoBehaviour
         {
             collidedHolders.Remove(holder);
         }
+    }
+
+    private void TransformStartedHandler(object sender, EventArgs e)
+    {
+        transform.localScale = placedScale;
     }
     
     private void TransformCompletedHandler(object sender, EventArgs e)
@@ -82,8 +94,9 @@ public class DraggableItem : MonoBehaviour
         }
         else
         {
-            // No valid holder found, reset to original position
+            // No valid holder found, reset to original position and scale
             transform.position = originalPosition;
+            transform.localScale = tabScale;
         }
 
         // Clear the list of collided holders
