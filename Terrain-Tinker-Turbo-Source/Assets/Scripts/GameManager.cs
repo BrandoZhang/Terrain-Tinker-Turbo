@@ -342,6 +342,10 @@ public class GameManager : MonoBehaviour
         player1TabSection.SetActive(false);
         player2TabSection.SetActive(false);
         
+        //Disable Traffic library
+        player1TrackLibrary.SetActive(false);
+        player1TrackLibrary.SetActive(false);
+
         if (SceneManager.GetActiveScene().name == "Tutorial4")
         {
             SetTextEnabled("Player2Path", false);
@@ -370,14 +374,16 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("RotateImg", false);
         }
         
-        if (SceneManager.GetActiveScene().name == "Tutorial4")
+        if (SceneManager.GetActiveScene().name == "Tutorial4" || 
+            SceneManager.GetActiveScene().name == "Tutorial5" ||
+            SceneManager.GetActiveScene().name == "PlayScene3")
         {
             SetTextEnabled("MessInstruction", false);
         }
         
-        if (SceneManager.GetActiveScene().name == "Tutorial5")
+        if (SceneManager.GetActiveScene().name == "PlayScene4")
         {
-            SetTextEnabled("MessInstruction", false);
+            SetTextEnabled("Instruction", false);
         }
 
         isCountDown = true;
