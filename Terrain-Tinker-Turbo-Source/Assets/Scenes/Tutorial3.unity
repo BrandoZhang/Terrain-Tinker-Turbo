@@ -2113,8 +2113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 84, y: -200}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 64.94803, y: -209}
+  m_SizeDelta: {x: 161.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501949862
 MonoBehaviour:
@@ -2849,7 +2849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 93, y: 93}
+  m_AnchoredPosition: {x: 89, y: 93}
   m_SizeDelta: {x: 248.64, y: 74.2862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730451102
@@ -2899,8 +2899,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4091,12 +4091,12 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 2
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 15.3593
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -4105,7 +4105,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 76
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -4711,7 +4711,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -87.80337, y: 130}
-  m_SizeDelta: {x: 70.3932, y: 72}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1087028469
 MonoBehaviour:
@@ -4975,7 +4975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -245, y: 147}
+  m_AnchoredPosition: {x: -218, y: 140}
   m_SizeDelta: {x: 152.4586, y: 43.859}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1147390102
@@ -5400,7 +5400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 259, y: 147}
+  m_AnchoredPosition: {x: 225, y: 140}
   m_SizeDelta: {x: 167.4467, y: 44.315}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202083410
@@ -5932,7 +5932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 365, y: 191}
+  m_AnchoredPosition: {x: 372, y: 207}
   m_SizeDelta: {x: 62.8999, y: 53.137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294698749
@@ -5957,7 +5957,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9622642, g: 0.4488956, b: 0.05900679, a: 1}
+    m_HighlightedColor: {r: 0.98039216, g: 0.6627451, b: 0.023529412, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6011,7 +6011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ce7818ab2f0014ccfab770603d66697e, type: 3}
+  m_Texture: {fileID: 2800000, guid: c9b358dc1cfd5624c8ca2468dc4c4943, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7962,6 +7962,7 @@ MonoBehaviour:
   mainCamera: {fileID: 963194227}
   player1Camera: {fileID: 2046442142}
   player2Camera: {fileID: 2058791689}
+  trafficUIController: {fileID: 0}
   MenuCanvas: {fileID: 1941837110}
   GameOverCanvas: {fileID: 1097813680}
   HelpCanvas: {fileID: 1241591022}
