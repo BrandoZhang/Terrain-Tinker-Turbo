@@ -5665,12 +5665,12 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 2
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 15.3593
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -5679,7 +5679,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 66.7
+  field of view: 76
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -9458,7 +9458,7 @@ Canvas:
   m_GameObject: {fileID: 1885202750}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 963194227}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
