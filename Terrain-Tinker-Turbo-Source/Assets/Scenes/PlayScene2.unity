@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4098,6 +4098,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2377612, guid: b82529e8ddfc06e4fb493d04ff82ec97, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd9fe0947936d8b4fa1f22941cf55b7d, type: 2}
     - target: {fileID: 11489280, guid: b82529e8ddfc06e4fb493d04ff82ec97, type: 3}
       propertyPath: playerIndex
       value: 1
@@ -4466,6 +4470,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2364712, guid: 72662286a75375c4e907bc20dd734a99, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3427e212caa41744392ed996c0933531, type: 2}
+    - target: {fileID: 2364712, guid: 72662286a75375c4e907bc20dd734a99, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3427e212caa41744392ed996c0933531, type: 2}
     - target: {fileID: 11417596, guid: 72662286a75375c4e907bc20dd734a99, type: 3}
       propertyPath: playerIndex
       value: 2
@@ -6430,6 +6442,10 @@ MonoBehaviour:
   player2TrafficSignLibrary: {fileID: 687618284}
   player1DeactivePlane: {fileID: 547259215}
   player2DeactivePlane: {fileID: 1847591741}
+  player1TabSection: {fileID: 0}
+  player2TabSection: {fileID: 0}
+  player1ItemLibrary: {fileID: 0}
+  player2ItemLibrary: {fileID: 0}
   player1Reset: 0
   player2Reset: 0
   player1Speed: []
@@ -6437,6 +6453,7 @@ MonoBehaviour:
   mainCamera: {fileID: 963194227}
   player1Camera: {fileID: 730587529}
   player2Camera: {fileID: 644884661}
+  trafficUIController: {fileID: 0}
   MenuCanvas: {fileID: 2139378173}
   GameOverCanvas: {fileID: 1569210050}
   HelpCanvas: {fileID: 1023863936}
