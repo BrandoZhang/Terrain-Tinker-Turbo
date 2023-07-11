@@ -7,20 +7,22 @@ using TMPro;
 
 public class TrafficUIController : MonoBehaviour
 {
-    [Header(("Public Traffic Rule Settings"))]
+    [Header(("Public Effect Settings"))]
     public float stopSignDuration = 5.0f;
     
-    [Header("Player 1 Traffic Sign Settings")]
+    [Header("Player 1 Effect UI Settings")]
     public TextMeshProUGUI player1EffectText;
     public Image player1StopSignImage;
     public Image player1NoLeftTurnImage;
     public Image player1NoRightTurnImage;
+    public Image player1ReverseLeftRightImage;
     
-    [Header("Player 2 Traffic Sign Settings")]
+    [Header("Player 2 Effect UI Settings")]
     public TextMeshProUGUI player2EffectText;
     public Image player2StopSignImage;
     public Image player2NoLeftTurnImage;
     public Image player2NoRightTurnImage;
+    public Image player2ReverseLeftRightImage;
 
     private void Start()
     {
@@ -30,6 +32,8 @@ public class TrafficUIController : MonoBehaviour
         HideSignPlayer2(TrafficSignType.NoLeftTurn);
         HideSignPlayer1(TrafficSignType.NoRightTurn);
         HideSignPlayer2(TrafficSignType.NoRightTurn);
+        HideSignPlayer1(TrafficSignType.ReverseLeftRight);
+        HideSignPlayer2(TrafficSignType.ReverseLeftRight);
     }
 
     public void HideSignPlayer1(TrafficSignType signType)
@@ -45,6 +49,9 @@ public class TrafficUIController : MonoBehaviour
                 break;
             case TrafficSignType.NoRightTurn:
                 player1NoRightTurnImage.enabled = false;
+                break;
+            case TrafficSignType.ReverseLeftRight:
+                player1ReverseLeftRightImage.enabled = false;
                 break;
         }
     }
@@ -62,6 +69,9 @@ public class TrafficUIController : MonoBehaviour
                 break;
             case TrafficSignType.NoRightTurn:
                 player2NoRightTurnImage.enabled = false;
+                break;
+            case TrafficSignType.ReverseLeftRight:
+                player2ReverseLeftRightImage.enabled = false;
                 break;
         }
     }
@@ -82,6 +92,9 @@ public class TrafficUIController : MonoBehaviour
             case TrafficSignType.NoRightTurn:
                 player1NoRightTurnImage.enabled = true;
                 break;
+            case TrafficSignType.ReverseLeftRight:
+                player1ReverseLeftRightImage.enabled = true;
+                break;
         }
 
     }
@@ -101,6 +114,9 @@ public class TrafficUIController : MonoBehaviour
                 break;
             case TrafficSignType.NoRightTurn:
                 player2NoRightTurnImage.enabled = true;
+                break;
+            case TrafficSignType.ReverseLeftRight:
+                player2ReverseLeftRightImage.enabled = true;
                 break;
         }
 

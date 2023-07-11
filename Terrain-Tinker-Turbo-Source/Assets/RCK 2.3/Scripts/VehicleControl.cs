@@ -1101,7 +1101,32 @@ public class VehicleControl : MonoBehaviour
         canMove = true;
     }
 
-
+    public IEnumerator ReverseControlForSeconds(float seconds, int affectedPlayerIdx)
+    {
+        // TODO: Refactor the mix of UI and model here, not a good practice
+        if (affectedPlayerIdx == 1)
+        {
+            GameManager.Instance.trafficUIController.ShowSignPlayer1(TrafficSignType.ReverseLeftRight);
+        }
+        else if (affectedPlayerIdx == 2)
+        {
+            GameManager.Instance.trafficUIController.ShowSignPlayer2(TrafficSignType.ReverseLeftRight);
+        }
+        
+        controlFlipped = true;
+        yield return new WaitForSeconds(seconds);
+        controlFlipped = false;
+        
+        // TODO: Refactor the mix of UI and model here, not a good practice
+        if (affectedPlayerIdx == 1)
+        {
+            GameManager.Instance.trafficUIController.HideSignPlayer1(TrafficSignType.ReverseLeftRight);
+        }
+        else if (affectedPlayerIdx == 2)
+        {
+            GameManager.Instance.trafficUIController.HideSignPlayer2(TrafficSignType.ReverseLeftRight);
+        }
+    }
 
     /////////////// Show Normal Gizmos ////////////////////////////
 

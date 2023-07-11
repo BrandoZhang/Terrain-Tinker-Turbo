@@ -11,7 +11,7 @@ public class TrafficSignHolder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trafficUIController = GameObject.Find("TrafficUIController").GetComponent<TrafficUIController>();
+        trafficUIController = GameManager.Instance.trafficUIController;
     }
 
     public bool CanHoldSign()
