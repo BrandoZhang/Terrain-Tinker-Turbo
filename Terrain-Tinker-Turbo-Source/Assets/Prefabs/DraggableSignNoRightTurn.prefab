@@ -480,6 +480,7 @@ GameObject:
   - component: {fileID: 4954385602915238}
   - component: {fileID: 1683095114772734621}
   - component: {fileID: 8528999272568702073}
+  - component: {fileID: 1273460251273717741}
   m_Layer: 0
   m_Name: DraggableSignNoRightTurn
   m_TagString: Untagged
@@ -607,7 +608,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trafficSign3DPrefab: {fileID: 114858557620038349, guid: 4446f6587ba8a0746ad7370145fc671c, type: 3}
-  attachedHolder: {fileID: 0}
+--- !u!114 &1273460251273717741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270143340125224104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Cannot turn right on the tile placed
 --- !u!1 &270150449944541798
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8282892394159123657}
   - component: {fileID: 8282892394159123658}
   - component: {fileID: 8282892394159123659}
+  - component: {fileID: 7486215949368198134}
   m_Layer: 0
   m_Name: TerrainStartingBlock
   m_TagString: TerrainSolid
@@ -97,3 +98,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7486215949368198134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8282892394159123660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Start racing here!
