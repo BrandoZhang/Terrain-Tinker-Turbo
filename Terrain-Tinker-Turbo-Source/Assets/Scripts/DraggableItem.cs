@@ -68,6 +68,7 @@ public class DraggableItem : MonoBehaviour
             transform.parent = closestHolder.transform;
             // Increase placed count by 1
             GameManager.Instance.BlockPlaced();
+            GameManager.Instance.AddTerrainData(gameObject.name, gameObject.transform.position, gameObject.transform.rotation, "Items");
             // Disable the `Transformer` and `TransformGesture` component so it can't be moved again
             Transformer transformer = GetComponent<Transformer>();
             TransformGesture transformGesture = GetComponent<TransformGesture>();
