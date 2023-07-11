@@ -472,7 +472,12 @@ public class GameManager : MonoBehaviour
         string convertedP1 = JsonConvert.SerializeObject(p1Reset);
         string convertedP2 = JsonConvert.SerializeObject(p2Reset);
         StatManager winner = new StatManager(winnerPlayer, getCurrScene(), convertedTerrainData, convertedP1, convertedP2);
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/BetaFullAnalytics.json", winner);
+        PostTodtbs(winner);
+    }
+    
+    private void PostTodtbs(StatManager stats)
+    {
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/BetaFullAnalytics.json", stats);
     }
 
     private string getCurrScene()
@@ -589,6 +594,7 @@ public class GameManager : MonoBehaviour
             player2ResetPos.Add(pos);
             player2Speed.Add(speed);
         }
+        
     }
 
     public void SetGameObject(GameObject obj, bool flag)
