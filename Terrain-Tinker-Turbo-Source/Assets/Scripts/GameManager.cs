@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         bool isDragging = Input.GetMouseButton(0);
         
-        if (Physics.Raycast(ray, out hit) && !isDragging )
+        if (Physics.Raycast(ray, out hit) && !isDragging && !isRacing)
         {
             TileFunctionality functionality = hit.transform.GetComponent<TileFunctionality>();
 
