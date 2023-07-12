@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1889,7 +1889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3100124120345287839, guid: 92ff4fe7cb1a0cd4aa5835ba28b95f3e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ff4fe7cb1a0cd4aa5835ba28b95f3e, type: 3}
@@ -5026,6 +5026,7 @@ GameObject:
   - component: {fileID: 406115564}
   - component: {fileID: 406115563}
   - component: {fileID: 406115565}
+  - component: {fileID: 406115566}
   m_Layer: 5
   m_Name: P1_Tab_1
   m_TagString: Untagged
@@ -5149,6 +5150,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &406115566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406115561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbb875c0dba4d540b230f9816f348c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: Tiles
 --- !u!1 &409130190
 GameObject:
   m_ObjectHideFlags: 0
@@ -5415,6 +5429,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440148189}
   m_Mesh: {fileID: 4300000, guid: bf0e0b8fe71c14448a21fb3412beb3f9, type: 3}
+--- !u!1 &466314519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3100124120345287839, guid: 92ff4fe7cb1a0cd4aa5835ba28b95f3e, type: 3}
+  m_PrefabInstance: {fileID: 107308609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &466314522
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466314519}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!1 &471747898
 GameObject:
   m_ObjectHideFlags: 0
@@ -5427,6 +5467,7 @@ GameObject:
   - component: {fileID: 471747901}
   - component: {fileID: 471747900}
   - component: {fileID: 471747899}
+  - component: {fileID: 471747903}
   m_Layer: 5
   m_Name: P2_Tab_3
   m_TagString: Untagged
@@ -5504,7 +5545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5551,6 +5592,19 @@ RectTransform:
   m_AnchoredPosition: {x: 303, y: 112}
   m_SizeDelta: {x: 54.3972, y: 50.4889}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &471747903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471747898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbb875c0dba4d540b230f9816f348c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: Items
 --- !u!1 &473106654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5652,7 +5706,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &481407933
 GameObject:
@@ -8223,6 +8277,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1c4dd8a13f501b04f84fe824120f70bb, type: 3}
+      propertyPath: layers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1c4dd8a13f501b04f84fe824120f70bb, type: 3}
+      propertyPath: layers.Array.data[0]
+      value: 
+      objectReference: {fileID: 963194229}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c4dd8a13f501b04f84fe824120f70bb, type: 3}
 --- !u!1 &836211324
@@ -8696,6 +8758,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.5}
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!114 &863760519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3100124119625096881, guid: 92ff4fe7cb1a0cd4aa5835ba28b95f3e, type: 3}
+  m_PrefabInstance: {fileID: 107308609}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &864536489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9877,6 +9950,7 @@ GameObject:
   - component: {fileID: 981062231}
   - component: {fileID: 981062230}
   - component: {fileID: 981062232}
+  - component: {fileID: 981062233}
   m_Layer: 5
   m_Name: P2_Tab_1
   m_TagString: Untagged
@@ -9920,7 +9994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10000,6 +10074,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &981062233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981062228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbb875c0dba4d540b230f9816f348c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: Tiles
 --- !u!1 &982163124
 GameObject:
   m_ObjectHideFlags: 0
@@ -16779,6 +16866,7 @@ GameObject:
   - component: {fileID: 1725191525}
   - component: {fileID: 1725191524}
   - component: {fileID: 1725191526}
+  - component: {fileID: 1725191527}
   m_Layer: 5
   m_Name: P2_Tab_2
   m_TagString: Untagged
@@ -16823,7 +16911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -16903,6 +16991,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1725191527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725191522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbb875c0dba4d540b230f9816f348c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: Traffic Signs
 --- !u!1 &1728760772
 GameObject:
   m_ObjectHideFlags: 0
@@ -17334,6 +17435,7 @@ GameObject:
   - component: {fileID: 1747855265}
   - component: {fileID: 1747855264}
   - component: {fileID: 1747855263}
+  - component: {fileID: 1747855267}
   m_Layer: 5
   m_Name: P1_Tab_3
   m_TagString: Untagged
@@ -17458,6 +17560,19 @@ RectTransform:
   m_AnchoredPosition: {x: -167, y: 108}
   m_SizeDelta: {x: 54.3972, y: 50.4889}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1747855267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747855262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbb875c0dba4d540b230f9816f348c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: Items
 --- !u!1 &1758298055
 GameObject:
   m_ObjectHideFlags: 0
@@ -18746,6 +18861,7 @@ GameObject:
   - component: {fileID: 1885202752}
   - component: {fileID: 1885202751}
   - component: {fileID: 1885202755}
+  - component: {fileID: 1885202756}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -18863,6 +18979,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe1698471dbd9b4086aa0b5ddd1e1a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1885202756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885202750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fb0f79efb3d2f43bc98192cc66a11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipText: {fileID: 863760519}
+  tipWindow: {fileID: 107308610}
 --- !u!4 &1887333482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7578795806976277513, guid: 0dcd835c0efe5374c82522b057ab993b, type: 3}
@@ -19377,6 +19507,7 @@ GameObject:
   - component: {fileID: 2021819351}
   - component: {fileID: 2021819350}
   - component: {fileID: 2021819352}
+  - component: {fileID: 2021819353}
   m_Layer: 5
   m_Name: P1_Tab_2
   m_TagString: Untagged
@@ -19501,6 +19632,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2021819353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021819348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbb875c0dba4d540b230f9816f348c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: Traffic Signs
 --- !u!1 &2041822363
 GameObject:
   m_ObjectHideFlags: 0
