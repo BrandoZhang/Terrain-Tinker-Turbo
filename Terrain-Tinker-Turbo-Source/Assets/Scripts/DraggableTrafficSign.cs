@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TouchScript.Behaviors;
 using TouchScript.Gestures;
 using TouchScript.Gestures.TransformGestures;
 using Quaternion = UnityEngine.Quaternion;
@@ -83,6 +84,17 @@ public class DraggableTrafficSign : MonoBehaviour
             // Destroy(gameObject);
             transform.parent = closestHolder.transform;
             transform.GetComponent<Collider>().enabled = false;
+            // Disable the `Transformer` and `TransformGesture` component so it can't be moved again
+            Transformer transformer = GetComponent<Transformer>();
+            TransformGesture transformGesture = GetComponent<TransformGesture>();
+            if (transformer != null)
+            {
+                transformer.enabled = false;
+            }
+            if (transformGesture != null)
+            {
+                transformGesture.enabled = false;
+            }
         }
         else
         {
