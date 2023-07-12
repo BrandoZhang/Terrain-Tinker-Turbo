@@ -1737,6 +1737,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1356559380}
     m_Modifications:
+    - target: {fileID: -8757953906078008570, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293104088, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293104089, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293104090, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078115266646585605, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4646230418307207194, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
       propertyPath: m_Name
       value: TerrainFlat (1)
@@ -2799,6 +2819,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1356559380}
     m_Modifications:
+    - target: {fileID: -8757953906078008570, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293104088, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293104089, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293104090, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078115266646585605, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4646230418307207194, guid: 6bbadb43e97f873488818395f8d1fc89, type: 3}
       propertyPath: m_Name
       value: TerrainFlat
@@ -4592,7 +4632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.00012207031, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &959674483
