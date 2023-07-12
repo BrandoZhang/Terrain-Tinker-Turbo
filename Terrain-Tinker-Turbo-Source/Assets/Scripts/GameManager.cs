@@ -70,7 +70,11 @@ public class GameManager : MonoBehaviour
     public GameObject HelpCanvas;
     private bool isCountDown;
     private bool isBackToGameClicked;
-    
+
+    private GameObject draggableSignNoLeftTurnHint;
+    private GameObject draggableSignNoRightTurnHint;
+
+
     void Awake()
     {
         if (Instance == null)
@@ -157,6 +161,14 @@ public class GameManager : MonoBehaviour
         // TODO: Duplicate TrackLibrary in script instead of Unity Editor
         //player2TrackLibrary.SetActive(false);
         //player2TrafficSignLibrary.SetActive(false);
+        
+        //Tutorial 5 Initial Settings
+        if(SceneManager.GetActiveScene().name == "Tutorial5")
+        {
+            SetTextEnabled("MessInstruction_2", false);
+            draggableSignNoRightTurnHint = track.transform.Find("DraggableSignNoRightTurnHint").gameObject;
+            draggableSignNoLeftTurnHint = track.transform.Find("DraggableSignNoLeftTurnHint").gameObject;
+        }
 
         HideMenu(MenuCanvas);
         HideMenu(GameOverCanvas);
@@ -231,6 +243,33 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("Player1Turn", false);
             SetImgEnabled("Player2Turn", true);
         }
+        
+        //Special condition for tutorial 5
+        if (SceneManager.GetActiveScene().name == "Tutorial5" && player1BlockCount == 1 
+            && player2BlockCount == 1)
+        {
+            SetTextEnabled("MessInstruction_1", false);
+            SetTextEnabled("MessInstruction_2", true);
+            
+            //Display hints for traffic rules
+            draggableSignNoRightTurnHint.gameObject.SetActive(true);
+            draggableSignNoLeftTurnHint.gameObject.SetActive(true);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial5" && player1BlockCount == 2 
+                                                              && player2BlockCount == 1)
+        {
+            //Hide Left traffic rule
+            draggableSignNoLeftTurnHint.gameObject.SetActive(false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial5" && player1BlockCount == 2 
+                                                              && player2BlockCount == 2)
+        {
+            //Hide Right traffic rule
+            draggableSignNoRightTurnHint.gameObject.SetActive(false);
+        }
+
         
         // If all blocks have been placed, transition to racing phase
         if (player1BlockCount >= limit && player2BlockCount >= limit)
@@ -382,11 +421,16 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("RotateImg", false);
         }
         
-        if (SceneManager.GetActiveScene().name == "Tutorial4" || 
-            SceneManager.GetActiveScene().name == "Tutorial5" ||
+        if (SceneManager.GetActiveScene().name == "Tutorial4" ||
             SceneManager.GetActiveScene().name == "PlayScene3")
         {
             SetTextEnabled("MessInstruction", false);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Tutorial5")
+        {
+            SetTextEnabled("MessInstruction_1", false);
+            SetTextEnabled("MessInstruction_2", false);
         }
         
         if (SceneManager.GetActiveScene().name == "PlayScene4")
