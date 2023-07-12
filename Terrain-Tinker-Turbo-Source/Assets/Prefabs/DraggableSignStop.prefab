@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4416457124514869584}
   - component: {fileID: 752501235909491856}
   - component: {fileID: 5642745478202005439}
+  - component: {fileID: 7169204214478041081}
   m_Layer: 0
   m_Name: DraggableSignStop
   m_TagString: Untagged
@@ -142,7 +143,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trafficSign3DPrefab: {fileID: 8444206197057308790, guid: 8c2ff3b3a9b61e642a770d509fda7bfa, type: 3}
-  attachedHolder: {fileID: 0}
+--- !u!114 &7169204214478041081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143150538202676108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: When entering the tile, stop for 5 seconds
 --- !u!1 &4143212690484306080
 GameObject:
   m_ObjectHideFlags: 0

@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 6459326689436465747}
   - component: {fileID: 742927363239573625}
   - component: {fileID: 6566582799770601020}
+  - component: {fileID: 1621926640845192390}
   m_Layer: 0
   m_Name: DraggableSignNoLeftTurn
   m_TagString: Untagged
@@ -592,7 +593,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trafficSign3DPrefab: {fileID: 2742650477265725129, guid: 0196aaaba8518d44582d88467f218b1f, type: 3}
-  attachedHolder: {fileID: 0}
+--- !u!114 &1621926640845192390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2852258726054435736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Cannot turn left on the tile placed
 --- !u!1 &2852267242604303876
 GameObject:
   m_ObjectHideFlags: 0

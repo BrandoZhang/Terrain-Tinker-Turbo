@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2058738269254849390}
   - component: {fileID: 7300131864539079102}
   - component: {fileID: 4762173162721070745}
+  - component: {fileID: 2055975788117195870}
   m_Layer: 0
   m_Name: TerrainStraight
   m_TagString: TerrainSolid
@@ -239,3 +240,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ignoreChildren: 0
+--- !u!114 &2055975788117195870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025065437113738382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: A bridge

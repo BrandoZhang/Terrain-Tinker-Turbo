@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7259201506993113861}
   - component: {fileID: 6506034816398774810}
   - component: {fileID: 4840519561107344691}
+  - component: {fileID: 6945030747145946556}
   m_Layer: 0
   m_Name: TerrainAccelerator
   m_TagString: TerrainSolid
@@ -130,7 +131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelerationDirection: {x: 0, y: 0, z: -1}
   accelerationStrength: 50000
-  translationOffset: 5
 --- !u!65 &2705637017744245231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -269,3 +269,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ignoreChildren: 0
+--- !u!114 &6945030747145946556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175343143884759722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Accelerate along the direction of arrow

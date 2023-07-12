@@ -73,7 +73,9 @@ public class GameManager : MonoBehaviour
 
     private GameObject draggableSignNoLeftTurnHint;
     private GameObject draggableSignNoRightTurnHint;
-
+    
+    public Text tooltipText;
+    public GameObject tooltipBackground;
 
     void Awake()
     {
@@ -173,6 +175,60 @@ public class GameManager : MonoBehaviour
         HideMenu(MenuCanvas);
         HideMenu(GameOverCanvas);
         HideMenu(HelpCanvas);
+        
+    }
+
+    private void Update()
+    {
+        RaycastHit hit;
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        bool isDragging = Input.GetMouseButton(0);
+        
+        if (Physics.Raycast(ray, out hit) && !isDragging && !isRacing)
+        {
+            TileFunctionality functionality = hit.transform.GetComponent<TileFunctionality>();
+
+            if (functionality != null)
+            {
+                tooltipText.text = functionality.GetFunctionalityDescription();
+                tooltipBackground.transform.position = Input.mousePosition;
+                tooltipBackground.SetActive(true);
+            }
+            else
+            {
+                
+                tooltipText.text = "";
+                tooltipBackground.SetActive(false);
+            }
+        }
+        else
+        {
+            tooltipText.text = "";
+            tooltipBackground.SetActive(false);
+        }
+        
+        /*if (Physics.Raycast(ray, out hit) && isDragging && !isRacing)
+        {
+            TabFunctionality functionality = hit.transform.GetComponent<TabFunctionality>();
+
+            if (functionality != null)
+            {
+                tooltipText.text = functionality.GetFunctionalityDescription();
+                tooltipBackground.transform.position = Input.mousePosition;
+                tooltipBackground.SetActive(true);
+            }
+            else
+            {
+                
+                tooltipText.text = "";
+                tooltipBackground.SetActive(false);
+            }
+        }
+        else
+        {
+            tooltipText.text = "";
+            tooltipBackground.SetActive(false);
+        }*/
     }
 
     public void SwitchTrackLibrary()

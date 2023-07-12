@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 2217291057129848930}
   - component: {fileID: 7615309002964019014}
   - component: {fileID: 4282316754562338}
+  - component: {fileID: 2500669376399336845}
   m_Layer: 0
   m_Name: TerrainMovingBlockers
   m_TagString: TerrainSolid
@@ -273,6 +274,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ignoreChildren: 0
+--- !u!114 &2500669376399336845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397522901368261407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Tile with moving obstacles
 --- !u!1001 &2344880486690413789
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 2811301091087563512}
   - component: {fileID: 2811301091087563513}
   - component: {fileID: 2811301091087563510}
+  - component: {fileID: 8899659020925307652}
   m_Layer: 0
   m_Name: DraggableSignStop
   m_TagString: Untagged
@@ -520,6 +521,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trafficSign3DPrefab: {fileID: 8444206197057308790, guid: 8c2ff3b3a9b61e642a770d509fda7bfa, type: 3}
+--- !u!114 &8899659020925307652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811301091087563508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Stop for 5 seconds when entering tile
 --- !u!1 &2811301091216938162
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,6 +797,7 @@ GameObject:
   - component: {fileID: 2811301091544389522}
   - component: {fileID: 2811301091544389523}
   - component: {fileID: 2811301091544389520}
+  - component: {fileID: 1811432373620742166}
   m_Layer: 0
   m_Name: DraggableSignNoRightTurn
   m_TagString: Untagged
@@ -910,6 +925,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trafficSign3DPrefab: {fileID: 114858557620038349, guid: 4446f6587ba8a0746ad7370145fc671c, type: 3}
+--- !u!114 &1811432373620742166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811301091544389550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Cannot turn right when placed on tile
 --- !u!1 &2811301091554086319
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +952,7 @@ GameObject:
   - component: {fileID: 2811301091554086291}
   - component: {fileID: 2811301091554086288}
   - component: {fileID: 2811301091554086289}
+  - component: {fileID: 7822791969983500661}
   m_Layer: 0
   m_Name: DraggableSignNoLeftTurn
   m_TagString: Untagged
@@ -1051,6 +1080,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trafficSign3DPrefab: {fileID: 2742650477265725129, guid: 0196aaaba8518d44582d88467f218b1f, type: 3}
+--- !u!114 &7822791969983500661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811301091554086319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Cannot turn left when placed on tile
 --- !u!1 &2811301091569569656
 GameObject:
   m_ObjectHideFlags: 0

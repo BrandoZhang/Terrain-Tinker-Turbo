@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7600489318093125138}
   - component: {fileID: 6516051178702972024}
   - component: {fileID: 6655813939445468184}
+  - component: {fileID: 78229274254447551}
   m_Layer: 0
   m_Name: TerrainWithRocks
   m_TagString: TerrainSolid
@@ -241,6 +242,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ignoreChildren: 0
+--- !u!114 &78229274254447551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3841071680636647060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Terrain with static obstacles
 --- !u!1001 &8445519946160443238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -331,6 +345,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5362228263311605533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444428912387278712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Terrain with static obstacles
 --- !u!4 &8447449203457869286 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4466140132526720, guid: c60b7675e702e2947add528ab033de32, type: 3}
@@ -431,3 +458,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f671a3bf46bfd4fac8c7f35dbfab09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5291273417223038855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444441928813048974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Terrain with static obstacles
