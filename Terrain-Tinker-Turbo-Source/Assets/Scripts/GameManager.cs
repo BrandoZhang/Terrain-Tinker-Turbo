@@ -308,7 +308,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
-            PostToDatabase("Player1");
+            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4")
+            {
+                PostToDatabase("Player1");
+            }
+
             Debug.Log("Player1 wins RECORDED");
         }
         
@@ -323,7 +327,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
-            PostToDatabase("Player2");
+            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4")
+            {
+                PostToDatabase("Player2");
+            }
+
             Debug.Log("Player2 wins RECORDED");
         }
         
