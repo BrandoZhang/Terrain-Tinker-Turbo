@@ -193,6 +193,29 @@ public class GameManager : MonoBehaviour
             tooltipText.text = "";
             tooltipBackground.SetActive(false);
         }
+        
+        /*if (Physics.Raycast(ray, out hit) && isDragging && !isRacing)
+        {
+            TabFunctionality functionality = hit.transform.GetComponent<TabFunctionality>();
+
+            if (functionality != null)
+            {
+                tooltipText.text = functionality.GetFunctionalityDescription();
+                tooltipBackground.transform.position = Input.mousePosition;
+                tooltipBackground.SetActive(true);
+            }
+            else
+            {
+                
+                tooltipText.text = "";
+                tooltipBackground.SetActive(false);
+            }
+        }
+        else
+        {
+            tooltipText.text = "";
+            tooltipBackground.SetActive(false);
+        }*/
     }
 
     public void SwitchTrackLibrary()
