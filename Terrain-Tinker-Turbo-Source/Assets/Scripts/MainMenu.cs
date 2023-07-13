@@ -8,6 +8,9 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Menu")
+            return;
+        
         MenuCanvas = GameManager.Instance.getMenuCanvas();
     }
     
