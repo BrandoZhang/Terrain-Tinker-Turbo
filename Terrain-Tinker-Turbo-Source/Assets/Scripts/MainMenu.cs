@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        //MenuCanvas = GameManager.Instance.getMenuCanvas();
+        MenuCanvas = GameManager.Instance.getMenuCanvas();
     }
     
     // Start is called before the first frame update
