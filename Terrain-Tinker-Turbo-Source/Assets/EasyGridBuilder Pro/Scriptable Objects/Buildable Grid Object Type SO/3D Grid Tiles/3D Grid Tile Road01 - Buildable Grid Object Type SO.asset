@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d2d645654a6df41b437ed3f8e35368, type: 3}
+  m_Name: 3D Grid Tile Road01 - Buildable Grid Object Type SO
+  m_EditorClassIdentifier: 
+  objectName: Tile Road01
+  buildableCategorySO: {fileID: 11400000, guid: 6995c615629986b488f91650b507edd8, type: 2}
+  objectDescription: Tile Road01 Object Description
+  objectToolTipDescription: Tile Road01 Object Tool Tip Description
+  objectIcon: {fileID: 21300000, guid: a81f00e0981056c479efbafa25c24f01, type: 3}
+  objectPrefab:
+  - {fileID: 7915017962536505934, guid: 71c3a530d53677f43bdcc2ba69f1e460, type: 3}
+  ghostPrefab: {fileID: 7915017962536505934, guid: 71c3a530d53677f43bdcc2ba69f1e460, type: 3}
+  placeableGhostMaterial: {fileID: 2100000, guid: 281380b3d50e1eb46b869b8c8aa1307c, type: 2}
+  notPlaceableGhostMaterial: {fileID: 2100000, guid: 1fb75a46b45af6e49a32883c3bcb026a, type: 2}
+  objectScaleX: 10
+  objectScaleZ: 10
+  builtObjectLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  showGridBelowObject: 1
+  objectGridCanvas: {fileID: 7023326040891081457, guid: b008e2f959515844dac4c16b66bf9c2b, type: 3}
+  gridImageSprite: {fileID: 21300000, guid: 89f923662002a7240b3f8939cdc9bc13, type: 3}
+  gridImagePlaceableColor: {r: 0, g: 0.9254902, b: 1, a: 0.78431374}
+  gridImageNotPlaceableColor: {r: 1, g: 0.29803923, b: 0.29803923, a: 0.78431374}
+  holdToPlace: 1
+  placeAndDeselect: 0
+  objectMovable: 1
+  enableBuildCondition: 0
+  buildConditionSO: {fileID: 0}

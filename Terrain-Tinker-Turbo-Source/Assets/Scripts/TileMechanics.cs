@@ -7,13 +7,17 @@ public class TileMechanics : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)  
     {
-        if (other.gameObject.name == "Collision")   // Check if the collider belongs to the vehicle
+        if (other.gameObject.CompareTag("Flip"))
         {
-            VehicleControl racer = other.transform.root.GetComponent<VehicleControl>(); // Get the VehicleControl from the root of the collider
-            if (racer != null)
+            if (other.gameObject.name == "Collision")   // Check if the collider belongs to the vehicle
             {
-                racer.controlFlipped = true;
+                VehicleControl racer = other.transform.root.GetComponent<VehicleControl>(); // Get the VehicleControl from the root of the collider
+                if (racer != null)
+                {
+                    racer.controlFlipped = true;
+                }
             }
+            
         }
     }
     private void OnTriggerExit(Collider other)

@@ -10,14 +10,18 @@ public class StatManager
     public string currentTime;
     public string gameVersion;
     public string currentScene;
-    public List<string> terrains;
+    public string terrains;
+    public string p1Reset;
+    public string p2Reset;
 
-    public StatManager(string winner, string sceneName, List<string> terrains)
+    public StatManager(string winner, string sceneName, string terrains, string p1Re, string p2Re)
     {
         currentTime = System.DateTime.Now.ToString("HH:mm dd MMMM, yyyy");
-        gameVersion = "June 25th";
+        gameVersion = "Beta";
         currentScene = sceneName;
         this.winner = winner;
         this.terrains = terrains;
+        p1Reset = p1Re;
+        p2Reset = p2Re;
     }
 }

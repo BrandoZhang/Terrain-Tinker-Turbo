@@ -4,6 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
+    private GameObject MenuCanvas;
+
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Menu")
+            return;
+        
+        MenuCanvas = GameManager.Instance.getMenuCanvas();
+    }
+    
     // Start is called before the first frame update
     public void PlayGame()
     {
@@ -29,6 +39,21 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial4");
     }
+    
+    public void launchTutorial5()
+    {
+        SceneManager.LoadScene("Tutorial5");
+    }
+    
+    public void launchPlayScene3()
+    {
+        SceneManager.LoadScene("PlayScene3");
+    }
+    
+    public void launchPlayScene4()
+    {
+        SceneManager.LoadScene("PlayScene4");
+    }
 
     public void headBack()
     {
@@ -40,24 +65,54 @@ public class MainMenu : MonoBehaviour
     public void headNext()
     {
         int currIdx = SceneManager.GetActiveScene().buildIndex;
-        int nextIdx = (currIdx >= 5) ? 0 : currIdx + 1;
+        int nextIdx = (currIdx >= 7) ? 0 : currIdx + 1;
         SceneManager.LoadScene(nextIdx);
     }
 
     public void launchMenu()
     {
-        if (GameManager.Instance.getGameOverStatus())
-        {
-            SceneManager.LoadScene("Menu");
-        }
+        SceneManager.LoadScene("Menu");
     }
 
     public void Restart()
     {
-        if (GameManager.Instance.getGameOverStatus())
+        int currIdx = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currIdx);
+    }
+    
+    public void BackToGame()
+    {
+        GameManager.Instance.HideMenu(MenuCanvas);
+        
+        //To inform KeyListener.cs for Menu interaction
+        GameManager.Instance.setBackToGameStatus();
+        
+        //Unfreeze vehicles
+        if (GameManager.Instance.getRacingStatus())
         {
-            int currIdx = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currIdx);
+            GameManager.Instance.FreeVehicles();
+        }
+    }
+    
+    public void ShowGameControl()
+    {
+        GameManager.Instance.DisplayMenu(GameManager.Instance.getHelpCanvas());
+        
+        //freeze vehicles
+        GameManager.Instance.FreezeVehicles();
+    }
+    
+    public void HideGameControl()
+    {
+        GameManager.Instance.HideMenu(GameManager.Instance.getHelpCanvas());
+        
+        //To inform KeyListener.cs for Menu interaction
+        GameManager.Instance.setBackToGameStatus();
+        
+        //Unfreeze vehicles
+        if (GameManager.Instance.getRacingStatus())
+        {
+            GameManager.Instance.FreeVehicles();
         }
     }
 }

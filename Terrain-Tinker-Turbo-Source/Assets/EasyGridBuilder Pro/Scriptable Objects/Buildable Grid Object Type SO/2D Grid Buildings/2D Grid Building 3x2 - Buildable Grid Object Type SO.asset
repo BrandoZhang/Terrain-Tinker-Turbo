@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d2d645654a6df41b437ed3f8e35368, type: 3}
+  m_Name: 2D Grid Building 3x2 - Buildable Grid Object Type SO
+  m_EditorClassIdentifier: 
+  objectName: Building 3x2
+  buildableCategorySO: {fileID: 11400000, guid: 00d47d8fda444fb4f9e6779dcd31f855, type: 2}
+  objectDescription: Building 3x2 Object Description
+  objectToolTipDescription: Building 3x2 Object Tool Tip Description
+  objectIcon: {fileID: 21300000, guid: b3c22dea03f34ac4da60fa741b69d8e4, type: 3}
+  objectPrefab:
+  - {fileID: 3057362022714980091, guid: 8fed318de749e3e46aa302d12b81560b, type: 3}
+  ghostPrefab: {fileID: 3057362022714980091, guid: 8fed318de749e3e46aa302d12b81560b, type: 3}
+  placeableGhostMaterial: {fileID: 2100000, guid: 281380b3d50e1eb46b869b8c8aa1307c, type: 2}
+  notPlaceableGhostMaterial: {fileID: 2100000, guid: 1fb75a46b45af6e49a32883c3bcb026a, type: 2}
+  setBuiltObjectLayer: 0
+  builtObjectLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  showGridBelowObject: 1
+  objectGridCanvas: {fileID: 7023326040891081457, guid: b008e2f959515844dac4c16b66bf9c2b, type: 3}
+  gridImageSprite: {fileID: 21300000, guid: 89f923662002a7240b3f8939cdc9bc13, type: 3}
+  gridImagePlaceableColor: {r: 0, g: 0.9254902, b: 1, a: 0.78431374}
+  gridImageNotPlaceableColor: {r: 1, g: 0.29803923, b: 0.29803923, a: 0.78431374}
+  holdToPlace: 0
+  placeAndDeselect: 0
+  enableBuildCondition: 0
+  buildConditionSO: {fileID: 0}

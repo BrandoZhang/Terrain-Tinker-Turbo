@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14da98174320bd479aef7615e3f5d3f, type: 3}
+  m_Name: 3D Free Coconut Tree - Buildable Free Object Type SO
+  m_EditorClassIdentifier: 
+  objectName: Coconut Tree
+  buildableCategorySO: {fileID: 11400000, guid: fe7a69aaa38345442b3ba57ad03e345b, type: 2}
+  objectDescription: Coconut Tree Object Description
+  objectToolTipDescription: Coconut Tree Object Tool Tip Description
+  objectIcon: {fileID: 21300000, guid: 3bb298a9152a77243944ac8c55f37492, type: 3}
+  objectPrefab:
+  - {fileID: 8498113902589570450, guid: 6ce27fb96749e3b43ba40028a70a81d3, type: 3}
+  - {fileID: 1896542638833092111, guid: 7b6291b8b9e01ce48bf5ac9b00dedcdb, type: 3}
+  ghostPrefab: {fileID: 8498113902589570450, guid: 6ce27fb96749e3b43ba40028a70a81d3, type: 3}
+  placeableGhostMaterial: {fileID: 2100000, guid: 281380b3d50e1eb46b869b8c8aa1307c, type: 2}
+  notPlaceableGhostMaterial: {fileID: 2100000, guid: 1fb75a46b45af6e49a32883c3bcb026a, type: 2}
+  setBuiltObjectLayer: 0
+  builtObjectLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  holdToPlace: 0
+  placeAndDeselect: 0
+  snapToObjectSnappers: 1
+  enableBuildCondition: 1
+  buildConditionSO: {fileID: 11400000, guid: a68861fa5a14e6b4fbacb7ef3befdc08, type: 2}

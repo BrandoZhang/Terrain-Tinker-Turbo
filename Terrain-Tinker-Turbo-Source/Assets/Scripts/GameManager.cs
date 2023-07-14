@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,9 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
+using Newtonsoft.Json;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -23,17 +27,35 @@ public class GameManager : MonoBehaviour
     private int currentPlayer = 1;  // Start with player 1
     private int player1BlockCount = 0;  // Number of track blocks placed by player 1
     private int player2BlockCount = 0;  // Number of track blocks placed by player 2
+    // TODO: Does not separate the counting of traffic signs yet. Need to revise the logic of counting, limiting, and UI.
+    private int player1TrafficSignCount = 0;  // Number of traffic signs placed by player 1
+    private int player2TrafficSignCount = 0;  // Number of traffic signs placed by player 2
     public int limit = 3;  // Maximum number of track blocks each player can place
-    public List<string> terrainRecord;
     [Header("Game Object")]
     public GameObject track;  // Reference to the Track GameObject
     private Rigidbody trackRigidbody;  // Reference to the Rigidbody on the Track GameObject
     public VehicleControl racer1;  // Reference to the first racer's controller
-    // public RacerController racer2;  // Reference to the second racer's controller
     public VehicleControl racer2;  // Reference to the second racer's controller
     public GameObject player1TrackLibrary;  // Reference to the player 1's TrackLibrary
     public GameObject player2TrackLibrary;  // Reference to the player 2's TrackLibrary
+    public GameObject player1TrafficSignLibrary;  // Reference to the player 1's TrafficSignLibrary
+    public GameObject player2TrafficSignLibrary;  // Reference to the player 2's TrafficSignLibrary
+    public GameObject player1DeactivePlane;  // Reference to the player 1's Grey Plane
+    public GameObject player2DeactivePlane;  // Reference to the player 2's Grey Plane
+    public GameObject player1TabSection; // Reference to the player 1's Tab Section
+    public GameObject player2TabSection;// Reference to the player 2's Tab Section
+    public GameObject player1ItemLibrary; // Reference to the player 1's Item Library
+    public GameObject player2ItemLibrary;// Reference to the player 2's Item Library
+    
+    public List<TerrData> terrainData = new List<TerrData>();
+    public int player1Reset = 0;
+    public int player2Reset = 0;
+    public List<List<float>> player1ResetPos = new List<List<float>>();
+    public List<List<float>> player2ResetPos = new List<List<float>>();
+    public List<float> player1Speed = new List<float>();
+    public List<float> player2Speed = new List<float>();
 
+    [Header("UI Settings")]
     public Camera mainCamera;
     public Camera player1Camera;
     public Camera player2Camera;
@@ -41,6 +63,20 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI[] text;
     private RawImage img;
     private RawImage[] raceImg;
+    public TrafficUIController trafficUIController;  // Reference to the TrafficUIController
+
+    public GameObject MenuCanvas;
+    public GameObject GameOverCanvas;
+    public GameObject HelpCanvas;
+    private bool isCountDown;
+    private bool isBackToGameClicked;
+
+    private GameObject draggableSignNoLeftTurnHint;
+    private GameObject draggableSignNoRightTurnHint;
+    
+    public Text tooltipText;
+    public GameObject tooltipBackground;
+
     void Awake()
     {
         if (Instance == null)
@@ -57,12 +93,18 @@ public class GameManager : MonoBehaviour
         player1Camera.enabled = false;
         player2Camera.enabled = false;
         
+        
         // Adjust player camera viewports for split screen
         player1Camera.rect = new Rect(0, 0, 0.5f, 1);
         player2Camera.rect = new Rect(0.5f, 0, 0.5f, 1);
         
         // Find the Track GameObject
         track = GameObject.Find("Track");
+        // Find the UI Controller GameObject
+        trafficUIController = GameObject.Find("TrafficUIController").GetComponent<TrafficUIController>();
+        // Find the ItemLibrary GameObject
+        //player1ItemLibrary = GameObject.Find("Player1_ItemLibrary");
+        //player2ItemLibrary = GameObject.Find("Player2_ItemLibrary");
 
         // Get the Rigidbody from the Track GameObject
         trackRigidbody = track.GetComponent<Rigidbody>();
@@ -94,6 +136,7 @@ public class GameManager : MonoBehaviour
              SetTextEnabled("TrackLibraryText", false);
              SetImgEnabled("RaceStart", false);
              SetTextEnabled("Tutorial1Text", true); // Disable instruction in tutorial 1
+             player1DeactivePlane.SetActive(false);
              //StartCoroutine(Countdown());
         }
         else
@@ -101,6 +144,7 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("Player1Turn", true);
             SetImgEnabled("Player2Turn", false);
             SetImgEnabled("RaceStart", false);
+            player2DeactivePlane.SetActive(true);
         }
         
         SetTextEnabled("TrackLibraryText", false);
@@ -109,13 +153,82 @@ public class GameManager : MonoBehaviour
         racer1.canMove = false;
         racer2.canMove = false;
 
-        //if (SceneManager.GetActiveScene().name == "PlayScene2")
-        //{
-            SetTextEnabled("RestartButton", false);
-            SetTextEnabled("MenuButton", false);
-        //}
+        /*if (SceneManager.GetActiveScene().name == "PlayScene2")
+        {
+            //For end race options
+            SetTextEnabled("RestartButtonGO", false);
+            SetTextEnabled("MenuButtonGO", false);
+        }*/
+        
         // TODO: Duplicate TrackLibrary in script instead of Unity Editor
-        player2TrackLibrary.SetActive(false);
+        //player2TrackLibrary.SetActive(false);
+        //player2TrafficSignLibrary.SetActive(false);
+        
+        //Tutorial 5 Initial Settings
+        if(SceneManager.GetActiveScene().name == "Tutorial5")
+        {
+            SetTextEnabled("MessInstruction_2", false);
+            draggableSignNoRightTurnHint = track.transform.Find("DraggableSignNoRightTurnHint").gameObject;
+            draggableSignNoLeftTurnHint = track.transform.Find("DraggableSignNoLeftTurnHint").gameObject;
+        }
+
+        HideMenu(MenuCanvas);
+        HideMenu(GameOverCanvas);
+        HideMenu(HelpCanvas);
+        
+    }
+
+    private void Update()
+    {
+        RaycastHit hit;
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        bool isDragging = Input.GetMouseButton(0);
+        
+        if (Physics.Raycast(ray, out hit) && !isDragging && !isRacing)
+        {
+            TileFunctionality functionality = hit.transform.GetComponent<TileFunctionality>();
+
+            if (functionality != null)
+            {
+                tooltipText.text = functionality.GetFunctionalityDescription();
+                tooltipBackground.transform.position = Input.mousePosition;
+                tooltipBackground.SetActive(true);
+            }
+            else
+            {
+                
+                tooltipText.text = "";
+                tooltipBackground.SetActive(false);
+            }
+        }
+        else
+        {
+            tooltipText.text = "";
+            tooltipBackground.SetActive(false);
+        }
+        
+        /*if (Physics.Raycast(ray, out hit) && isDragging && !isRacing)
+        {
+            TabFunctionality functionality = hit.transform.GetComponent<TabFunctionality>();
+
+            if (functionality != null)
+            {
+                tooltipText.text = functionality.GetFunctionalityDescription();
+                tooltipBackground.transform.position = Input.mousePosition;
+                tooltipBackground.SetActive(true);
+            }
+            else
+            {
+                
+                tooltipText.text = "";
+                tooltipBackground.SetActive(false);
+            }
+        }
+        else
+        {
+            tooltipText.text = "";
+            tooltipBackground.SetActive(false);
+        }*/
     }
 
     public void SwitchTrackLibrary()
@@ -123,13 +236,21 @@ public class GameManager : MonoBehaviour
         tracklibraryText.text = "Player " + currentPlayer + "'s Track Library";
         if (currentPlayer == 1)
         {
-            player1TrackLibrary.SetActive(true);
-            player2TrackLibrary.SetActive(false);
+            //player1TrackLibrary.SetActive(true);
+            //player1TrafficSignLibrary.SetActive(true);
+            //player2TrackLibrary.SetActive(false);
+            //player2TrafficSignLibrary.SetActive(false);
+            player1DeactivePlane.SetActive(false);
+            player2DeactivePlane.SetActive(true);
         }
         else
         {
-            player1TrackLibrary.SetActive(false);
-            player2TrackLibrary.SetActive(true);
+            //player1TrackLibrary.SetActive(false);
+            //player1TrafficSignLibrary.SetActive(false);
+            //player2TrackLibrary.SetActive(true);
+            //player2TrafficSignLibrary.SetActive(true);
+            player1DeactivePlane.SetActive(true);
+            player2DeactivePlane.SetActive(false);
         }
     }
 
@@ -179,54 +300,54 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("Player2Turn", true);
         }
         
+        //Special condition for tutorial 5
+        if (SceneManager.GetActiveScene().name == "Tutorial5" && player1BlockCount == 1 
+            && player2BlockCount == 1)
+        {
+            SetTextEnabled("MessInstruction_1", false);
+            SetTextEnabled("MessInstruction_2", true);
+            
+            //Display hints for traffic rules
+            draggableSignNoRightTurnHint.gameObject.SetActive(true);
+            draggableSignNoLeftTurnHint.gameObject.SetActive(true);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial5" && player1BlockCount == 2 
+                                                              && player2BlockCount == 1)
+        {
+            //Hide Left traffic rule
+            draggableSignNoLeftTurnHint.gameObject.SetActive(false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial5" && player1BlockCount == 2 
+                                                              && player2BlockCount == 2)
+        {
+            //Hide Right traffic rule
+            draggableSignNoRightTurnHint.gameObject.SetActive(false);
+        }
+
+        
         // If all blocks have been placed, transition to racing phase
         if (player1BlockCount >= limit && player2BlockCount >= limit)
         {
-            player1TrackLibrary.SetActive(false);  // Hide the TrackLibrary when finish editing
-            tracklibraryText.text = "";
-            //TransitionToRacingPhase();
-            SetImgEnabled("Player1Turn", false);
-            SetImgEnabled("Player2Turn", false);
-            
-            StartCoroutine(Countdown());
+            StartRaceNow();
         }
     }
 
     void TransitionToRacingPhase()
     {
         // TODO: Add racing phase transition code here
+        isCountDown = false;
         isRacing = true;
         phaseText.text = ""; //Kenny - Decluttering scene, player should know it is race phase
         turnText.gameObject.SetActive(false);  // Clear for Racing Phase
         countdownText.gameObject.SetActive(false);
         countdownText.enabled = false;
-
-        if (SceneManager.GetActiveScene().name == "Tutorial2")
-        {
-            SetTextEnabled("Instruction", false);
-            SetTextEnabled("FinishLine", false);
-            
-            SetImgEnabled("DragnDrop", false);
-        }
-        
-        if (SceneManager.GetActiveScene().name == "Tutorial3")
-        {
-            SetTextEnabled("RotateInstruction", false);
-            SetTextEnabled("FinishLine", false);
-            
-            SetImgEnabled("RotateImg", false);
-        }
-        
-        if (SceneManager.GetActiveScene().name == "Tutorial4")
-        {
-            SetTextEnabled("MessInstruction", false);
-        }
         
         if (SceneManager.GetActiveScene().name == "PlayScene2")
         {
             SetTextEnabled("MessInstruction", false);
         }
-
 
         // Deactivate main camera and activate player cameras
         mainCamera.enabled = false;
@@ -282,13 +403,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player1", getCurrScene(), terrainRecord);
-            PostToDatabase(winner);
+            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4")
+            {
+                PostToDatabase("Player1");
+            }
+
             Debug.Log("Player1 wins RECORDED");
         }
         
         //Freeze position after reaching finish line
-        racer1.canMove = false;
+        // racer1.canMove = false;
     }
 
     public void Player2Finished()
@@ -298,23 +422,33 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
-            StatManager winner = new StatManager("Player2", getCurrScene(), terrainRecord);
-            PostToDatabase(winner);
+            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4")
+            {
+                PostToDatabase("Player2");
+            }
+
             Debug.Log("Player2 wins RECORDED");
         }
         
         //Freeze position after reaching finish line
-        racer2.canMove = false;
+        // racer2.canMove = false;
     }
 
     IEnumerator Countdown()
     {
         // Disable player controls
-        racer1.canMove = false;
-        racer2.canMove = false;
+        FreezeVehicles();
         
         SetImgEnabled("RaceStart", true);
         
+        //Disable player Tab 
+        player1TabSection.SetActive(false);
+        player2TabSection.SetActive(false);
+        
+        //Disable Traffic library
+        player1TrackLibrary.SetActive(false);
+        player1TrackLibrary.SetActive(false);
+
         if (SceneManager.GetActiveScene().name == "Tutorial4")
         {
             SetTextEnabled("Player2Path", false);
@@ -327,15 +461,50 @@ public class GameManager : MonoBehaviour
             SetImgEnabled("PlayerInfoImg", false);
         }
         
+        if (SceneManager.GetActiveScene().name == "Tutorial2")
+        {
+            SetTextEnabled("Instruction", false);
+            SetTextEnabled("FinishLine", false);
+            
+            SetImgEnabled("DragnDrop", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial3")
+        {
+            SetTextEnabled("RotateInstruction", false);
+            SetTextEnabled("FinishLine", false);
+            
+            SetImgEnabled("RotateImg", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Tutorial4" ||
+            SceneManager.GetActiveScene().name == "PlayScene3")
+        {
+            SetTextEnabled("MessInstruction", false);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Tutorial5")
+        {
+            SetTextEnabled("MessInstruction_1", false);
+            SetTextEnabled("MessInstruction_2", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "PlayScene4")
+        {
+            SetTextEnabled("Instruction", false);
+        }
+
+        isCountDown = true;
+        
         // Countdown from 5 to 0
         for (int i = 5; i >= 0; i--)
         {
             countdownText.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
+        
         // Enable player controls
-        racer1.canMove = true;
-        racer2.canMove = true;
+        FreeVehicles();
 
         // Clear countdown text
         countdownText.text = "";
@@ -363,15 +532,31 @@ public class GameManager : MonoBehaviour
          SetImgEnabled("P2Control", status);
     }
 
-    public void showEndGameOptions()
+    /*public void showEndGameOptions()
     {
-        SetTextEnabled("RestartButton", true);
-        SetTextEnabled("MenuButton", true);        
-    }
+        SetTextEnabled("RestartButtonGO", true);
+        SetTextEnabled("MenuButtonGO", true);        
+    }*/
 
     public void StartRaceNow()
     {
+        // Hide the TrackLibrary/TrafficSignLibrary/ItemLibrary when finish editing
         player1TrackLibrary.SetActive(false);
+        player1TrafficSignLibrary.SetActive(false);
+        player2TrackLibrary.SetActive(false);
+        player2TrafficSignLibrary.SetActive(false);
+        player1DeactivePlane.SetActive(false);
+        player2DeactivePlane.SetActive(false);
+        
+        if (player1ItemLibrary != null)
+        {
+            player1ItemLibrary.SetActive(false);
+        }
+        if (player2ItemLibrary != null)
+        {
+            player2ItemLibrary.SetActive(false);
+        }
+
         tracklibraryText.text = "";
  
         SetImgEnabled("Player1Turn", false);
@@ -385,9 +570,22 @@ public class GameManager : MonoBehaviour
         return gameOver;
     }
     
-    private void PostToDatabase(StatManager stats)
+    private void PostToDatabase(string winnerPlayer)
     {
-        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/Version6_25.json", stats);
+        string convertedTerrainData = JsonConvert.SerializeObject(terrainData);
+
+        Player1Stats p1Reset = new Player1Stats {ResetCount = player1Reset, ResetSpeed = player1Speed, Position = player1ResetPos};
+        Player2Stats p2Reset = new Player2Stats
+            { ResetCount = player2Reset, ResetSpeed = player2Speed, Position = player2ResetPos };
+        string convertedP1 = JsonConvert.SerializeObject(p1Reset);
+        string convertedP2 = JsonConvert.SerializeObject(p2Reset);
+        StatManager winner = new StatManager(winnerPlayer, getCurrScene(), convertedTerrainData, convertedP1, convertedP2);
+        PostTodtbs(winner);
+    }
+    
+    private void PostTodtbs(StatManager stats)
+    {
+        RestClient.Post("https://ttt-analytics-8ee9b-default-rtdb.firebaseio.com/BetaFullAnalytics.json", stats);
     }
 
     private string getCurrScene()
@@ -397,8 +595,118 @@ public class GameManager : MonoBehaviour
         return currSceneName;
     }
 
-    public void AddTerrainData(string terrain)
+    public void AddTerrainData(string terrainName, Vector3 position, Quaternion rotation, string type)
     {
-        terrainRecord.Add(terrain);
+        List<float> posInfo = new List<float> { position.x, position.y, position.z };
+        List<float> rotInfo = new List<float> { rotation.x, rotation.y, rotation.z };
+        terrainData.Add(new TerrData{Terrain = terrainName, Position = posInfo, Rotation = rotInfo, PlayerNum = 3- currentPlayer, Type = type});
+    }
+    
+
+    public void HideMenu(GameObject obj)
+    {
+        obj.GetComponent<Canvas>().enabled = false;
+    }
+
+    public void DisplayMenu(GameObject obj)
+    {
+        obj.GetComponent<Canvas>().enabled = true;
+    }
+
+    public bool getCountDownStatus()
+    {
+        return isCountDown;
+    }
+
+    public void FreeVehicles()
+    {
+        racer1.canMove = true;
+        racer2.canMove = true;
+    }
+
+    public void FreezeVehicles()
+    {
+        racer1.canMove = false;
+        racer2.canMove = false;
+    }
+
+    public GameObject getMenuCanvas()
+    {
+        return MenuCanvas;
+    }
+
+    public GameObject getGameOverCanvas()
+    {
+        return GameOverCanvas;
+    }
+    
+    public GameObject getHelpCanvas()
+    {
+        return HelpCanvas;
+    }
+    public void setBackToGameStatus()
+    {
+        isBackToGameClicked = true;
+    }
+
+    public void clearBackToGameStatus()
+    {
+        isBackToGameClicked = false;
+    }
+
+    public bool getBackToGameStatus()
+    {
+        return isBackToGameClicked;
+    }
+
+    public bool getRacingStatus()
+    {
+        return isRacing;
+    }
+    
+    public class TerrData
+    {
+        public string Terrain;
+        public List<float> Position;
+        public List<float> Rotation;
+        public int PlayerNum;
+        public string Type;
+    }
+
+    public class Player1Stats
+    {
+        public int ResetCount;
+        public List<float> ResetSpeed;
+        public List<List<float>> Position;
+    }
+
+    public class Player2Stats
+    {
+        public int ResetCount;
+        public List<float> ResetSpeed;
+        public List<List<float>> Position;
+    }
+
+    public void ResetStats(string playerName, Vector3 position, float speed)
+    {
+        List<float> pos = new List<float> { position.x, position.y, position.z };
+        if (playerName == "Player1-RallyCar")
+        {
+            player1Reset++;
+            player1ResetPos.Add(pos);
+            player1Speed.Add(speed);
+        }
+        else
+        {
+            player2Reset++;
+            player2ResetPos.Add(pos);
+            player2Speed.Add(speed);
+        }
+        
+    }
+
+    public void SetGameObject(GameObject obj, bool flag)
+    {
+        obj.SetActive(flag);
     }
 }
