@@ -501,8 +501,8 @@ public class VehicleControl : MonoBehaviour
         // Check if the vehicle's height is below a certain threshold
         if (transform.position.y < minHeightThreshold) 
         {
-            ResetToStart();
             GameManager.Instance.ResetStats(gameObject.name, transform.position, speed);
+            ResetToStart();
         }
         
         // If controls are flipped, negate the horizontal input
