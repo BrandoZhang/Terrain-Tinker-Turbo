@@ -4315,7 +4315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00030517578, y: 0}
+  m_AnchoredPosition: {x: 0.00024414062, y: 0}
   m_SizeDelta: {x: -0.00048828, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &736565595
@@ -4963,7 +4963,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -6804,6 +6804,7 @@ MonoBehaviour:
   MenuCanvas: {fileID: 253744788}
   GameOverCanvas: {fileID: 40086331}
   HelpCanvas: {fileID: 1891794094}
+  lightBeam: {fileID: 2139678008}
   tooltipText: {fileID: 612139537}
   tooltipBackground: {fileID: 612139536}
 --- !u!4 &1776224350
@@ -8471,5 +8472,10 @@ PrefabInstance:
 --- !u!4 &2139678007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4780913695775505738, guid: 11e940aa1458d5340bc101f3559410bc, type: 3}
+  m_PrefabInstance: {fileID: 2139678006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2139678008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2200840070707658773, guid: 11e940aa1458d5340bc101f3559410bc, type: 3}
   m_PrefabInstance: {fileID: 2139678006}
   m_PrefabAsset: {fileID: 0}

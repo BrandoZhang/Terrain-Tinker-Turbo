@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     private GameObject draggableSignNoLeftTurnHint;
     private GameObject draggableSignNoRightTurnHint;
     private GameObject ocean;
-    private GameObject lightBeam;
+    public GameObject lightBeam;
     
     public Text tooltipText;
     public GameObject tooltipBackground;
@@ -113,8 +113,7 @@ public class GameManager : MonoBehaviour
         //Disable ocean in track editing phase
         ocean.gameObject.SetActive(false);
         
-        //Find beam
-        lightBeam = track.transform.Find("TerrainFinishBlock").GetChild(0).gameObject;
+        //Disable beam in track editing phase
         lightBeam.SetActive(false);
         
         // Get the Rigidbody from the Track GameObject
