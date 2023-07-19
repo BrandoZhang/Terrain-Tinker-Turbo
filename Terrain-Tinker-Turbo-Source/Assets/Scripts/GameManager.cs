@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject draggableSignNoLeftTurnHint;
     private GameObject draggableSignNoRightTurnHint;
+    private GameObject ocean;
+    private GameObject lightBeam;
     
     public Text tooltipText;
     public GameObject tooltipBackground;
@@ -105,7 +107,16 @@ public class GameManager : MonoBehaviour
         // Find the ItemLibrary GameObject
         //player1ItemLibrary = GameObject.Find("Player1_ItemLibrary");
         //player2ItemLibrary = GameObject.Find("Player2_ItemLibrary");
-
+        
+        //find ocean
+        ocean = GameObject.Find("Ocean");
+        //Disable ocean in track editing phase
+        ocean.gameObject.SetActive(false);
+        
+        //Find beam
+        lightBeam = track.transform.Find("TerrainFinishBlock").GetChild(0).gameObject;
+        lightBeam.SetActive(false);
+        
         // Get the Rigidbody from the Track GameObject
         trackRigidbody = track.GetComponent<Rigidbody>();
         
@@ -353,6 +364,12 @@ public class GameManager : MonoBehaviour
         mainCamera.enabled = false;
         player1Camera.enabled = true;
         player2Camera.enabled = true;
+        
+        //Enable ocean in racing phase
+        ocean.gameObject.SetActive(true);
+        
+        //Enable beam
+        lightBeam.SetActive(true);
         
         // Transition to racing phase, configure the collider and rigidbody
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
