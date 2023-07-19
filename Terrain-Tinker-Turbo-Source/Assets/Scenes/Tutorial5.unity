@@ -1554,6 +1554,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4780913695775505738, guid: 11e940aa1458d5340bc101f3559410bc, type: 3}
   m_PrefabInstance: {fileID: 83735350}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &83735352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2200840070707658773, guid: 11e940aa1458d5340bc101f3559410bc, type: 3}
+  m_PrefabInstance: {fileID: 83735350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &93116476
 GameObject:
   m_ObjectHideFlags: 0
@@ -9879,7 +9884,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -18199,6 +18204,7 @@ MonoBehaviour:
   MenuCanvas: {fileID: 1193380777}
   GameOverCanvas: {fileID: 1518387852}
   HelpCanvas: {fileID: 2088262993}
+  lightBeam: {fileID: 83735352}
   tooltipText: {fileID: 259284112}
   tooltipBackground: {fileID: 259284110}
 --- !u!4 &1776224350
