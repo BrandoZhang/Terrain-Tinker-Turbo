@@ -461,9 +461,13 @@ public class GameManager : MonoBehaviour
         player1TabSection.SetActive(false);
         player2TabSection.SetActive(false);
         
+        //Disable Track library
+        //player1TrackLibrary.SetActive(false);
+        //player2TrackLibrary.SetActive(false);
+        
         //Disable Traffic library
-        player1TrackLibrary.SetActive(false);
-        player1TrackLibrary.SetActive(false);
+        //player1TrafficSignLibrary.SetActive(false);
+        //player2TrafficSignLibrary.SetActive(false);
 
         if (SceneManager.GetActiveScene().name == "Tutorial4")
         {
@@ -563,7 +567,7 @@ public class GameManager : MonoBehaviour
         player2TrafficSignLibrary.SetActive(false);
         player1DeactivePlane.SetActive(false);
         player2DeactivePlane.SetActive(false);
-        
+
         if (player1ItemLibrary != null)
         {
             player1ItemLibrary.SetActive(false);
