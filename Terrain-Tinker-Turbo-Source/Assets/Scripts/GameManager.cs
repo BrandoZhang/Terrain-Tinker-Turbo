@@ -419,7 +419,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
-            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4")
+            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4" || getCurrScene() == "PlayScene5")
             {
                 PostToDatabase("Player1");
             }
@@ -438,7 +438,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
-            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4")
+            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4" || getCurrScene() == "PlayScene5")
             {
                 PostToDatabase("Player2");
             }
