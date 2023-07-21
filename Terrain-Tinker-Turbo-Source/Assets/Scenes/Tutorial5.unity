@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3844323, g: 0.4718076, b: 0.61765367, a: 1}
+  m_IndirectSpecularColor: {r: 0.38443908, g: 0.4717797, b: 0.6176202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2315,6 +2315,7 @@ GameObject:
   - component: {fileID: 154518331}
   - component: {fileID: 154518333}
   - component: {fileID: 154518332}
+  - component: {fileID: 154518334}
   m_Layer: 5
   m_Name: MessInstruction_1
   m_TagString: Untagged
@@ -2441,6 +2442,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154518330}
   m_CullTransparentMesh: 1
+--- !u!114 &154518334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154518330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0547764abc0c202499509181d40bcbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &155296032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,6 +5206,7 @@ GameObject:
   - component: {fileID: 409130191}
   - component: {fileID: 409130193}
   - component: {fileID: 409130192}
+  - component: {fileID: 409130194}
   m_Layer: 5
   m_Name: MessInstruction_2
   m_TagString: Untagged
@@ -5320,6 +5334,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409130190}
   m_CullTransparentMesh: 1
+--- !u!114 &409130194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409130190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0547764abc0c202499509181d40bcbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &423187659
 GameObject:
   m_ObjectHideFlags: 0
