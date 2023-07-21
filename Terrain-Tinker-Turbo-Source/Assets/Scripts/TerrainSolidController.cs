@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TouchScript.Behaviors;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TouchScript.Gestures;
 using TouchScript.Gestures.TransformGestures;
 
@@ -90,8 +91,30 @@ public class TerrainSolidController : MonoBehaviour
 
             if (closestPlaceholderController != null)
             {
-                // Align with the closest TerrainPlaceholder
                 GameObject objectToMove = transform.CompareTag("TerrainSolid") ? gameObject : transform.parent.gameObject;
+                // Tutorial 3
+                if (SceneManager.GetActiveScene().name == "Tutorial3")
+                {
+                    if (objectToMove.name == "TerrainL-shaped" && 
+                        !(objectToMove.transform.rotation == Quaternion.Euler(0f, 0f, 0f) || 
+                          objectToMove.transform.rotation == Quaternion.Euler(0f, 360f, 0f)))
+                    {
+                        // reset its position to the original position.
+                        transform.position = originalPosition;
+                        return;
+                    }
+
+                    if (objectToMove.name == "TerrainStraight" &&
+                        !(objectToMove.transform.rotation == Quaternion.Euler(0f, 0f, 0f) ||
+                          objectToMove.transform.rotation == Quaternion.Euler(0f, 180f, 0f) ||
+                          objectToMove.transform.rotation == Quaternion.Euler(0f, 360f, 0f)))
+                    {
+                        // reset its position to the original position.
+                        transform.position = originalPosition;
+                        return;
+                    }
+                }
+                // Align with the closest TerrainPlaceholder
                 objectToMove.transform.position = closestPlaceholderController.gameObject.transform.position;
                 
                 // Set the closest TerrainPlaceholder to occupied
