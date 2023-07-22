@@ -517,7 +517,17 @@ public class VehicleControl : MonoBehaviour
             if (Math.Abs(Input.GetAxis("Horizontal" + (playerIndex == 1 ? "_P1" : "_P2"))) > 0 || Math.Abs(Input.GetAxis("Vertical" + (playerIndex == 1 ? "_P1" : "_P2"))) > 0)
             {
                 tutorial1Check = true; //so that we can stop checking this logic again
-                GameManager.Instance.setT1KeyboardControls(false); //remove keyboard controls instructions
+                //GameManager.Instance.setT1KeyboardControls(false); 
+                if (playerIndex == 1)
+                {
+                    //remove keyboard controls instructions for player 1 once it moves
+                    GameManager.Instance.SetImgEnabled("P1Control", false);
+                }
+                else
+                {
+                    //remove keyboard controls instructions for player 2 once it moves
+                    GameManager.Instance.SetImgEnabled("P2Control", false);
+                }
             }
         }
         // speed of car
