@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
     public GameObject MenuCanvas;
     public GameObject GameOverCanvas;
     public GameObject HelpCanvas;
+    public TextMeshProUGUI player1TrialText;
+    public TextMeshProUGUI player2TrialText;
     private bool isCountDown;
     private bool isBackToGameClicked;
 
@@ -185,7 +187,15 @@ public class GameManager : MonoBehaviour
         HideMenu(MenuCanvas);
         HideMenu(GameOverCanvas);
         HideMenu(HelpCanvas);
-        
+
+        if (player1TrialText != null)
+        {
+            player1TrialText.text = limit + " Trials Left";
+        }
+        if (player2TrialText != null)
+        {
+            player2TrialText.text = limit + " Trials Left";
+        }
     }
 
     private void Update()
@@ -291,13 +301,21 @@ public class GameManager : MonoBehaviour
             player2BlockCount++;
         }
 
-        // Switch the current player
-        currentPlayer = 3 - currentPlayer;  // If currentPlayer was 1, it becomes 2 and vice versa
-        SwitchTrackLibrary();
         // Update the turnText field with the remaining blocks
         int remainingBlocks = currentPlayer == 1 ? limit - player1BlockCount : limit - player2BlockCount;
         turnText.text = "Player " + currentPlayer + "'s Turn - " + remainingBlocks + " blocks left";
-        
+        if (player1TrialText != null && currentPlayer == 1)
+        {
+            player1TrialText.text = remainingBlocks + " Trials Left";
+        }
+        else if (player2TrialText != null && currentPlayer == 2)
+        {
+            player2TrialText.text = remainingBlocks + " Trials Left";
+        }
+        // Switch the current player
+        currentPlayer = 3 - currentPlayer;  // If currentPlayer was 1, it becomes 2 and vice versa
+        SwitchTrackLibrary();
+
         //Aarti: Update turn image
         if(currentPlayer == 1)
         {
@@ -578,6 +596,14 @@ public class GameManager : MonoBehaviour
         }
 
         tracklibraryText.text = "";
+        if (player1TrialText != null)
+        {
+            player1TrialText.text = "";
+        }
+        if (player2TrialText != null)
+        {
+            player2TrialText.text = "";
+        }
  
         SetImgEnabled("Player1Turn", false);
         SetImgEnabled("Player2Turn", false);
