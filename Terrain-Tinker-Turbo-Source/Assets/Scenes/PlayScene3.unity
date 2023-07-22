@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.38148043, g: 0.46817917, b: 0.6131963, a: 1}
+  m_IndirectSpecularColor: {r: 0.38149974, g: 0.46815968, b: 0.6131704, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -575,6 +575,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90582996}
   m_CullTransparentMesh: 1
+--- !u!1 &95932394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307523815203173, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &95932400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95932394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!4 &101544170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5895959114283812092, guid: 71517564dd4ac374781647b2ee0c82a7, type: 3}
@@ -755,6 +774,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71517564dd4ac374781647b2ee0c82a7, type: 3}
+--- !u!1 &161570907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307524969887065, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &161570913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161570907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
+--- !u!1 &161804891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307524536966236, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &161804896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161804891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1 &172463966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,6 +1099,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 100, z: 54}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &251484991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307525493941056, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &251484996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251484991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
+--- !u!1 &256008851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307525365256075, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &256008856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256008851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
+--- !u!1 &256727476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307525607275805, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &256727481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256727476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1 &278591012 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 186536, guid: b82529e8ddfc06e4fb493d04ff82ec97, type: 3}
@@ -1244,6 +1358,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300398002}
   m_CullTransparentMesh: 1
+--- !u!1 &327672884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307523856081723, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &327672890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327672884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1 &337560356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 118030, guid: 72662286a75375c4e907bc20dd734a99, type: 3}
@@ -1334,6 +1467,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &385559193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307524164341438, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &385559198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385559193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1 &387622931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,6 +1909,27 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3100124120345287838, guid: 92ff4fe7cb1a0cd4aa5835ba28b95f3e, type: 3}
   m_PrefabInstance: {fileID: 1184685130}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &525415885
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525415879}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!1 &547453820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +2127,25 @@ MonoBehaviour:
   OnObjectDeselectedUnityEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &551899986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307525046365736, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &551899991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551899986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1001 &560285409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2011,6 +2203,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f02382bdafb4b145a0963085d02fe61, type: 3}
+--- !u!1 &567560912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307524296053791, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &567560917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567560912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
+--- !u!1 &593760036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307523599964122, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &593760041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593760036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1001 &620356645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3293,6 +3523,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 199307523767145273, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
   m_PrefabInstance: {fileID: 199307524616403478}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &921930066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307524226914962, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &921930071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921930066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
+--- !u!1 &922847600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307524210857871, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &922847606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922847600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1 &923533975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,6 +4074,25 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   useHitFilters: 0
+--- !u!1 &980539958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307523911300740, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &980539963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980539958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1 &982023388
 GameObject:
   m_ObjectHideFlags: 0
@@ -5788,6 +6075,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72662286a75375c4e907bc20dd734a99, type: 3}
+--- !u!1 &1300694921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307524864465299, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1300694922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300694921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1001 &1301791463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7474,6 +7780,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7397522901368261403, guid: 4230b05df0462914baace576c9d86b05, type: 3}
   m_PrefabInstance: {fileID: 34174329}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1643595968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307524979340962, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1643595973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643595968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1 &1646789152
 GameObject:
   m_ObjectHideFlags: 0
@@ -8726,6 +9051,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1939758503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307525242819253, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1939758509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939758503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1 &1946024882
 GameObject:
   m_ObjectHideFlags: 0
@@ -9121,6 +9465,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7578795806976277513, guid: 0dcd835c0efe5374c82522b057ab993b, type: 3}
   m_PrefabInstance: {fileID: 2112506529}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2031338231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199307524283837031, guid: 1ce970164727b7943b3c2407cae7f644, type: 3}
+  m_PrefabInstance: {fileID: 199307524616403478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031338233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031338231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cf819803292545ba3100cc8768e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionalityDescription: Some of the obstacles are real, and some can be passed
+    through. Try your luck!
 --- !u!1 &2108633531
 GameObject:
   m_ObjectHideFlags: 0
