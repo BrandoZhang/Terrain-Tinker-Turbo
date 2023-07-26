@@ -54,6 +54,11 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("PlayScene4");
     }
+    
+    public void launchPlayScene5()
+    {
+        SceneManager.LoadScene("PlayScene5");
+    }
 
     public void headBack()
     {
@@ -65,7 +70,7 @@ public class MainMenu : MonoBehaviour
     public void headNext()
     {
         int currIdx = SceneManager.GetActiveScene().buildIndex;
-        int nextIdx = (currIdx >= 7) ? 0 : currIdx + 1;
+        int nextIdx = (currIdx >= 8) ? 0 : currIdx + 1;
         SceneManager.LoadScene(nextIdx);
     }
 

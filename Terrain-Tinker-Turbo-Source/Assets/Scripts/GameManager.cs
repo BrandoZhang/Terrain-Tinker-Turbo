@@ -68,11 +68,15 @@ public class GameManager : MonoBehaviour
     public GameObject MenuCanvas;
     public GameObject GameOverCanvas;
     public GameObject HelpCanvas;
+    public TextMeshProUGUI player1TrialText;
+    public TextMeshProUGUI player2TrialText;
     private bool isCountDown;
     private bool isBackToGameClicked;
 
     private GameObject draggableSignNoLeftTurnHint;
     private GameObject draggableSignNoRightTurnHint;
+    private GameObject ocean;
+    public GameObject lightBeam;
     
     public Text tooltipText;
     public GameObject tooltipBackground;
@@ -105,7 +109,15 @@ public class GameManager : MonoBehaviour
         // Find the ItemLibrary GameObject
         //player1ItemLibrary = GameObject.Find("Player1_ItemLibrary");
         //player2ItemLibrary = GameObject.Find("Player2_ItemLibrary");
-
+        
+        //find ocean
+        ocean = GameObject.Find("Ocean");
+        //Disable ocean in track editing phase
+        ocean.gameObject.SetActive(false);
+        
+        //Disable beam in track editing phase
+        lightBeam.SetActive(false);
+        
         // Get the Rigidbody from the Track GameObject
         trackRigidbody = track.GetComponent<Rigidbody>();
         
@@ -175,7 +187,15 @@ public class GameManager : MonoBehaviour
         HideMenu(MenuCanvas);
         HideMenu(GameOverCanvas);
         HideMenu(HelpCanvas);
-        
+
+        if (player1TrialText != null)
+        {
+            player1TrialText.text = limit + " Trials Left";
+        }
+        if (player2TrialText != null)
+        {
+            player2TrialText.text = limit + " Trials Left";
+        }
     }
 
     private void Update()
@@ -281,13 +301,21 @@ public class GameManager : MonoBehaviour
             player2BlockCount++;
         }
 
-        // Switch the current player
-        currentPlayer = 3 - currentPlayer;  // If currentPlayer was 1, it becomes 2 and vice versa
-        SwitchTrackLibrary();
         // Update the turnText field with the remaining blocks
         int remainingBlocks = currentPlayer == 1 ? limit - player1BlockCount : limit - player2BlockCount;
         turnText.text = "Player " + currentPlayer + "'s Turn - " + remainingBlocks + " blocks left";
-        
+        if (player1TrialText != null && currentPlayer == 1)
+        {
+            player1TrialText.text = remainingBlocks + " Trials Left";
+        }
+        else if (player2TrialText != null && currentPlayer == 2)
+        {
+            player2TrialText.text = remainingBlocks + " Trials Left";
+        }
+        // Switch the current player
+        currentPlayer = 3 - currentPlayer;  // If currentPlayer was 1, it becomes 2 and vice versa
+        SwitchTrackLibrary();
+
         //Aarti: Update turn image
         if(currentPlayer == 1)
         {
@@ -354,6 +382,12 @@ public class GameManager : MonoBehaviour
         player1Camera.enabled = true;
         player2Camera.enabled = true;
         
+        //Enable ocean in racing phase
+        ocean.gameObject.SetActive(true);
+        
+        //Enable beam
+        lightBeam.SetActive(true);
+        
         // Transition to racing phase, configure the collider and rigidbody
         trackRigidbody.isKinematic = true;  // To fix the track (otherwise will fall due to gravity)
         trackRigidbody.useGravity = false;  // Insane :)
@@ -403,7 +437,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 1 Wins!");
             winText.text = "Player 1 Wins!";
             gameOver = true;
-            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4")
+            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4" || getCurrScene() == "PlayScene5")
             {
                 PostToDatabase("Player1");
             }
@@ -422,7 +456,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins!");
             winText.text = "Player 2 Wins!";
             gameOver = true;
-            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4")
+            if (getCurrScene() == "PlayScene3" || getCurrScene() == "PlayScene4" || getCurrScene() == "PlayScene5")
             {
                 PostToDatabase("Player2");
             }
@@ -445,9 +479,13 @@ public class GameManager : MonoBehaviour
         player1TabSection.SetActive(false);
         player2TabSection.SetActive(false);
         
+        //Disable Track library
+        //player1TrackLibrary.SetActive(false);
+        //player2TrackLibrary.SetActive(false);
+        
         //Disable Traffic library
-        player1TrackLibrary.SetActive(false);
-        player1TrackLibrary.SetActive(false);
+        //player1TrafficSignLibrary.SetActive(false);
+        //player2TrafficSignLibrary.SetActive(false);
 
         if (SceneManager.GetActiveScene().name == "Tutorial4")
         {
@@ -547,7 +585,7 @@ public class GameManager : MonoBehaviour
         player2TrafficSignLibrary.SetActive(false);
         player1DeactivePlane.SetActive(false);
         player2DeactivePlane.SetActive(false);
-        
+
         if (player1ItemLibrary != null)
         {
             player1ItemLibrary.SetActive(false);
@@ -558,6 +596,14 @@ public class GameManager : MonoBehaviour
         }
 
         tracklibraryText.text = "";
+        if (player1TrialText != null)
+        {
+            player1TrialText.text = "";
+        }
+        if (player2TrialText != null)
+        {
+            player2TrialText.text = "";
+        }
  
         SetImgEnabled("Player1Turn", false);
         SetImgEnabled("Player2Turn", false);
